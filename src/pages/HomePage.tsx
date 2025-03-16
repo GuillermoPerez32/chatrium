@@ -1,5 +1,6 @@
 import {
   AboutSection,
+  Footer,
   Header,
   HeroSection,
   PricingSection,
@@ -12,6 +13,7 @@ const HomePage = () => {
       <HeroSection />
       <AboutSection />
       <PricingSection />
+      <Footer />
     </>
   );
 };
