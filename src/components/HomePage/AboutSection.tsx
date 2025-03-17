@@ -2,26 +2,26 @@ import { CloudUpload, HardDrive, Lock } from "lucide-react";
 
 const AboutSection = () => {
   return (
-    <div className="overflow-hidden bg-white py-24 sm:py-32">
+    <div className="overflow-hidden bg-gray-900 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
           <div className="lg:pt-4 lg:pr-8">
             <div className="lg:max-w-lg">
-              <h2 className="text-base/7 font-semibold text-primary-600">
+              <h2 className="text-base/7 font-semibold text-primary-400">
                 Enhance Communication
               </h2>
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-pretty text-gray-900 sm:text-5xl">
+              <p className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                 Enterprise Chat Solutions
               </p>
-              <p className="mt-6 text-lg/8 text-gray-600">
+              <p className="mt-6 text-lg/8 text-gray-300">
                 Our enterprise chat app streamlines communication, boosts
                 productivity, and ensures secure data exchange within your
                 organization.
               </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-600 lg:max-w-none">
+              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-300 lg:max-w-none">
                 <div>
-                  <dt className="flex gap-2 font-semibold text-gray-900">
-                    <CloudUpload className="text-primary-600" />
+                  <dt className="flex gap-2 font-semibold text-white">
+                    <CloudUpload className="text-primary-400" />
                     Instant Messaging.
                   </dt>
                   <dd className="inline">
@@ -30,8 +30,8 @@ const AboutSection = () => {
                   </dd>
                 </div>
                 <div>
-                  <dt className="flex gap-2 font-semibold text-gray-900">
-                    <Lock className="text-primary-600" />
+                  <dt className="flex gap-2 font-semibold text-white">
+                    <Lock className="text-primary-400" />
                     Secure Channels.
                   </dt>
                   <dd className="inline">
@@ -40,8 +40,8 @@ const AboutSection = () => {
                   </dd>
                 </div>
                 <div>
-                  <dt className="flex gap-2 font-semibold text-gray-900">
-                    <HardDrive className="text-primary-600" />
+                  <dt className="flex gap-2 font-semibold text-white">
+                    <HardDrive className="text-primary-400" />
                     File Sharing.
                   </dt>
                   <dd className="inline">
