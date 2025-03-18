@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { Menu } from "lucide-react";
 import NavBar from "./NavBar";
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [navBarOpen, setNavBarOpen] = useState(false);
@@ -24,13 +25,13 @@ const Header = () => {
           </Link>
         </div>
         <div className="flex lg:hidden">
-          <button
+          <Button
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           >
             <span className="sr-only">Open main menu</span>
             <Menu onClick={() => setNavBarOpen(true)} />
-          </button>
+          </Button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">
           <Link

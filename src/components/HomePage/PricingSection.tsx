@@ -1,3 +1,5 @@
+import { Check } from "lucide-react";
+
 const PricingSection = () => {
   return (
     <div className="relative isolate px-6 py-24 sm:py-32 lg:px-8">
@@ -37,74 +39,26 @@ const PricingSection = () => {
             className="mt-8 space-y-3 text-sm/6 text-gray-600 sm:mt-10"
           >
             <li className="flex gap-x-3">
-              <svg
-                className="h-6 w-5 flex-none text-primary-600"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-                data-slot="icon"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <Check className="text-primary" />
               50 users
             </li>
             <li className="flex gap-x-3">
-              <svg
-                className="h-6 w-5 flex-none text-primary-600"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-                data-slot="icon"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <Check className="text-primary" />
               10 GB storage
             </li>
             <li className="flex gap-x-3">
-              <svg
-                className="h-6 w-5 flex-none text-primary-600"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-                data-slot="icon"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <Check className="text-primary" />
               Basic analytics
             </li>
             <li className="flex gap-x-3">
-              <svg
-                className="h-6 w-5 flex-none text-primary-600"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-                aria-hidden="true"
-                data-slot="icon"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+              <Check className="text-primary" />
               Email support
             </li>
           </ul>
           <a
             href="#"
             aria-describedby="tier-hobby"
-            className="mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold text-primary-600 ring-1 ring-primary-200 ring-inset hover:ring-primary-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 sm:mt-10"
+            className=" mt-8 block rounded-md px-3.5 py-2.5 text-center text-sm font-semibold text-primary-600 ring-1 ring-primary ring-inset hover:ring-primary-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 sm:mt-10"
           >
             Get started today
           </a>

@@ -1,8 +1,13 @@
 import { create } from "zustand";
 
+interface UserData {
+  email: string;
+  token: string;
+}
+
 interface AuthState {
-  user?: string;
-  setUser: (user: string) => void;
+  user?: UserData;
+  setUser: (user: UserData) => void;
 }
 
 const useAuthStore = create<AuthState>((set) => ({

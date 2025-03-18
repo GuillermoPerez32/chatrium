@@ -2,6 +2,7 @@ import AppRoutes from "@/constants/appRoutes";
 import clsx from "clsx";
 import { CircleX } from "lucide-react";
 import { Link } from "react-router";
+import { Button } from "@/components/ui/button";
 
 interface Props {
   open: boolean;
@@ -29,14 +30,14 @@ const NavBar = ({ open, onClose }: Props) => {
               alt=""
             />
           </Link>
-          <button
+          <Button
             onClick={onClose}
             type="button"
             className="-m-2.5 rounded-md p-2.5 text-gray-900"
           >
             <span className="sr-only">Close menu</span>
             <CircleX className="cursor-pointer" />
-          </button>
+          </Button>
         </div>
         <div className="mt-6 flow-root">
           <div className="-my-6 divide-y divide-gray-500/10">

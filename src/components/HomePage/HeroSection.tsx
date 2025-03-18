@@ -1,3 +1,5 @@
+import { Button } from "@/components/ui/button";
+
 const HeroSection = () => {
   return (
     <div>
@@ -26,14 +28,13 @@ const HeroSection = () => {
               app. Stay connected with your colleagues anytime, anywhere.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <a
-                href="#"
-                className="rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-primary-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
-              >
-                Get started
+              <a href="#">
+                <Button>Get started</Button>
               </a>
-              <a href="#" className="text-sm/6 font-semibold text-gray-900">
-                Learn more <span aria-hidden="true">→</span>
+              <a href="#">
+                <Button variant="outline">
+                  Learn more <span aria-hidden="true">→</span>
+                </Button>
               </a>
             </div>
           </div>
