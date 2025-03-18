@@ -1,8 +1,8 @@
 import AppRoutes from "@/constants/appRoutes";
-import clsx from "clsx";
 import { CircleX } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 interface Props {
   open: boolean;
@@ -12,7 +12,7 @@ interface Props {
 const NavBar = ({ open, onClose }: Props) => {
   return (
     <div
-      className={clsx({
+      className={cn({
         hidden: !open,
         "fixed inset-0 z-50": true,
       })}
@@ -31,8 +31,8 @@ const NavBar = ({ open, onClose }: Props) => {
             />
           </Link>
           <Button
+            variant="ghost"
             onClick={onClose}
-            type="button"
             className="-m-2.5 rounded-md p-2.5 text-gray-900"
           >
             <span className="sr-only">Close menu</span>

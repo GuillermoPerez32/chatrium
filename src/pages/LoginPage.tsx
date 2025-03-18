@@ -8,9 +8,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
 import { useLogin } from "@/services/auth";
 import { useAuthStore } from "@/stores";
+import { useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -20,12 +22,13 @@ const loginSchema = z.object({
 });
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   const { mutateAsync, isPending } = useLogin();
   const { setUser } = useAuthStore();
   const form = useForm({
     schema: loginSchema,
     defaultValues: {
-      email: "",
+      email: "eve.holt@reqres.in",
       password: "",
     },
   });
@@ -41,7 +44,7 @@ const LoginPage = () => {
             email: form.getValues().email,
             token: response.token,
           });
-          toast.success("User logged in");
+          navigate(AppRoutes.DASHBOARD);
         } else {
           toast.error("Invalid Credentials");
         }
@@ -67,7 +70,10 @@ const LoginPage = () => {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="flex flex-col gap-8"
+            >
               <FormField
                 control={form.control}
                 name="email"
@@ -100,7 +106,11 @@ const LoginPage = () => {
                 )}
               />
 
-              <Button type="submit" disabled={isPending}>
+              <Button
+                type="submit"
+                disabled={isPending}
+                className="cursor-pointer"
+              >
                 Sign In
               </Button>
             </form>

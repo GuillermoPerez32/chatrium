@@ -26,11 +26,13 @@ const Header = () => {
         </div>
         <div className="flex lg:hidden">
           <Button
+            variant="ghost"
+            onClick={() => setNavBarOpen(true)}
             type="button"
             className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
           >
             <span className="sr-only">Open main menu</span>
-            <Menu onClick={() => setNavBarOpen(true)} />
+            <Menu />
           </Button>
         </div>
         <div className="hidden lg:flex lg:gap-x-12">

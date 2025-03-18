@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { QueryClientProvider } from "@tanstack/react-query";
-import { ChatPage, HomePage, LoginPage } from "@/pages";
+import { ChatPage, DashBoardPage, HomePage, LoginPage } from "@/pages";
 import { useAuthStore } from "@/stores";
 import AppRoutes from "@/constants/appRoutes";
 import queryClient from "@/services/queryClient";
@@ -14,7 +14,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           {user ? (
-            <Route path={AppRoutes.HOME} element={<ChatPage />} />
+            <>
+              <Route path={AppRoutes.HOME} element={<ChatPage />} />
+              <Route path={AppRoutes.DASHBOARD} element={<DashBoardPage />} />
+            </>
           ) : (
             <>
               <Route path={AppRoutes.HOME} element={<HomePage />} />
