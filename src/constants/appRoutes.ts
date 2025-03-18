@@ -1,6 +1,7 @@
 enum AppRoutes {
   HOME = "/",
   LOGIN = "/login",
+  REGISTER = "/signup",
   DASHBOARD = "/dashboard",
 }
 

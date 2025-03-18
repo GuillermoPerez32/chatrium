@@ -12,7 +12,7 @@ import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
 import { useLogin } from "@/services/auth";
 import { useAuthStore } from "@/stores";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -115,6 +115,16 @@ const LoginPage = () => {
               </Button>
             </form>
           </Form>
+
+          <p className="mt-10 text-center text-sm/6 text-gray-500">
+            Don't have an account?
+            <Link
+              to={AppRoutes.REGISTER}
+              className="font-semibold text-primary-600 hover:text-primary-500"
+            >
+              Sign up
+            </Link>
+          </p>
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
             Not a member?{" "}
