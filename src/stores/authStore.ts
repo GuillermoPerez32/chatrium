@@ -8,7 +8,7 @@ interface UserData {
 
 interface AuthState {
   user?: UserData;
-  setUser: (user: UserData) => void;
+  setUser: (user?: UserData) => void;
 }
 
 const useAuthStore = create<AuthState>()(

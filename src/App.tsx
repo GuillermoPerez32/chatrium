@@ -16,7 +16,8 @@ function App() {
         <Routes>
           {user ? (
             <>
-              <Route path={AppRoutes.HOME} element={<ChatPage />} />
+              <Route path={AppRoutes.HOME} element={<HomePage />} />
+              <Route path={AppRoutes.CHAT} element={<ChatPage />} />
               <Route path={AppRoutes.DASHBOARD} element={<DashBoardPage />} />
             </>
           ) : (

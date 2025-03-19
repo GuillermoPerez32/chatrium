@@ -4,9 +4,11 @@ import { Link } from "react-router";
 import { Menu } from "lucide-react";
 import NavBar from "./NavBar";
 import { Button } from "@/components/ui/button";
+import { useAuthStore } from "@/stores";
 
 const Header = () => {
   const [navBarOpen, setNavBarOpen] = useState(false);
+  const { user, setUser } = useAuthStore();
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
@@ -62,12 +64,22 @@ const Header = () => {
           </Link>
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Link
-            to={AppRoutes.LOGIN}
-            className="text-sm/6 font-semibold text-gray-900"
-          >
-            Log in <span aria-hidden="true">&rarr;</span>
-          </Link>
+          {user ? (
+            <Button
+              onClick={() => setUser(undefined)}
+              variant="ghost"
+              className="text-sm/6 font-semibold text-gray-900"
+            >
+              Log out
+            </Button>
+          ) : (
+            <Link
+              to={AppRoutes.LOGIN}
+              className="text-sm/6 font-semibold text-gray-900"
+            >
+              Log in <span aria-hidden="true">&rarr;</span>
+            </Link>
+          )}
         </div>
       </nav>
       <NavBar open={navBarOpen} onClose={() => setNavBarOpen(false)} />
