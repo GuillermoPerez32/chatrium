@@ -20,8 +20,8 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const loginSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(6),
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 const LoginPage = () => {
@@ -131,6 +131,15 @@ const LoginPage = () => {
               >
                 {t("signIn")}
               </Button>
+
+              <p className="mt-4 text-center text-sm/6 text-gray-500">
+                <Link
+                  to={AppRoutes.RECOVER_PASSWORD}
+                  className="font-semibold text-primary-600 hover:text-primary-500"
+                >
+                  {t("Forgot your password?")}
+                </Link>
+              </p>
             </form>
           </Form>
 

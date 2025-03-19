@@ -6,6 +6,7 @@ import AppRoutes from "@/constants/appRoutes";
 import queryClient from "@/services/queryClient";
 import { Toaster } from "@/components/ui/sonner";
 import RegisterPage from "./pages/RegisterPage";
+import RecoverPage from "./pages/RecoverPage";
 
 function App() {
   const { user } = useAuthStore();
@@ -25,6 +26,7 @@ function App() {
               <Route path={AppRoutes.HOME} element={<HomePage />} />
               <Route path={AppRoutes.LOGIN} element={<LoginPage />} />
               <Route path={AppRoutes.REGISTER} element={<RegisterPage />} />
+              <Route path={AppRoutes.RECOVER_PASSWORD} element={<RecoverPage />} />
             </>
           )}
         </Routes>
