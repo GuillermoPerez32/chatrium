@@ -9,7 +9,7 @@
   "register": "Registrar",
   "signInMessage": "Inicia sesión en tu cuenta",
   "noAccountMessage": "¿No tienes una cuenta?",
-  "noMemberMessage": "¿No eres miembro?",
+  "notMemberMessage": "¿No eres miembro?",
   "startTrialMessage": "Comienza una prueba gratuita de 14 días",
   "alreadyHaveAccount": "¿Ya tienes una cuenta?"
 }

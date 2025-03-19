@@ -88,7 +88,7 @@ const LoginPage = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>{t("email")}</FormLabel>
                     <FormControl>
                       <Input type="email" placeholder="Email" {...field} />
                     </FormControl>
@@ -102,7 +102,7 @@ const LoginPage = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>{t("password")}</FormLabel>
                     <FormControl>
                       <div className="flex">
                         <Input
@@ -129,28 +129,28 @@ const LoginPage = () => {
                 disabled={isPending}
                 className="cursor-pointer"
               >
-                Sign In
+                {t("signIn")}
               </Button>
             </form>
           </Form>
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
-            Don't have an account?
+            {t("noAccountMessage")}
             <Link
               to={AppRoutes.REGISTER}
               className="font-semibold text-primary-600 hover:text-primary-500"
             >
-              Sign up
+              {t("signUp")}
             </Link>
           </p>
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
-            Not a member?{" "}
+            {t("notMemberMessage")}
             <a
               href="#"
               className="font-semibold text-primary-600 hover:text-primary-500"
             >
-              Start a 14 day free trial
+              {t("startTrialMessage")}
             </a>
           </p>
         </div>
