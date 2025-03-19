@@ -13,12 +13,14 @@ import { useForm } from "@/hooks";
 import { z } from "zod";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const recoverPasswordSchema = z.object({
   email: z.string().email("Invalid email address"),
 });
 
 const RecoverPage = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const form = useForm({
     schema: recoverPasswordSchema,
@@ -43,7 +45,7 @@ const RecoverPage = () => {
           className="mx-auto h-10 w-auto"
         />
         <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-          Recover your password
+          {t("recoverMessage")}
         </h2>
       </div>
 
@@ -55,7 +57,7 @@ const RecoverPage = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email address</FormLabel>
+                  <FormLabel>{t("email")}</FormLabel>
                   <FormControl>
                     <Input type="email" placeholder="Email" {...field} />
                   </FormControl>
@@ -67,7 +69,7 @@ const RecoverPage = () => {
               type="submit"
               className="flex w-full justify-center rounded-md bg-primary-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-primary-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
             >
-              Recover Password
+              {t("recoverPass")}
             </Button>
           </form>
         </Form>

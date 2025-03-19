@@ -13,5 +13,8 @@
   "notMemberMessage": "¿No eres miembro?",
   "startTrialMessage": "Comienza una prueba gratuita de 14 días",
   "alreadyHaveAccount": "¿Ya tienes una cuenta?",
-  "forgotPasswordMessage": "¿Olvidaste tu contraseña?"
+  "forgotPasswordMessage": "¿Olvidaste tu contraseña?",
+  "recoverPass": "Recuperar Contraseña",
+  "recoverMessage": "Recupere su contraseña"
+
 }
