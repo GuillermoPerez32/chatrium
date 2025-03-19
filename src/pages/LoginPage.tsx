@@ -137,7 +137,7 @@ const LoginPage = () => {
                   to={AppRoutes.RECOVER_PASSWORD}
                   className="font-semibold text-primary-600 hover:text-primary-500"
                 >
-                  {t("Forgot your password?")}
+                  {t("forgotPasswordMessage")}
                 </Link>
               </p>
             </form>
