@@ -12,6 +12,8 @@ import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
 import { useLogin } from "@/services/auth";
 import { useAuthStore } from "@/stores";
+import { Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -22,6 +24,7 @@ const loginSchema = z.object({
 });
 
 const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { mutateAsync, isPending } = useLogin();
   const { setUser } = useAuthStore();
@@ -53,6 +56,10 @@ const LoginPage = () => {
         toast.error(error.message);
       });
   }
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((state) => !state);
+  };
 
   return (
     <>
@@ -95,11 +102,20 @@ const LoginPage = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input
-                        type="password"
-                        placeholder="Password"
-                        {...field}
-                      />
+                      <div className="flex">
+                        <Input
+                          type={showPassword ? "text" : "password"}
+                          placeholder="Password"
+                          {...field}
+                        />
+                        <button
+                          type="button"
+                          onClick={togglePasswordVisibility}
+                          className="inset-y-0 right-0 flex items-center px-2 text-gray-600"
+                        >
+                          {showPassword ? <EyeOff /> : <Eye />}
+                        </button>
+                      </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>

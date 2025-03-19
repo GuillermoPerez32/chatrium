@@ -118,19 +118,21 @@ const RegisterPage = () => {
                   <FormItem>
                     <FormLabel>Password</FormLabel>
                     <FormControl>
-                      <Input
-                        type={showPassword ? "text" : "password"}
-                        placeholder="Password"
-                        {...field}
-                      />
+                      <div className="flex">
+                        <Input
+                          type={showPassword ? "text" : "password"}
+                          placeholder="Password"
+                          {...field}
+                        />
+                        <button
+                          type="button"
+                          onClick={togglePasswordVisibility}
+                          className="inset-y-0 right-0 flex items-center px-2 text-gray-600"
+                        >
+                          {showPassword ? <EyeOff /> : <Eye />}
+                        </button>
+                      </div>
                     </FormControl>
-                    <button
-                      type="button"
-                      onClick={togglePasswordVisibility}
-                      className="absolute inset-y-0 right-0 flex items-center px-2 text-gray-600"
-                    >
-                      {showPassword ? <EyeOff /> : <Eye />}
-                    </button>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -143,19 +145,21 @@ const RegisterPage = () => {
                   <FormItem>
                     <FormLabel>Confirm Password</FormLabel>
                     <FormControl>
-                      <Input
-                        type={showConfirmPassword ? "text" : "password"}
-                        placeholder="Confirm Password"
-                        {...field}
-                      />
+                      <div className="flex">
+                        <Input
+                          type={showConfirmPassword ? "text" : "password"}
+                          placeholder="Confirm Password"
+                          {...field}
+                        />
+                        <button
+                          type="button"
+                          onClick={toggleConfirmPasswordVisibility}
+                          className="inset-y-0 right-0 flex items-center px-2 text-gray-600"
+                        >
+                          {showConfirmPassword ? <EyeOff /> : <Eye />}
+                        </button>
+                      </div>
                     </FormControl>
-                    <button
-                      type="button"
-                      onClick={toggleConfirmPasswordVisibility}
-                      className="absolute inset-y-0 right-0 flex items-center px-2 text-gray-600"
-                    >
-                      {showConfirmPassword ? <EyeOff /> : <Eye />}
-                    </button>
                     <FormMessage />
                   </FormItem>
                 )}
