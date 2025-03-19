@@ -8,6 +8,7 @@
   "confirmPassword": "Confirmar contraseña",
   "register": "Registrar",
   "signInMessage": "Inicia sesión en tu cuenta",
+  "signUpMessage": "Crea una nueva cuenta",
   "noAccountMessage": "¿No tienes una cuenta?",
   "notMemberMessage": "¿No eres miembro?",
   "startTrialMessage": "Comienza una prueba gratuita de 14 días",

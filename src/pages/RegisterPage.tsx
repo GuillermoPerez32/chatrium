@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 // Define the validation schema
 const registerSchema = z
@@ -35,6 +36,7 @@ const RegisterPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const form = useForm({
     schema: registerSchema,
@@ -72,7 +74,7 @@ const RegisterPage = () => {
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            Create your account
+            {t("signUpMessage")}
           </h2>
         </div>
 
@@ -84,7 +86,7 @@ const RegisterPage = () => {
                 name="phoneNumber"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
+                    <FormLabel>{t("phoneNumber")}</FormLabel>
                     <FormControl>
                       <Input
                         type="text"
@@ -102,7 +104,7 @@ const RegisterPage = () => {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email address</FormLabel>
+                    <FormLabel>{t("emailAddress")}</FormLabel>
                     <FormControl>
                       <Input type="email" placeholder="Email" {...field} />
                     </FormControl>
@@ -116,7 +118,7 @@ const RegisterPage = () => {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Password</FormLabel>
+                    <FormLabel>{t("password")}</FormLabel>
                     <FormControl>
                       <div className="flex">
                         <Input
@@ -143,7 +145,7 @@ const RegisterPage = () => {
                 name="confirmPassword"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Confirm Password</FormLabel>
+                    <FormLabel>{t("confirmPassword")}</FormLabel>
                     <FormControl>
                       <div className="flex">
                         <Input
@@ -169,7 +171,7 @@ const RegisterPage = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-primary-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-xs hover:bg-primary-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"
               >
-                Register
+                {t("register")}
               </Button>
             </form>
           </Form>
@@ -177,12 +179,12 @@ const RegisterPage = () => {
           <div className="mt-10 border-t border-gray-300"></div>
 
           <p className="mt-10 text-center text-sm/6 text-gray-500">
-            Already have an account?{" "}
+            {t("alreadyHaveAccount")}
             <Link
               to={AppRoutes.LOGIN}
               className="font-semibold text-primary-600 hover:text-primary-500"
             >
-              Sign in
+              {t("signIn")}
             </Link>
           </p>
         </div>

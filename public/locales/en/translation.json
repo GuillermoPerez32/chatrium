@@ -8,6 +8,7 @@
   "confirmPassword": "Confirm Password",
   "register": "Register",
   "signInMessage": "Sign in to your account",
+  "signUpMessage": "Create a new account",
   "noAccountMessage": "Don't have an account?",
   "notMemberMessage": "Not a member?",
   "startTrialMessage": "Start a 14 day free trial",
