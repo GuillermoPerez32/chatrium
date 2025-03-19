@@ -1,0 +1,15 @@
+{
+  "email": "Correo electrónico",
+  "password": "Contraseña",
+  "signUp": "Regístrate",
+  "signIn": "Iniciar sesión",
+  "phoneNumber": "Número de teléfono",
+  "emailAddress": "Dirección de correo electrónico",
+  "confirmPassword": "Confirmar contraseña",
+  "register": "Registrar",
+  "signInMessage": "Inicia sesión en tu cuenta",
+  "noAccountMessage": "¿No tienes una cuenta?",
+  "noMemberMessage": "¿No eres miembro?",
+  "startTrialMessage": "Comienza una prueba gratuita de 14 días",
+  "alreadyHaveAccount": "¿Ya tienes una cuenta?"
+}

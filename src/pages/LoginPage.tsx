@@ -14,6 +14,7 @@ import { useLogin } from "@/services/auth";
 import { useAuthStore } from "@/stores";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router";
 import { toast } from "sonner";
 import { z } from "zod";
@@ -24,6 +25,7 @@ const loginSchema = z.object({
 });
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { mutateAsync, isPending } = useLogin();
@@ -71,7 +73,7 @@ const LoginPage = () => {
             className="mx-auto h-10 w-auto"
           />
           <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            Sign in to your account
+            {t("signInMessage")}
           </h2>
         </div>
 
