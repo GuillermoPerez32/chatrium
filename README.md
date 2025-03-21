@@ -37,6 +37,14 @@ pnpm install
 pnpm dev
 ```
 
+## Validate translations
+
+To validate translations, run the following command:
+
+```bash
+pnpm i18n:check
+```
+
 ## Additional Notes
 
 - For production builds, use:

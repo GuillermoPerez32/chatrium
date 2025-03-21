@@ -1,8 +1,8 @@
 import { z } from "zod";
 import enTranslation from "../../public/locales/en/translation.json";
-import esTranslation from "../../public/locales/es/translation.json"; // Agrega más idiomas si es necesario
+import esTranslation from "../../public/locales/es/translation.json"; // Add more languages if necessary
 
-// Genera un esquema basado en la traducción en inglés (como referencia)
+// Generate a schema based on the English translation (as a reference)
 const translationSchema = z.object(
   Object.keys(enTranslation).reduce((acc, key) => {
     acc[key] = z.string();
@@ -10,19 +10,19 @@ const translationSchema = z.object(
   }, {} as Record<string, z.ZodString>)
 );
 
-// Función para validar un archivo de traducción
+// Function to validate a translation file
 const validateTranslation = (locale: string, translation: unknown) => {
   const result = translationSchema.safeParse(translation);
   if (!result.success) {
     console.error(
-      `🚨 Error en la traducción de "${locale}":`,
+      `🚨 Error in the "${locale}" translation:`,
       result.error.format()
     );
   } else {
-    console.log(`✅ "${locale}" es válido.`);
+    console.log(`✅ "${locale}" is valid.`);
   }
 };
 
-// Validar cada archivo de traducción
+// Validate each translation file
 validateTranslation("en", enTranslation);
 validateTranslation("es", esTranslation);
