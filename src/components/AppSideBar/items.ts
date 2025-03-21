@@ -7,6 +7,17 @@ import {
   Settings,
   TestTubeDiagonalIcon,
   UsersIcon,
+  Building2,
+  HandCoins,
+  Star,
+  User,
+  Unplug,
+  QrCode,
+  PhoneCall,
+  ShieldCheck,
+  KeySquare,
+  UserPen,
+
 } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
@@ -55,12 +66,49 @@ const items: Item[] = [
     items: [
       {
         title: "Profile",
-        icon: UsersIcon,
+        icon: User,
       },
       {
         title: "Account",
-        icon: UsersIcon,
+        icon: UserPen,
       },
+
+      {
+        title: "Bussines Profile",
+        icon: Building2,
+      },
+      {
+        title: "Manage Users",
+        icon: UsersIcon,
+      },{
+        title: "Billing",
+        icon: HandCoins,
+      },
+      {
+        title: "Branding",
+        icon: Star,
+      },
+      {
+        title: "Integration",
+        icon: Unplug,
+      },
+      {
+        title: "Website Toolkit",
+        icon: KeySquare,
+      },
+      {
+        title: "QR Code",
+        icon: QrCode,
+      },
+      {
+        title: "Calls",
+        icon: PhoneCall,
+      },
+      {
+        title: "Trust",
+        icon: ShieldCheck,
+      },
+      
     ],
   },
 ];
