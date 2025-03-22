@@ -36,6 +36,9 @@ const AppSidebar = () => {
             <SidebarMenu>
               {items.map((item) => (
                 <Collapsible
+                  defaultOpen={item.items?.some((subItem) =>
+                    pathname.includes(subItem.url)
+                  )}
                   key={item.title}
                   className={`${item.title}/collapsible`}
                 >
@@ -44,8 +47,8 @@ const AppSidebar = () => {
                       <SidebarMenuButton
                         className={cn({
                           "bg-primary-200 text-primary-950 hover:bg-primary-100":
-                            item.items?.some(
-                              (subItem) => subItem.url === pathname
+                            item.items?.some((subItem) =>
+                              pathname.includes(subItem.url)
                             ),
                         })}
                       >
@@ -62,7 +65,7 @@ const AppSidebar = () => {
                               <SidebarMenuButton
                                 className={cn({
                                   "bg-primary-200 text-primary-950 hover:bg-primary-100":
-                                    subItem.url === pathname,
+                                    pathname.includes(subItem.url),
                                 })}
                               >
                                 <subItem.icon />

@@ -5,6 +5,9 @@ import BusinessProfilePage from "./Dashboard/BusinessProfilePage";
 import CallsPage from "./Dashboard/CallsPage";
 import DashboardOverviewPage from "./Dashboard/DashboardOverviewPage";
 import IntegrationPage from "./Dashboard/IntegrationPage";
+import AllUsersPage from "./Dashboard/ManageUsers/AllUsersPage";
+import AutoAssignPage from "./Dashboard/ManageUsers/AutoAssignPage";
+import TeamsPage from "./Dashboard/ManageUsers/TeamsPage";
 import ManageUsersPage from "./Dashboard/ManageUsersPage";
 import ProfilePage from "./Dashboard/ProfilePage";
 import QRCodePage from "./Dashboard/QRCodePage";
@@ -32,4 +35,7 @@ export {
   QRCodePage,
   TrustPage,
   WebsiteToolkitPage,
+  AllUsersPage,
+  AutoAssignPage,
+  TeamsPage,
 };

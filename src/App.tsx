@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes } from "react-router";
 import { QueryClientProvider } from "@tanstack/react-query";
 import {
   AccountPage,
+  AllUsersPage,
+  AutoAssignPage,
   BillingPage,
   BrandingPage,
   BusinessProfilePage,
@@ -13,6 +15,7 @@ import {
   ManageUsersPage,
   ProfilePage,
   QRCodePage,
+  TeamsPage,
   TrustPage,
   WebsiteToolkitPage,
 } from "@/pages";
@@ -55,6 +58,18 @@ function App() {
                 <Route
                   path={AppRoutes.MANAGE_USERS}
                   element={<ManageUsersPage />}
+                />
+                <Route
+                  path={AppRoutes.MANAGE_USERS__ALL_USERS}
+                  element={<AllUsersPage />}
+                />
+                <Route
+                  path={AppRoutes.MANAGE_USERS__TEAMS}
+                  element={<TeamsPage />}
+                />
+                <Route
+                  path={AppRoutes.MANAGE_USERS__AUTO_ASSIGN}
+                  element={<AutoAssignPage />}
                 />
                 <Route path={AppRoutes.QR_CODE} element={<QRCodePage />} />
                 <Route path={AppRoutes.TRUST} element={<TrustPage />} />
