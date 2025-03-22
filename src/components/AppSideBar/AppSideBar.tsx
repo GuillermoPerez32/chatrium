@@ -18,6 +18,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import items from "./items";
+import { Link } from "react-router";
 
 export function AppSidebar() {
   return (
@@ -43,10 +44,12 @@ export function AppSidebar() {
                       <SidebarMenuSub>
                         {item.items?.map((subItem) => (
                           <SidebarMenuSubItem>
-                            <SidebarMenuButton>
-                              <subItem.icon />
-                              <span>{subItem.title}</span>
-                            </SidebarMenuButton>
+                            <Link to={subItem.url}>
+                              <SidebarMenuButton>
+                                <subItem.icon />
+                                <span>{subItem.title}</span>
+                              </SidebarMenuButton>
+                            </Link>
                           </SidebarMenuSubItem>
                         ))}
                       </SidebarMenuSub>

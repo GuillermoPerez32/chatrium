@@ -1,3 +1,4 @@
+import { AppRoutes } from "@/constants";
 import {
   ChartNoAxesColumnIcon,
   Home,
@@ -17,7 +18,6 @@ import {
   ShieldCheck,
   KeySquare,
   UserPen,
-
 } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
@@ -26,7 +26,11 @@ interface Item {
   icon: ForwardRefExoticComponent<
     Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
   >;
-  items?: Item[];
+  items?: SubItem[];
+}
+
+interface SubItem extends Omit<Item, "items"> {
+  url: string;
 }
 
 const items: Item[] = [
@@ -67,48 +71,59 @@ const items: Item[] = [
       {
         title: "Profile",
         icon: User,
+        url: AppRoutes.PROFILE,
       },
       {
         title: "Account",
         icon: UserPen,
+        url: AppRoutes.ACCOUNT,
       },
 
       {
         title: "Bussines Profile",
         icon: Building2,
+        url: AppRoutes.BUSINESS_PROFILE,
       },
       {
         title: "Manage Users",
         icon: UsersIcon,
-      },{
+        url: AppRoutes.MANAGE_USERS,
+      },
+      {
         title: "Billing",
         icon: HandCoins,
+        url: AppRoutes.BILLING,
       },
       {
         title: "Branding",
         icon: Star,
+        url: AppRoutes.BRANDING,
       },
       {
         title: "Integration",
         icon: Unplug,
+        url: AppRoutes.INTEGRATION,
       },
       {
         title: "Website Toolkit",
         icon: KeySquare,
+        url: AppRoutes.WEBSITE_TOOLKIT,
       },
       {
         title: "QR Code",
         icon: QrCode,
+        url: AppRoutes.QR_CODE,
       },
       {
         title: "Calls",
         icon: PhoneCall,
+        url: AppRoutes.CALLS,
       },
       {
         title: "Trust",
         icon: ShieldCheck,
+        url: AppRoutes.TRUST,
       },
-      
     ],
   },
 ];
