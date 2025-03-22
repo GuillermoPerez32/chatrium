@@ -1,5 +1,5 @@
 import { ChevronDown } from "lucide-react";
-import React, { ReactNode } from "react";
+import { ReactNode, useState } from "react";
 
 interface Props {
   title?: string;
@@ -9,7 +9,7 @@ interface Props {
 }
 
 const DropDown = ({ title, subtitle, icon, children }: Props) => {
-  const [open, setIsOpen] = React.useState(false);
+  const [open, setIsOpen] = useState(false);
 
   return (
     <>
