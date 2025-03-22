@@ -14,12 +14,14 @@ const DropDown = ({ title, subtitle, icon, children }: Props) => {
   return (
     <>
       <div
-        className="flex items-center justify-between cursor-pointer p-3 bg-gray-100 rounded-t-md"
+        className="flex items-center justify-between cursor-pointer p-3 bg-slate-100 rounded-t-md hover:bg-primary-100"
         onClick={() => setIsOpen(!open)}
       >
         {icon}
-        <span className="text-md font-medium">{title}</span>
-        <span className="text-sm">{subtitle}</span>
+        <div className="flex flex-col">
+          <span className="text-sm font-medium">{title}</span>
+          <span className="text-xs text-gray-500">{subtitle}</span>
+        </div>
         <ChevronDown
           className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
         />

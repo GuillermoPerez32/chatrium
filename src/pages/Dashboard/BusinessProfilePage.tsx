@@ -7,7 +7,10 @@ const BusinessProfilePage = () => {
       <h1 className="text-2xl font-bold mb-8">Business Profile</h1>
 
       <div className="flex flex-col gap-4">
-        <DropDown title="Business Information">
+        <DropDown
+          title="Business Information"
+          subtitle="Set your business name, address, number etc."
+        >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
@@ -48,7 +51,10 @@ const BusinessProfilePage = () => {
           </div>
         </DropDown>
 
-        <DropDown title="Business Hours">
+        <DropDown
+          title="Business Hours"
+          subtitle="Set the days and hours that your business is open"
+        >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
@@ -116,7 +122,10 @@ const BusinessProfilePage = () => {
           </div>
         </DropDown>
 
-        <DropDown title="Automated Messages">
+        <DropDown
+          title="Automated Messages"
+          subtitle="Configure your automated messages for After Hours, In Hours, or Custom events."
+        >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
@@ -139,7 +148,7 @@ const BusinessProfilePage = () => {
           </div>
         </DropDown>
 
-        <DropDown title="Media">
+        <DropDown title="Media" subtitle="Add media files">
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
@@ -162,7 +171,10 @@ const BusinessProfilePage = () => {
           </div>
         </DropDown>
 
-        <DropDown title="Google My Business Listing">
+        <DropDown
+          title="Google My Business Listing"
+          subtitle="Add Google My Business description, categories etc."
+        >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
@@ -176,7 +188,10 @@ const BusinessProfilePage = () => {
           </div>
         </DropDown>
 
-        <DropDown title="Facebook">
+        <DropDown
+          title="Facebook"
+          subtitle="Add facebook description and categories"
+        >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
@@ -190,7 +205,7 @@ const BusinessProfilePage = () => {
           </div>
         </DropDown>
 
-        <DropDown title="Salescaptain">
+        <DropDown title="Salescaptain" subtitle="Add url and description">
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
@@ -204,7 +219,10 @@ const BusinessProfilePage = () => {
           </div>
         </DropDown>
 
-        <DropDown title="Social Profile">
+        <DropDown
+          title="Social Profile"
+          subtitle="Add your social media accounts"
+        >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
