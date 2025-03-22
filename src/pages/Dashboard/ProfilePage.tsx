@@ -1,7 +1,13 @@
 import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input"; // Importamos el Input para el campo de firma
 import { Switch } from "@/components/ui/switch"; // Importamos el Switch
 import { Bell, Key, Signature, Mail, Phone } from "lucide-react";
@@ -20,9 +26,8 @@ export default function ProfilePage() {
   const [signatureText, setSignatureText] = useState("");
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-full w-full">
       <div className="flex space-x-8">
-        {/* Tarjeta de perfil */}
         <Card className="w-full max-w-md">
           <CardHeader>
             <div className="flex justify-center">
@@ -32,7 +37,9 @@ export default function ProfilePage() {
               </Avatar>
             </div>
             <CardTitle className="text-center mt-4">{user.name}</CardTitle>
-            <CardDescription className="text-center">{user.role}</CardDescription>
+            <CardDescription className="text-center">
+              {user.role}
+            </CardDescription>
           </CardHeader>
           <CardContent className="text-center">
             <Button variant="outline" className="w-full">
@@ -51,7 +58,6 @@ export default function ProfilePage() {
           </CardContent>
         </Card>
 
-        {/* Tarjeta de configuraciones */}
         <Card className="w-full max-w-md">
           <CardContent className="space-y-4">
             <div className="flex items-center space-x-4">
@@ -77,7 +83,6 @@ export default function ProfilePage() {
               </Button>
             </div>
 
-            {/* Sección de Signature */}
             <div className="space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
@@ -95,7 +100,6 @@ export default function ProfilePage() {
                 />
               </div>
 
-              {/* Campo de texto para la firma */}
               {isSignatureEnabled && (
                 <div className="mt-2">
                   <Input

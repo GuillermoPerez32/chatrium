@@ -9,7 +9,7 @@ const DashboardLayout = () => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main>
+      <main className="w-full h-screen">
         {isMobile && <SidebarTrigger />}
         <Outlet />
       </main>
