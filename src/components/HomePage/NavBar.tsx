@@ -3,6 +3,7 @@ import { CircleX } from "lucide-react";
 import { Link } from "react-router";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useAuthStore } from "@/stores";
 
 interface Props {
   open: boolean;
@@ -10,6 +11,8 @@ interface Props {
 }
 
 const NavBar = ({ open, onClose }: Props) => {
+  const { user, setUser } = useAuthStore();
+
   return (
     <div
       className={cn({
@@ -24,11 +27,7 @@ const NavBar = ({ open, onClose }: Props) => {
         <div className="flex items-center justify-between">
           <Link to={AppRoutes.HOME} className="-m-1.5 p-1.5">
             <span className="sr-only">Chatrium</span>
-            <img
-              className="h-8 w-auto"
-              src="https://placehold.co/600x400"
-              alt=""
-            />
+            <img className="h-8 w-auto" src="/logo.jpeg" alt="" />
           </Link>
           <Button
             variant="ghost"
@@ -68,12 +67,18 @@ const NavBar = ({ open, onClose }: Props) => {
               </Link>
             </div>
             <div className="py-6">
-              <Link
-                to={AppRoutes.LOGIN}
-                className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-200"
-              >
-                Log in
-              </Link>
+              <div className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-200">
+                <Link
+                  onClick={(e) => {
+                    if (!user) return;
+                    e.preventDefault();
+                    setUser(undefined);
+                  }}
+                  to={AppRoutes.LOGIN}
+                >
+                  {user ? "Log out" : "Log in"}
+                </Link>
+              </div>
             </div>
           </div>
         </div>

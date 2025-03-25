@@ -24,7 +24,7 @@ import queryClient from "@/services/queryClient";
 import { Toaster } from "@/components/ui/sonner";
 import RegisterPage from "@/pages/RegisterPage";
 import RecoverPage from "./pages/RecoverPage";
-import { DashboardLayout } from "@/layouts";
+import { AuthLayout, DashboardLayout } from "@/layouts";
 
 function App() {
   const { user } = useAuthStore();
@@ -81,12 +81,14 @@ function App() {
             ) : (
               <>
                 <Route path={AppRoutes.HOME} element={<HomePage />} />
-                <Route path={AppRoutes.LOGIN} element={<LoginPage />} />
-                <Route path={AppRoutes.REGISTER} element={<RegisterPage />} />
-                <Route
-                  path={AppRoutes.RECOVER_PASSWORD}
-                  element={<RecoverPage />}
-                />
+                <Route element={<AuthLayout />}>
+                  <Route path={AppRoutes.LOGIN} element={<LoginPage />} />
+                  <Route path={AppRoutes.REGISTER} element={<RegisterPage />} />
+                  <Route
+                    path={AppRoutes.RECOVER_PASSWORD}
+                    element={<RecoverPage />}
+                  />
+                </Route>
               </>
             )}
           </Routes>

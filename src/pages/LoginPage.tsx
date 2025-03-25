@@ -20,8 +20,9 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const loginSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  company: z.string(),
+  email: z.string().email(),
+  password: z.string().min(6),
 });
 
 const LoginPage = () => {
@@ -65,94 +66,101 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="flex h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            alt="Your Company"
-            src="https://placehold.co/600x400"
-            className="mx-auto h-10 w-auto"
-          />
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-            {t("signInMessage")}
-          </h2>
-        </div>
+      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+        {t("signInMessage")}
+      </h2>
 
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <Form {...form}>
-            <form
-              onSubmit={form.handleSubmit(onSubmit)}
-              className="flex flex-col gap-8"
+      <div className="mt-10 w-full sm:mx-auto">
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="flex flex-col gap-8"
+          >
+            <FormField
+              control={form.control}
+              name="company"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("companyName")}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={t("companyName")} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("email")}</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("password")}</FormLabel>
+                  <FormControl>
+                    <div className="relative w-full">
+                      <Input
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Password"
+                        {...field}
+                      />
+                      <button
+                        type="button"
+                        onClick={togglePasswordVisibility}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600"
+                      >
+                        {showPassword ? <EyeOff /> : <Eye />}
+                      </button>
+                    </div>
+                  </FormControl>
+                  <FormMessage>
+                    <p className="text-end text-sm/6 text-gray-500">
+                      <Link
+                        to={AppRoutes.RECOVER_PASSWORD}
+                        className="font-semibold text-primary-600 hover:text-primary-500"
+                      >
+                        {t("forgotPasswordMessage")}
+                      </Link>
+                    </p>
+                  </FormMessage>
+                </FormItem>
+              )}
+            />
+
+            <Button
+              type="submit"
+              disabled={isPending}
+              className="cursor-pointer w-min self-center sm:px-20"
             >
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t("email")}</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="Email" {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              {t("signIn")}
+            </Button>
+          </form>
+        </Form>
 
-              <FormField
-                control={form.control}
-                name="password"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>{t("password")}</FormLabel>
-                    <FormControl>
-                      <div className="flex">
-                        <Input
-                          type={showPassword ? "text" : "password"}
-                          placeholder="Password"
-                          {...field}
-                        />
-                        <button
-                          type="button"
-                          onClick={togglePasswordVisibility}
-                          className="inset-y-0 right-0 flex items-center px-2 text-gray-600"
-                        >
-                          {showPassword ? <EyeOff /> : <Eye />}
-                        </button>
-                      </div>
-                    </FormControl>
-                    <FormMessage>
-                      <p className="text-end text-sm/6 text-gray-500">
-                        <Link
-                          to={AppRoutes.RECOVER_PASSWORD}
-                          className="font-semibold text-primary-600 hover:text-primary-500"
-                        >
-                          {t("forgotPasswordMessage")}
-                        </Link>
-                      </p>
-                    </FormMessage>
-                  </FormItem>
-                )}
-              />
+        <div className="mt-10 border-t border-gray-300"></div>
 
-              <Button
-                type="submit"
-                disabled={isPending}
-                className="cursor-pointer"
-              >
-                {t("signIn")}
-              </Button>
-            </form>
-          </Form>
-
-          <p className="mt-8 text-center text-sm/6 text-gray-500">
-            {t("noAccountMessage")}
-            <Link
-              to={AppRoutes.REGISTER}
-              className="font-semibold text-primary-600 hover:text-primary-500"
-            >
-              {t("signUp")}
-            </Link>
-          </p>
-        </div>
+        <p className="mt-8 text-center text-sm/6 text-gray-500">
+          <span>{t("noAccountMessage")} </span>
+          <Link
+            to={AppRoutes.REGISTER}
+            className="font-semibold text-primary-600 hover:text-primary-500"
+          >
+            {t("signUp")}
+          </Link>
+        </p>
       </div>
     </>
   );

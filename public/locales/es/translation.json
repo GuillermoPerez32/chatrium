@@ -15,6 +15,6 @@
   "alreadyHaveAccount": "¿Ya tienes una cuenta?",
   "forgotPasswordMessage": "¿Olvidaste tu contraseña?",
   "recoverPass": "Recuperar Contraseña",
-  "recoverMessage": "Recupere su contraseña"
-
+  "recoverMessage": "Recupere su contraseña",
+  "companyName": "Nombre de la Compañía"
 }

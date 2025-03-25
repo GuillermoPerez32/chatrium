@@ -3,7 +3,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
@@ -27,11 +26,19 @@ const AppSidebar = () => {
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
-        <SidebarTrigger />
+        <div className="flex items-center">
+          <Link to="/" className="flex items-center gap-2">
+            <img
+              alt="Chatrium"
+              src="/logo.jpeg"
+              className="h-12 rounded-full"
+            />
+          </Link>
+          <SidebarTrigger className="ml-auto" />
+        </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Chatrium</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (

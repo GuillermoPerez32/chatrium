@@ -37,17 +37,10 @@ const RecoverPage = () => {
   }
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img
-          alt="Your Company"
-          src="https://placehold.co/600x400"
-          className="mx-auto h-10 w-auto"
-        />
-        <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
-          {t("recoverMessage")}
-        </h2>
-      </div>
+    <>
+      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+        {t("recoverMessage")}
+      </h2>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <Form {...form}>
@@ -74,7 +67,7 @@ const RecoverPage = () => {
           </form>
         </Form>
       </div>
-    </div>
+    </>
   );
 };
 
