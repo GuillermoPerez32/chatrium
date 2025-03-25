@@ -102,7 +102,7 @@ const RegisterPage = () => {
                 <FormItem>
                   <FormLabel>{t("password")}</FormLabel>
                   <FormControl>
-                    <div className="flex">
+                    <div className="relative w-full">
                       <Input
                         type={showPassword ? "text" : "password"}
                         placeholder="Password"
@@ -111,7 +111,7 @@ const RegisterPage = () => {
                       <button
                         type="button"
                         onClick={togglePasswordVisibility}
-                        className="inset-y-0 right-0 flex items-center px-2 text-gray-600"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600"
                       >
                         {showPassword ? <EyeOff /> : <Eye />}
                       </button>
@@ -129,7 +129,7 @@ const RegisterPage = () => {
                 <FormItem>
                   <FormLabel>{t("confirmPassword")}</FormLabel>
                   <FormControl>
-                    <div className="flex">
+                    <div className="relative w-full">
                       <Input
                         type={showConfirmPassword ? "text" : "password"}
                         placeholder="Confirm Password"
@@ -138,7 +138,7 @@ const RegisterPage = () => {
                       <button
                         type="button"
                         onClick={toggleConfirmPasswordVisibility}
-                        className="inset-y-0 right-0 flex items-center px-2 text-gray-600"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600"
                       >
                         {showConfirmPassword ? <EyeOff /> : <Eye />}
                       </button>
