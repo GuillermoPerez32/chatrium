@@ -31,7 +31,7 @@ const invoices = [
 
 const BillingPage = () => {
   return (
-    <div className="min-h-screen bg-white p-8">
+    <div className="min-h-screen p-8">
       <h1 className="text-2xl font-bold">Subscription Details</h1>
 
       <Separator />

@@ -5,7 +5,7 @@ import { Separator } from "@/components/ui/separator";
 
 const BrandingPage = () => {
   return (
-    <div className="min-h-screen bg-white p-8">
+    <div className="min-h-screen p-8">
       <div className="flex justify-between">
         <h1 className="text-2xl font-bold">Subscription Details</h1>
         <Button>Save</Button>
