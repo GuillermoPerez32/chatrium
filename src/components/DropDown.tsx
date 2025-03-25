@@ -12,9 +12,9 @@ const DropDown = ({ title, subtitle, icon, children }: Props) => {
   const [open, setIsOpen] = useState(false);
 
   return (
-    <>
+    <div className="p-3 bg-white rounded-t-md hover:bg-slate-50">
       <div
-        className="flex items-center justify-between cursor-pointer p-3 bg-slate-100 rounded-t-md hover:bg-primary-100"
+        className="flex items-center justify-between cursor-pointer "
         onClick={() => setIsOpen(!open)}
       >
         {icon}
@@ -26,12 +26,8 @@ const DropDown = ({ title, subtitle, icon, children }: Props) => {
           className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
         />
       </div>
-      {open && (
-        <div className="p-3 bg-white rounded-b-md border border-t-0">
-          {children}
-        </div>
-      )}
-    </>
+      {open && <div className="rounded-b-md border border-t-0">{children}</div>}
+    </div>
   );
 };
 
