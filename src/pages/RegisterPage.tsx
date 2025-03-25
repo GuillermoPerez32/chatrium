@@ -187,6 +187,16 @@ const RegisterPage = () => {
               {t("signIn")}
             </Link>
           </p>
+
+          <p className="mt-4 text-center text-sm/6 text-gray-500">
+            {t("notMemberMessage")}
+            <a
+              href="#"
+              className="font-semibold text-primary-600 hover:text-primary-500"
+            >
+              {t("startTrialMessage")}
+            </a>
+          </p>
         </div>
       </div>
     </>

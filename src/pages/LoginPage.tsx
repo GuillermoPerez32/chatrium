@@ -65,7 +65,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+      <div className="flex h-screen flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img
             alt="Your Company"
@@ -119,7 +119,16 @@ const LoginPage = () => {
                         </button>
                       </div>
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage>
+                      <p className="text-end text-sm/6 text-gray-500">
+                        <Link
+                          to={AppRoutes.RECOVER_PASSWORD}
+                          className="font-semibold text-primary-600 hover:text-primary-500"
+                        >
+                          {t("forgotPasswordMessage")}
+                        </Link>
+                      </p>
+                    </FormMessage>
                   </FormItem>
                 )}
               />
@@ -131,19 +140,10 @@ const LoginPage = () => {
               >
                 {t("signIn")}
               </Button>
-
-              <p className="mt-4 text-center text-sm/6 text-gray-500">
-                <Link
-                  to={AppRoutes.RECOVER_PASSWORD}
-                  className="font-semibold text-primary-600 hover:text-primary-500"
-                >
-                  {t("forgotPasswordMessage")}
-                </Link>
-              </p>
             </form>
           </Form>
 
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
+          <p className="mt-8 text-center text-sm/6 text-gray-500">
             {t("noAccountMessage")}
             <Link
               to={AppRoutes.REGISTER}
@@ -151,16 +151,6 @@ const LoginPage = () => {
             >
               {t("signUp")}
             </Link>
-          </p>
-
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
-            {t("notMemberMessage")}
-            <a
-              href="#"
-              className="font-semibold text-primary-600 hover:text-primary-500"
-            >
-              {t("startTrialMessage")}
-            </a>
           </p>
         </div>
       </div>
