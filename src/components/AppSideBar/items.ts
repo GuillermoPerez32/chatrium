@@ -13,7 +13,6 @@ import {
   Unplug,
   QrCode,
   PhoneCall,
-  ShieldCheck,
   KeySquare,
   UserPen,
 } from "lucide-react";
@@ -106,11 +105,6 @@ const items: Item[] = [
         title: "Calls",
         icon: PhoneCall,
         url: AppRoutes.CALLS,
-      },
-      {
-        title: "Trust",
-        icon: ShieldCheck,
-        url: AppRoutes.TRUST,
       },
     ],
   },

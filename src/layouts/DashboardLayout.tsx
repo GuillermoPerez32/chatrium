@@ -11,7 +11,9 @@ const DashboardLayout = () => {
       <AppSidebar />
       <main className="w-full h-screen">
         {isMobile && <SidebarTrigger />}
-        <Outlet />
+        <div className="bg-primary-50 size-full">
+          <Outlet />
+        </div>
       </main>
     </SidebarProvider>
   );

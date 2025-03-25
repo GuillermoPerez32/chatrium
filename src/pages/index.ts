@@ -11,7 +11,6 @@ import TeamsPage from "./Dashboard/ManageUsers/TeamsPage";
 import ManageUsersPage from "./Dashboard/ManageUsersPage";
 import ProfilePage from "./Dashboard/ProfilePage";
 import QRCodePage from "./Dashboard/QRCodePage";
-import TrustPage from "./Dashboard/TrustPage";
 import WebsiteToolkitPage from "./Dashboard/WebsiteToolkitPage";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
@@ -33,7 +32,6 @@ export {
   IntegrationPage,
   ManageUsersPage,
   QRCodePage,
-  TrustPage,
   WebsiteToolkitPage,
   AllUsersPage,
   AutoAssignPage,

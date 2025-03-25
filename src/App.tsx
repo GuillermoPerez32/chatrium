@@ -16,7 +16,6 @@ import {
   ProfilePage,
   QRCodePage,
   TeamsPage,
-  TrustPage,
   WebsiteToolkitPage,
 } from "@/pages";
 import { useAuthStore } from "@/stores";
@@ -30,69 +29,70 @@ import { DashboardLayout } from "@/layouts";
 function App() {
   const { user } = useAuthStore();
   return (
-    <QueryClientProvider client={queryClient}>
-      <Toaster />
-      <BrowserRouter>
-        <Routes>
-          {user ? (
-            <>
-              <Route path={AppRoutes.HOME} element={<HomePage />} />
-              <Route element={<DashboardLayout />}>
+    <div className="bg-primary-50">
+      <QueryClientProvider client={queryClient}>
+        <Toaster />
+        <BrowserRouter>
+          <Routes>
+            {user ? (
+              <>
+                <Route path={AppRoutes.HOME} element={<HomePage />} />
+                <Route element={<DashboardLayout />}>
+                  <Route
+                    path={AppRoutes.DASHBOARD}
+                    element={<DashboardOverviewPage />}
+                  />
+                  <Route path={AppRoutes.PROFILE} element={<ProfilePage />} />
+                  <Route path={AppRoutes.ACCOUNT} element={<AccountPage />} />
+                  <Route path={AppRoutes.BILLING} element={<BillingPage />} />
+                  <Route path={AppRoutes.BRANDING} element={<BrandingPage />} />
+                  <Route
+                    path={AppRoutes.BUSINESS_PROFILE}
+                    element={<BusinessProfilePage />}
+                  />
+                  <Route path={AppRoutes.CALLS} element={<CallsPage />} />
+                  <Route
+                    path={AppRoutes.INTEGRATION}
+                    element={<IntegrationPage />}
+                  />
+                  <Route
+                    path={AppRoutes.MANAGE_USERS}
+                    element={<ManageUsersPage />}
+                  />
+                  <Route
+                    path={AppRoutes.MANAGE_USERS__ALL_USERS}
+                    element={<AllUsersPage />}
+                  />
+                  <Route
+                    path={AppRoutes.MANAGE_USERS__TEAMS}
+                    element={<TeamsPage />}
+                  />
+                  <Route
+                    path={AppRoutes.MANAGE_USERS__AUTO_ASSIGN}
+                    element={<AutoAssignPage />}
+                  />
+                  <Route path={AppRoutes.QR_CODE} element={<QRCodePage />} />
+                  <Route
+                    path={AppRoutes.WEBSITE_TOOLKIT}
+                    element={<WebsiteToolkitPage />}
+                  />
+                </Route>
+              </>
+            ) : (
+              <>
+                <Route path={AppRoutes.HOME} element={<HomePage />} />
+                <Route path={AppRoutes.LOGIN} element={<LoginPage />} />
+                <Route path={AppRoutes.REGISTER} element={<RegisterPage />} />
                 <Route
-                  path={AppRoutes.DASHBOARD}
-                  element={<DashboardOverviewPage />}
+                  path={AppRoutes.RECOVER_PASSWORD}
+                  element={<RecoverPage />}
                 />
-                <Route path={AppRoutes.PROFILE} element={<ProfilePage />} />
-                <Route path={AppRoutes.ACCOUNT} element={<AccountPage />} />
-                <Route path={AppRoutes.BILLING} element={<BillingPage />} />
-                <Route path={AppRoutes.BRANDING} element={<BrandingPage />} />
-                <Route
-                  path={AppRoutes.BUSINESS_PROFILE}
-                  element={<BusinessProfilePage />}
-                />
-                <Route path={AppRoutes.CALLS} element={<CallsPage />} />
-                <Route
-                  path={AppRoutes.INTEGRATION}
-                  element={<IntegrationPage />}
-                />
-                <Route
-                  path={AppRoutes.MANAGE_USERS}
-                  element={<ManageUsersPage />}
-                />
-                <Route
-                  path={AppRoutes.MANAGE_USERS__ALL_USERS}
-                  element={<AllUsersPage />}
-                />
-                <Route
-                  path={AppRoutes.MANAGE_USERS__TEAMS}
-                  element={<TeamsPage />}
-                />
-                <Route
-                  path={AppRoutes.MANAGE_USERS__AUTO_ASSIGN}
-                  element={<AutoAssignPage />}
-                />
-                <Route path={AppRoutes.QR_CODE} element={<QRCodePage />} />
-                <Route path={AppRoutes.TRUST} element={<TrustPage />} />
-                <Route
-                  path={AppRoutes.WEBSITE_TOOLKIT}
-                  element={<WebsiteToolkitPage />}
-                />
-              </Route>
-            </>
-          ) : (
-            <>
-              <Route path={AppRoutes.HOME} element={<HomePage />} />
-              <Route path={AppRoutes.LOGIN} element={<LoginPage />} />
-              <Route path={AppRoutes.REGISTER} element={<RegisterPage />} />
-              <Route
-                path={AppRoutes.RECOVER_PASSWORD}
-                element={<RecoverPage />}
-              />
-            </>
-          )}
-        </Routes>
-      </BrowserRouter>
-    </QueryClientProvider>
+              </>
+            )}
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
+    </div>
   );
 }
 

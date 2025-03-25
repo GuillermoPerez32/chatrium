@@ -21,7 +21,6 @@ enum AppRoutes {
   WEBSITE_TOOLKIT = "/dashboard/website-toolkit",
   QR_CODE = "/dashboard/qr-code",
   CALLS = "/dashboard/calls",
-  TRUST = "/dashboard/trust",
 }
 
 export default AppRoutes;
