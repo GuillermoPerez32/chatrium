@@ -172,12 +172,12 @@ const RegisterPage = () => {
 
         <p className="mt-4 text-center text-sm/6 text-gray-500">
           {t("notMemberMessage")}{" "}
-          <a
-            href="#"
+          <Link
+            to="/trial-request"
             className="font-semibold text-primary-600 hover:text-primary-500"
           >
             {t("startTrialMessage")}
-          </a>
+          </Link>
         </p>
       </div>
     </>

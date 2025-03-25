@@ -16,6 +16,7 @@ import {
   ProfilePage,
   QRCodePage,
   TeamsPage,
+  TrialRequestPage,
   WebsiteToolkitPage,
 } from "@/pages";
 import { useAuthStore } from "@/stores";
@@ -87,6 +88,10 @@ function App() {
                   <Route
                     path={AppRoutes.RECOVER_PASSWORD}
                     element={<RecoverPage />}
+                  />
+                  <Route
+                    path={AppRoutes.TRIAL_REQUEST}
+                    element={<TrialRequestPage />}
                   />
                 </Route>
               </>

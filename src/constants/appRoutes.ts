@@ -4,6 +4,7 @@ enum AppRoutes {
   LOGIN = "/login",
   REGISTER = "/signup",
   RECOVER_PASSWORD = "/passrecover",
+  TRIAL_REQUEST = "/trial-request",
 
   DASHBOARD = "/dashboard/home",
 

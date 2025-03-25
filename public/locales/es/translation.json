@@ -1,4 +1,8 @@
 {
+  "phone": "Teléfono",
+  "company": "Compañía",
+  "date": "Fecha",
+  "time": "Hora",
   "email": "Correo electrónico",
   "password": "Contraseña",
   "signUp": "Regístrate",
@@ -16,5 +20,9 @@
   "forgotPasswordMessage": "¿Olvidaste tu contraseña?",
   "recoverPass": "Recuperar Contraseña",
   "recoverMessage": "Recupere su contraseña",
-  "companyName": "Nombre de la Compañía"
+  "companyName": "Nombre de la Compañía",
+  "trialRequestMessage": "Solicitar una prueba",
+  "submitRequest": "Solicitar",
+  "trialRequestSuccess": "Su solicitud ha sido enviada con éxito",
+  "trialRequestError": "Se produjo un error al enviar su solicitud"
 }

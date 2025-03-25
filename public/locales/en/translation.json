@@ -1,4 +1,8 @@
 {
+  "phone": "Phone",
+  "company": "Company",
+  "date": "Date",
+  "time": "Time",
   "email": "Email",
   "password": "Password",
   "signUp": "Sign up",
@@ -16,5 +20,10 @@
   "forgotPasswordMessage": "Forgot your password?",
   "recoverPass": "Recover Password",
   "recoverMessage": "Recover your password",
-  "companyName": "Company Name"
+  "companyName": "Company Name",
+  "trialRequestMessage": "Request a trial",
+  "submitRequest": "Request",
+  "trialRequestSuccess": "Your request has been sent successfully",
+  "trialRequestError": "An error occurred while sending your request",
+  "trialRequestMessge": "Request a trial"
 }

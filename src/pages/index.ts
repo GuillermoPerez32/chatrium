@@ -16,6 +16,7 @@ import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
 import RecoverPage from "./RecoverPage";
 import RegisterPage from "./RegisterPage";
+import TrialRequestPage from "./TrialRequestPage";
 
 export {
   HomePage,
@@ -36,4 +37,5 @@ export {
   AllUsersPage,
   AutoAssignPage,
   TeamsPage,
+  TrialRequestPage,
 };
