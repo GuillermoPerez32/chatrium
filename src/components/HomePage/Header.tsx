@@ -19,7 +19,7 @@ const Header = () => {
         <div className="flex lg:flex-1">
           <Link to={AppRoutes.HOME} className="-m-1.5 p-1.5">
             <span className="sr-only">Chatrium</span>
-            <img className="h-8 w-auto" src="/logo.jpeg" alt="" />
+            <img className="h-12 w-auto rounded-full" src="/logo.jpeg" alt="" />
           </Link>
         </div>
         <div className="flex lg:hidden">

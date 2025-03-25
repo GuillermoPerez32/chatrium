@@ -161,7 +161,7 @@ const RegisterPage = () => {
         <div className="mt-10 border-t border-gray-300"></div>
 
         <p className="mt-10 text-center text-sm/6 text-gray-500">
-          {t("alreadyHaveAccount")}
+          {t("alreadyHaveAccount")}{" "}
           <Link
             to={AppRoutes.LOGIN}
             className="font-semibold text-primary-600 hover:text-primary-500"
@@ -171,7 +171,7 @@ const RegisterPage = () => {
         </p>
 
         <p className="mt-4 text-center text-sm/6 text-gray-500">
-          {t("notMemberMessage")}
+          {t("notMemberMessage")}{" "}
           <a
             href="#"
             className="font-semibold text-primary-600 hover:text-primary-500"
