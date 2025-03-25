@@ -205,11 +205,11 @@ const BusinessProfilePage = () => {
           </div>
         </DropDown>
 
-        <DropDown title="Salescaptain" subtitle="Add url and description">
+        <DropDown title="Chatrium" subtitle="Add url and description">
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Salescaptain Profile URL
+                Chatrium Profile URL
               </label>
               <Input
                 type="url"

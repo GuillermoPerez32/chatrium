@@ -2,11 +2,9 @@ import { AppRoutes } from "@/constants";
 import {
   ChartNoAxesColumnIcon,
   Home,
-  LucideChartColumnStacked,
   LucideProps,
   MessageCircleMore,
   Settings,
-  TestTubeDiagonalIcon,
   UsersIcon,
   Building2,
   HandCoins,
@@ -35,7 +33,7 @@ interface SubItem extends Omit<Item, "items"> {
 
 const items: Item[] = [
   {
-    title: "Overview",
+    title: "Dashboard",
     icon: Home,
     items: [],
   },
@@ -45,18 +43,8 @@ const items: Item[] = [
     items: [],
   },
   {
-    title: "Captain Labs",
-    icon: TestTubeDiagonalIcon,
-    items: [],
-  },
-  {
     title: "Inbox",
     icon: MessageCircleMore,
-    items: [],
-  },
-  {
-    title: "Stages",
-    icon: LucideChartColumnStacked,
     items: [],
   },
   {

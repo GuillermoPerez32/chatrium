@@ -13,19 +13,19 @@ const invoices = [
     date: "2/28/2025",
     amount: "US$150",
     status: "Done",
-    description: "1 x Salescaptain Monthly 150 (at $150.00 / month)",
+    description: "1 x Chatrium Monthly 150 (at $150.00 / month)",
   },
   {
     date: "2/28/2024",
     amount: "US$150",
     status: "Done",
-    description: "1 x Salescaptain Monthly 150 (at $150.00 / month)",
+    description: "1 x Chatrium Monthly 150 (at $150.00 / month)",
   },
   {
     date: "2/28/2023",
     amount: "US$150",
     status: "Done",
-    description: "1 x Salescaptain Monthly 150 (at $150.00 / month)",
+    description: "1 x Chatrium Monthly 150 (at $150.00 / month)",
   },
 ];
 
