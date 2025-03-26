@@ -8,6 +8,20 @@ import {
   Mail,
 } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
+import { useTranslation } from "react-i18next";
+
+// Definimos las claves de traducción válidas para los estados
+type InvoiceStatusKey =
+  | "invoiceStatus.done"
+  | "invoiceStatus.pending"
+  | "invoiceStatus.failed";
+
+// Mapeo de estados a claves de traducción
+const statusTranslations: Record<string, InvoiceStatusKey> = {
+  done: "invoiceStatus.done",
+  pending: "invoiceStatus.pending",
+  failed: "invoiceStatus.failed",
+};
 
 const invoices = [
   {
@@ -31,19 +45,21 @@ const invoices = [
 ];
 
 const BillingPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="flex flex-col gap-8 p-4 md:p-8">
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <CreditCard className="w-6 h-6" />
-            Payment Method
+            {t("paymentMethod")}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-2 ml-4">
             <Landmark size={16} />
-            <span className="text-sm">1234 5678 9012 3456</span>
+            <span className="text-sm">{t("cardNumberExample")}</span>
           </div>
         </CardContent>
       </Card>
@@ -52,22 +68,22 @@ const BillingPage = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Banknote className="w-6 h-6" />
-            Billing Information
+            {t("billingInformation")}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-2 gap-4 ml-4 max-w-[400px]">
             <div className="flex items-center gap-2">
               <Mail size={16} />
-              <span className="text-sm">Email</span>
+              <span className="text-sm">{t("emailLabel")}</span>
             </div>
-            <span className="text-sm">example@gmail.com</span>
+            <span className="text-sm">{t("emailExample")}</span>
 
             <div className="flex items-center gap-2">
               <BookUser size={16} />
-              <span className="text-sm">Address</span>
+              <span className="text-sm">{t("addressLabel")}</span>
             </div>
-            <span className="text-sm">33141 US</span>
+            <span className="text-sm">{t("addressExample")}</span>
           </div>
         </CardContent>
       </Card>
@@ -76,7 +92,7 @@ const BillingPage = () => {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <FileClock className="w-6 h-6" />
-            Invoice History
+            {t("invoiceHistory")}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -86,7 +102,7 @@ const BillingPage = () => {
                 <span className="text-sm">{invoice.date}</span>
                 <span className="text-sm">{invoice.amount}</span>
                 <div className="text-sm bg-green-200 rounded-full px-2 py-1 font-medium h-min flex items-center justify-center">
-                  {invoice.status}
+                  {t(statusTranslations[invoice.status.toLowerCase()] || "invoiceStatus.done")}
                 </div>
                 <span className="text-sm">{invoice.description}</span>
               </Fragment>

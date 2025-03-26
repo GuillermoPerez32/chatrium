@@ -116,6 +116,21 @@
   "teams": "Equipos",
   "teamsSubtitle": "Crea un equipo para responder eficientemente a mensajes en Webchat o Inbox.",
   "autoAssign": "Asignación automática",
-  "autoAssignSubtitle": "Selecciona un grupo de usuarios para asignarles conversaciones automáticamente."
+  "autoAssignSubtitle": "Selecciona un grupo de usuarios para asignarles conversaciones automáticamente.",
 
-}
+  "paymentMethod": "Método de pago",
+  "cardNumberExample": "1234 5678 9012 3456",
+  "billingInformation": "Información de facturación",
+  "emailLabel": "Correo electrónico",
+  "emailExample": "example@gmail.com",
+  "addressLabel": "Dirección",
+  "addressExample": "33141 US",
+  "invoiceHistory": "Historial de facturas",
+  "invoiceStatus": {
+    "done": "Hecho",
+    "pending": "Pendiente",
+    "failed": "Fallido"
+  }
+  }
+
+
