@@ -18,11 +18,13 @@ const AppTopBar = () => {
 
   return (
     <div className="flex items-center bg-sidebar border-b py-2 px-2 sticky top-0 z-10">
-      <SidebarTrigger />
+      <div className="flex items-center gap-4">
+        <SidebarTrigger />
 
-      {isSubRoute && <ArrowLeft onClick={() => navigate(-1)} />}
+        {isSubRoute && <ArrowLeft onClick={() => navigate(-1)} />}
 
-      <h2 className="text-xl ml-4 font-semibold">{title}</h2>
+        <h2 className="text-xl font-semibold">{title}</h2>
+      </div>
 
       <LogOut
         onClick={() => {

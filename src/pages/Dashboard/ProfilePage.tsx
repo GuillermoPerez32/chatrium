@@ -34,7 +34,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen w-full bg-green-100 p-4">
+    <div className="flex justify-center items-center min-h-screen w-full p-4">
       <div className="w-full max-w-2xl">
         {/* Perfil */}
         <Card className="mb-6 bg-white">
