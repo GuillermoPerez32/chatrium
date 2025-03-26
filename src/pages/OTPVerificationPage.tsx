@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/input-otp";
 import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
 import { toast } from "sonner";
@@ -25,7 +25,6 @@ const loginSchema = z.object({
 });
 
 const OTPVerificationPage = () => {
-  const [laoding, setLaoding] = useState(false);
   const [error, setError] = useState("");
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -74,8 +73,8 @@ const OTPVerificationPage = () => {
                         <InputOTPSlot index={0} />
                         <InputOTPSlot index={1} />
                         <InputOTPSlot index={2} />
-                        <InputOTPSeparator />
                       </InputOTPGroup>
+                      <InputOTPSeparator />
                       <InputOTPGroup>
                         <InputOTPSlot index={3} />
                         <InputOTPSlot index={4} />
