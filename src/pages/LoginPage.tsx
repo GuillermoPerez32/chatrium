@@ -22,7 +22,15 @@ import { z } from "zod";
 const loginSchema = z.object({
   company: z.string(),
   email: z.string().email(),
-  password: z.string().min(6),
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 characters long")
+    .max(25, "Password must be at most 25 characters long")
+    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+    .regex(
+      /[!@#$%^&*()_+{}[\]:;<>,.?/~`]/,
+      "Password must contain at least one special character"
+    ),
 });
 
 const LoginPage = () => {
@@ -70,11 +78,11 @@ const LoginPage = () => {
         {t("signInMessage")}
       </h2>
 
-      <div className="mt-10 w-full sm:mx-auto">
+      <div className="mt-4 w-full sm:mx-auto">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="flex flex-col gap-8"
+            className="flex flex-col gap-4"
           >
             <FormField
               control={form.control}
@@ -113,6 +121,8 @@ const LoginPage = () => {
                   <FormControl>
                     <div className="relative w-full">
                       <Input
+                        max={25}
+                        min={6}
                         type={showPassword ? "text" : "password"}
                         placeholder="Password"
                         {...field}

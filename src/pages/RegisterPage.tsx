@@ -21,8 +21,24 @@ const registerSchema = z
   .object({
     phoneNumber: z.string().min(10),
     email: z.string().email(),
-    password: z.string().min(6),
-    confirmPassword: z.string().min(6),
+    password: z
+      .string()
+      .min(6, "Password must be at least 6 characters long")
+      .max(25, "Password must be at most 25 characters long")
+      .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .regex(
+        /[!@#$%^&*()_+{}[\]:;<>,.?/~`]/,
+        "Password must contain at least one special character"
+      ),
+    confirmPassword: z
+      .string()
+      .min(6, "Password must be at least 6 characters long")
+      .max(25, "Password must be at most 25 characters long")
+      .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
+      .regex(
+        /[!@#$%^&*()_+{}[\]:;<>,.?/~`]/,
+        "Password must contain at least one special character"
+      ),
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Passwords don't match",
@@ -104,6 +120,8 @@ const RegisterPage = () => {
                   <FormControl>
                     <div className="relative w-full">
                       <Input
+                        max={25}
+                        min={6}
                         type={showPassword ? "text" : "password"}
                         placeholder="Password"
                         {...field}
@@ -131,6 +149,8 @@ const RegisterPage = () => {
                   <FormControl>
                     <div className="relative w-full">
                       <Input
+                        max={25}
+                        min={6}
                         type={showConfirmPassword ? "text" : "password"}
                         placeholder="Confirm Password"
                         {...field}
