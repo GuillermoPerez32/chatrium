@@ -132,7 +132,21 @@
     "done": "Done",
     "pending": "Pending",
     "failed": "Failed"
-  }
+  },
+
+  "subscriptionDetails": "Subscription Details",
+  "preferredDashboardName": "Preferred Dashboard Name",
+  "preferredDashboardNameSubtitle": "This name will be used as your company name.",
+  "preferredDashboardNamePlaceholder": "Enter your preferred dashboard name",
+  "emailAndLandingPageHeaders": "Email and landing page headers",
+  "logoLabel": "Logo:",
+  "logoSizeHint": "(250px x 250px)",
+  "upload": "Upload",
+  "remove": "Remove",
+  "headerColorLabel": "Header Color:",
+  "headerTextLabel": "Header Text:",
+  "colorWhite": "#FFFFFF",
+  "colorBlack": "#000000"
 
 
 }

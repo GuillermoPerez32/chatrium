@@ -129,7 +129,21 @@
   "invoiceStatus": {
     "done": "Hecho",
     "pending": "Pendiente",
-    "failed": "Fallido"
+    "failed": "Fallido",
+
+  "subscriptionDetails": "Detalles de la suscripción",
+  "preferredDashboardName": "Nombre preferido del tablero",
+  "preferredDashboardNameSubtitle": "Este nombre se usará como el nombre de tu empresa.",
+  "preferredDashboardNamePlaceholder": "Ingresa el nombre preferido del tablero",
+  "emailAndLandingPageHeaders": "Encabezados de correo y página de aterrizaje",
+  "logoLabel": "Logotipo:",
+  "logoSizeHint": "(250px x 250px)",
+  "upload": "Subir",
+  "remove": "Eliminar",
+  "headerColorLabel": "Color del encabezado:",
+  "headerTextLabel": "Texto del encabezado:",
+  "colorWhite": "#FFFFFF",
+  "colorBlack": "#000000"
   }
   }
 
