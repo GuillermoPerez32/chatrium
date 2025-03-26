@@ -21,6 +21,7 @@ const trialRequestSchema = z.object({
   phone: z.string().min(10, "Invalid phone number"),
   company: z
     .string()
+    .max(25)
     .regex(
       /^[a-zA-Z0-9\s]+$/,
       "Company name must only contain letters and numbers"
@@ -46,6 +47,7 @@ const TrialRequestPage = () => {
 
   function onSubmit() {
     setDone(true);
+    form.reset();
   }
 
   return done ? (
@@ -102,7 +104,13 @@ const TrialRequestPage = () => {
                 <FormItem>
                   <FormLabel>{t("company")}</FormLabel>
                   <FormControl>
-                    <Input type="text" placeholder="Company" {...field} />
+                    <Input
+                      maxLength={25}
+                      max={25}
+                      type="text"
+                      placeholder="Company"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

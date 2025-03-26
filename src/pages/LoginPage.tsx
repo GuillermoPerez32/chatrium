@@ -22,6 +22,7 @@ import { z } from "zod";
 const loginSchema = z.object({
   company: z
     .string()
+    .max(25)
     .regex(
       /^[a-zA-Z0-9\s]+$/,
       "Company name must only contain letters and numbers"
@@ -47,7 +48,8 @@ const LoginPage = () => {
   const form = useForm({
     schema: loginSchema,
     defaultValues: {
-      email: "eve.holt@reqres.in",
+      company: "",
+      email: "",
       password: "",
     },
   });
@@ -97,7 +99,12 @@ const LoginPage = () => {
                 <FormItem>
                   <FormLabel>{t("companyName")}</FormLabel>
                   <FormControl>
-                    <Input placeholder={t("companyName")} {...field} />
+                    <Input
+                      maxLength={25}
+                      max={25}
+                      placeholder={t("companyName")}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -127,6 +134,7 @@ const LoginPage = () => {
                   <FormControl>
                     <div className="relative w-full">
                       <Input
+                        maxLength={25}
                         max={25}
                         min={6}
                         type={showPassword ? "text" : "password"}
@@ -142,19 +150,16 @@ const LoginPage = () => {
                       </button>
                     </div>
                   </FormControl>
-                  <FormMessage>
-                    <p className="text-end text-sm/6 text-gray-500">
-                      <Link
-                        to={AppRoutes.RECOVER_PASSWORD}
-                        className="font-semibold text-primary-600 hover:text-primary-500"
-                      >
-                        {t("forgotPasswordMessage")}
-                      </Link>
-                    </p>
-                  </FormMessage>
+                  <FormMessage />
                 </FormItem>
               )}
             />
+            <Link
+              to={AppRoutes.RECOVER_PASSWORD}
+              className="font-semibold text-primary-600 hover:text-primary-500 text-end"
+            >
+              {t("forgotPasswordMessage")}
+            </Link>
 
             <Button
               type="submit"

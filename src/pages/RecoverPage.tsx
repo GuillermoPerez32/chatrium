@@ -33,6 +33,7 @@ const RecoverPage = () => {
     // Handle password recovery logic here
     console.log("Email submitted:", email); // Usar el valor de email
     toast.success(`Password recovery email sent to ${email}`);
+    form.reset();
     navigate(AppRoutes.LOGIN);
   }
 
