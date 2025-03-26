@@ -2,14 +2,17 @@ import ListTile from "@/components/ListTile";
 import { AppRoutes } from "@/constants";
 import { ChevronRight, UserIcon, UserPlusIcon, UsersIcon } from "lucide-react";
 import { Link } from "react-router";
+import { useTranslation } from "react-i18next";
 
 const ManageUsersPage = () => {
+  const { t } = useTranslation(); // Hook para traducciones
+
   return (
     <div className="flex flex-col gap-4 p-4">
       <Link to={AppRoutes.MANAGE_USERS__ALL_USERS}>
         <ListTile
-          title="All Users"
-          subtitle="Add, manage, invite, or archive user profiles."
+          title={t("allUsers")}
+          subtitle={t("allUsersSubtitle")}
           leading={<UserIcon />}
           trailing={<ChevronRight />}
         />
@@ -17,8 +20,8 @@ const ManageUsersPage = () => {
 
       <Link to={AppRoutes.MANAGE_USERS__TEAMS}>
         <ListTile
-          title="Teams"
-          subtitle="Create a team to efficiently respond to messages in Webchat or Inbox."
+          title={t("teams")}
+          subtitle={t("teamsSubtitle")}
           leading={<UsersIcon />}
           trailing={<ChevronRight />}
         />
@@ -26,8 +29,8 @@ const ManageUsersPage = () => {
 
       <Link to={AppRoutes.MANAGE_USERS__AUTO_ASSIGN}>
         <ListTile
-          title="Auto Assign"
-          subtitle="Select a group of users to auto assign conversations to them."
+          title={t("autoAssign")}
+          subtitle={t("autoAssignSubtitle")}
           leading={<UserPlusIcon />}
           trailing={<ChevronRight />}
         />

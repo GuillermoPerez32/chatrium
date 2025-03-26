@@ -109,6 +109,13 @@
   "facebookUrl": "Facebook",
   "facebookUrlPlaceholder": "Ingrese la URL de Facebook",
   "tiktokUrl": "TikTok",
-  "tiktokUrlPlaceholder": "Ingrese la URL de TikTok"
+  "tiktokUrlPlaceholder": "Ingrese la URL de TikTok",
+
+  "allUsers": "Todos los usuarios",
+  "allUsersSubtitle": "Añade, gestiona, invita o archiva perfiles de usuario.",
+  "teams": "Equipos",
+  "teamsSubtitle": "Crea un equipo para responder eficientemente a mensajes en Webchat o Inbox.",
+  "autoAssign": "Asignación automática",
+  "autoAssignSubtitle": "Selecciona un grupo de usuarios para asignarles conversaciones automáticamente."
 
 }
