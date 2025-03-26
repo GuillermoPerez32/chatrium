@@ -13,7 +13,7 @@ import {
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { AppRoutes } from "@/constants";
-import { useForm } from "@/hooks";
+import { useCountdown, useForm } from "@/hooks";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router";
@@ -25,6 +25,9 @@ const loginSchema = z.object({
 });
 
 const OTPVerificationPage = () => {
+  const { start, timeLeft, isRunning } = useCountdown({
+    seconds: 5,
+  });
   const [error, setError] = useState("");
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -67,7 +70,7 @@ const OTPVerificationPage = () => {
                     <InputOTP
                       maxLength={6}
                       {...field}
-                      value={field.value || ""}
+                      value={field.value.toUpperCase() || ""}
                     >
                       <InputOTPGroup>
                         <InputOTPSlot index={0} />
@@ -98,9 +101,17 @@ const OTPVerificationPage = () => {
           </form>
         </Form>
 
-        <Button onClick={() => toast.success(t("otpMessage"))} variant="link">
+        <Button
+          disabled={isRunning && !!timeLeft}
+          onClick={() => {
+            start();
+            toast.success(t("otpMessage"));
+          }}
+          variant="link"
+        >
           {t("resendOtp")}
         </Button>
+        {isRunning && !!timeLeft && <p>{timeLeft}</p>}
       </div>
     </div>
   );
