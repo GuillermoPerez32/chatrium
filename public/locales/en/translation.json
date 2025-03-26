@@ -146,7 +146,25 @@
   "headerColorLabel": "Header Color:",
   "headerTextLabel": "Header Text:",
   "colorWhite": "#FFFFFF",
-  "colorBlack": "#000000"
+  "colorBlack": "#000000",
+
+  "integrations": "Integrations",
+  "generateLink": "Generate Link",
+  "generateLinkMessage": "Link generated and copied to clipboard: {link}",
+  "socialMediaSection": "Social Media",
+  "otherAppsSection": "Other Apps",
+  "connected": "Connected",
+  "connect": "Connect",
+  "connectIntegrationMessage": "Connecting with {integrationName}... (Simulated functionality)",
+  "generatedLinkLabel": "Generated Link:",
+  "socialMedia": {
+    "twitterDescription": "Share orders automatically on Twitter.",
+    "facebookDescription": "Post order updates on your Facebook page."
+  },
+  "otherApps": {
+    "whatsappDescription": "Send order notifications via WhatsApp.",
+    "slackDescription": "Receive order alerts in your Slack channel."
+  }
 
 
 }

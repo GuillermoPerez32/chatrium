@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { Twitter, Facebook, MessageCircle, Slack, Link as LinkIcon } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const IntegrationPage = () => {
+  const { t } = useTranslation(); // Hook para traducciones
   const [connectionLink, setConnectionLink] = useState('');
 
   // Redes sociales
@@ -10,14 +12,14 @@ const IntegrationPage = () => {
       id: 1,
       name: 'Twitter',
       icon: <Twitter className="w-8 h-8 text-[var(--color-primary)]" />,
-      description: 'Comparte pedidos automáticamente en Twitter.',
+      description: t('socialMedia.twitterDescription'),
       connected: false,
     },
     {
       id: 2,
       name: 'Facebook',
       icon: <Facebook className="w-8 h-8 text-[var(--color-primary)]" />,
-      description: 'Publica actualizaciones de pedidos en tu página de Facebook.',
+      description: t('socialMedia.facebookDescription'),
       connected: false,
     },
   ];
@@ -28,14 +30,14 @@ const IntegrationPage = () => {
       id: 3,
       name: 'WhatsApp',
       icon: <MessageCircle className="w-8 h-8 text-[var(--color-primary)]" />,
-      description: 'Envía notificaciones de pedidos a través de WhatsApp.',
+      description: t('otherApps.whatsappDescription'),
       connected: false,
     },
     {
       id: 4,
       name: 'Slack',
       icon: <Slack className="w-8 h-8 text-[var(--color-primary)]" />,
-      description: 'Recibe alertas de pedidos en tu canal de Slack.',
+      description: t('otherApps.slackDescription'),
       connected: false,
     },
   ];
@@ -45,12 +47,12 @@ const IntegrationPage = () => {
     const link = `https://example.com/connect?token=${Math.random().toString(36).substring(2)}`;
     setConnectionLink(link);
     navigator.clipboard.writeText(link);
-    alert('Enlace generado y copiado al portapapeles: ' + link);
+    alert(t('generateLinkMessage', { link }));
   };
 
   // Función para simular la conexión de una integración
   const connectIntegration = (integrationName: string) => {
-    alert(`Conectando con ${integrationName}... (Funcionalidad simulada)`);
+    alert(t('connectIntegrationMessage', { integrationName }));
     // Aquí iría la lógica real de integración (por ejemplo, OAuth)
   };
 
@@ -59,19 +61,19 @@ const IntegrationPage = () => {
       <div className="max-w-6xl mx-auto">
         {/* Encabezado */}
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold text-black">Integraciones</h1>
+          <h1 className="text-2xl font-bold text-black">{t('integrations')}</h1>
           <button
             onClick={generateConnectionLink}
             className="flex items-center gap-2 bg-[var(--color-primary)] text-white px-4 py-2 rounded-lg hover:bg-[var(--color-primary)]/90 transition"
           >
             <LinkIcon className="w-5 h-5" />
-            Generar Enlace
+            {t('generateLink')}
           </button>
         </div>
 
         {/* Sección de Redes Sociales */}
         <div className="mb-10">
-          <h2 className="text-xl font-medium text-gray-600 mb-4">Redes Sociales</h2>
+          <h2 className="text-xl font-medium text-gray-600 mb-4">{t('socialMediaSection')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {socialMedia.map((integration) => (
               <div
@@ -91,7 +93,7 @@ const IntegrationPage = () => {
                         : 'bg-[var(--color-primary)] hover:bg-[var(--color-primary)]/90'
                     } transition`}
                   >
-                    {integration.connected ? 'Conectado' : 'Conectar'}
+                    {integration.connected ? t('connected') : t('connect')}
                   </button>
                 </div>
               </div>
@@ -101,7 +103,7 @@ const IntegrationPage = () => {
 
         {/* Sección de Otras Aplicaciones */}
         <div className="mb-10">
-          <h2 className="text-xl font-medium text-gray-600 mb-4">Otras Aplicaciones</h2>
+          <h2 className="text-xl font-medium text-gray-600 mb-4">{t('otherAppsSection')}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {otherApps.map((integration) => (
               <div
@@ -121,7 +123,7 @@ const IntegrationPage = () => {
                         : 'bg-[var(--color-primary)] hover:bg-[var(--color-primary)]/90'
                     } transition`}
                   >
-                    {integration.connected ? 'Conectado' : 'Conectar'}
+                    {integration.connected ? t('connected') : t('connect')}
                   </button>
                 </div>
               </div>
@@ -133,7 +135,7 @@ const IntegrationPage = () => {
         {connectionLink && (
           <div className="p-4 bg-gray-100 rounded-lg">
             <p className="text-gray-600">
-              Enlace generado:{' '}
+              {t('generatedLinkLabel')}{' '}
               <a
                 href={connectionLink}
                 target="_blank"

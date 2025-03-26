@@ -129,7 +129,7 @@
   "invoiceStatus": {
     "done": "Hecho",
     "pending": "Pendiente",
-    "failed": "Fallido",
+    "failed": "Fallido"},
 
   "subscriptionDetails": "Detalles de la suscripción",
   "preferredDashboardName": "Nombre preferido del tablero",
@@ -143,8 +143,25 @@
   "headerColorLabel": "Color del encabezado:",
   "headerTextLabel": "Texto del encabezado:",
   "colorWhite": "#FFFFFF",
-  "colorBlack": "#000000"
+  "colorBlack": "#000000",
+  "integrations": "Integraciones",
+  "generateLink": "Generar Enlace",
+  "generateLinkMessage": "Enlace generado y copiado al portapapeles: {link}",
+  "socialMediaSection": "Redes Sociales",
+  "otherAppsSection": "Otras Aplicaciones",
+  "connected": "Conectado",
+  "connect": "Conectar",
+  "connectIntegrationMessage": "Conectando con {integrationName}... (Funcionalidad simulada)",
+  "generatedLinkLabel": "Enlace generado:",
+  "socialMedia": {
+    "twitterDescription": "Comparte pedidos automáticamente en Twitter.",
+    "facebookDescription": "Publica actualizaciones de pedidos en tu página de Facebook."
+  },
+  "otherApps": {
+    "whatsappDescription": "Envía notificaciones de pedidos a través de WhatsApp.",
+    "slackDescription": "Recibe alertas de pedidos en tu canal de Slack."
   }
+  
   }
 
 
