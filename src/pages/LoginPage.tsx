@@ -12,6 +12,7 @@ import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
 import { useLogin } from "@/services/auth";
 import { useAuthStore } from "@/stores";
+import passwordValidator from "@/validators/passwordValidator";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -28,15 +29,7 @@ const loginSchema = z.object({
       "Company name must only contain letters and numbers"
     ),
   email: z.string().email(),
-  password: z
-    .string()
-    .min(6, "Password must be at least 6 characters long")
-    .max(25, "Password must be at most 25 characters long")
-    .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
-    .regex(
-      /[!@#$%^&*()_+{}[\]:;<>,.?/~`]/,
-      "Password must contain at least one special character"
-    ),
+  password: passwordValidator,
 });
 
 const LoginPage = () => {

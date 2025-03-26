@@ -13,6 +13,7 @@ import { Switch } from "@/components/ui/switch";
 import { Mail, Phone, Pencil, X } from "lucide-react";
 import DropDown from "@/components/DropDown";
 import { useTranslation } from "react-i18next";
+import UpdatePasswordForm from "@/features/profile/components/UpdatePasswordForm";
 
 export default function SettingsPage() {
   const { t } = useTranslation(); // Hook para traducciones
@@ -44,7 +45,10 @@ export default function SettingsPage() {
           <CardHeader className="p-4 flex items-center justify-center">
             <div className="flex items-center space-x-3">
               <Avatar className="w-12 h-12">
-                <AvatarImage src={user.avatarUrl} alt={t("profilePictureAlt")} />
+                <AvatarImage
+                  src={user.avatarUrl}
+                  alt={t("profilePictureAlt")}
+                />
                 <AvatarFallback className="bg-gray-200 text-gray-600">
                   CN
                 </AvatarFallback>
@@ -161,46 +165,7 @@ export default function SettingsPage() {
             </DropDown>
 
             {/* Contraseña */}
-            <DropDown title={t("password")} subtitle={t("passwordSubtitle")}>
-              <div className="space-y-2">
-                <div>
-                  <CardTitle className="text-sm font-medium text-black">
-                    {t("currentPassword")}
-                  </CardTitle>
-                  <Input
-                    type="password"
-                    className="w-full h-8 text-sm border-gray-300 focus:ring-black focus:border-black"
-                    placeholder={t("currentPasswordPlaceholder")}
-                  />
-                </div>
-                <div>
-                  <CardTitle className="text-sm font-medium text-black">
-                    {t("newPassword")}
-                  </CardTitle>
-                  <Input
-                    type="password"
-                    className="w-full h-8 text-sm border-gray-300 focus:ring-black focus:border-black"
-                    placeholder={t("newPasswordPlaceholder")}
-                  />
-                </div>
-                <div>
-                  <CardTitle className="text-sm font-medium text-black">
-                    {t("confirmNewPassword")}
-                  </CardTitle>
-                  <Input
-                    type="password"
-                    className="w-full h-8 text-sm border-gray-300 focus:ring-black focus:border-black"
-                    placeholder={t("confirmNewPasswordPlaceholder")}
-                  />
-                </div>
-                <Button
-                  variant="default"
-                  className="w-full h-8 text-sm mt-2 bg-black text-white hover:bg-gray-800"
-                >
-                  {t("updatePassword")}
-                </Button>
-              </div>
-            </DropDown>
+            <UpdatePasswordForm />
 
             {/* Firma */}
             <DropDown title={t("signature")} subtitle={t("signatureSubtitle")}>
