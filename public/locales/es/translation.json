@@ -22,6 +22,8 @@
   "recoverMessage": "Recupere su contraseña",
   "companyName": "Nombre de la Compañía",
   "trialRequestMessage": "Solicitar una prueba",
+  "trialSentTitle": "Solicitud de Prueba Enviada",
+  "trialSentMessage": "Su solicitud ha sido enviada con éxito",
   "submitRequest": "Solicitar",
   "trialRequestSuccess": "Su solicitud ha sido enviada con éxito",
   "trialRequestError": "Se produjo un error al enviar su solicitud"

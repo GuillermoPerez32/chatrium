@@ -171,10 +171,10 @@ const LoginPage = () => {
         <p className="mt-8 text-center text-sm/6 text-gray-500">
           <span>{t("noAccountMessage")} </span>
           <Link
-            to={AppRoutes.REGISTER}
+            to={AppRoutes.TRIAL_REQUEST}
             className="font-semibold text-primary-600 hover:text-primary-500"
           >
-            {t("signUp")}
+            {t("startTrialMessage")}
           </Link>
         </p>
       </div>

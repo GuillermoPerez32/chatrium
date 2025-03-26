@@ -22,6 +22,8 @@
   "recoverMessage": "Recover your password",
   "companyName": "Company Name",
   "trialRequestMessage": "Request a trial",
+  "trialSentTitle": "Trial Request Sent",
+  "trialSentMessage": "Your request has been sent successfully",
   "submitRequest": "Request",
   "trialRequestSuccess": "Your request has been sent successfully",
   "trialRequestError": "An error occurred while sending your request",

@@ -12,9 +12,10 @@ import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
 import { z } from "zod";
 import { toast } from "sonner";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
+import { useState } from "react";
 
 const trialRequestSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -38,13 +39,25 @@ const TrialRequestPage = () => {
     },
   });
 
-  function onSubmit(data: z.infer<typeof trialRequestSchema>) {
-    console.log("Trial request submitted:", data);
-    toast.success(`Trial request submitted successfully!`);
-    navigate(AppRoutes.HOME);
+  const [done, setDone] = useState(false);
+
+  function onSubmit() {
+    setDone(true);
   }
 
-  return (
+  return done ? (
+    <div className="text-center">
+      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+        {t("trialSentMessage")}
+      </h2>
+      <p className="text-gray-500">{t("trialSentMessage")}</p>
+      <Link to={AppRoutes.HOME}>
+        <Button className="mt-4" variant="link">
+          Go back to home
+        </Button>
+      </Link>
+    </div>
+  ) : (
     <>
       <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
         {t("trialRequestMessage")}
