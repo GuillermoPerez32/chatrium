@@ -184,7 +184,17 @@
       "name": "Signup Pop-up",
       "description": "Capture signups with a customizable pop-up on your site."
     }
-  }
+  },
+
+  "qrCodePageTitle": "QR Code Management",
+  "review": "Review",
+  "customerExperience": "Customer Experience",
+  "reviewQRCodes": "Review QR Codes",
+  "customerExperienceQRCodes": "Customer Experience QR Codes",
+  "location": "Location",
+  "scanned": "Scanned",
+  "clicked": "Clicked",
+  "download": "Download"
 
 
 }

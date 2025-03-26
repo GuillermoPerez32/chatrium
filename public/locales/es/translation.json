@@ -180,7 +180,17 @@
       "name": "Pop-up de registro",
       "description": "Captura registros con un pop-up personalizable en tu sitio."
     }
-  }
+  },
+
+  "qrCodePageTitle": "Gestión de códigos QR",
+  "review": "Revisión",
+  "customerExperience": "Experiencia del cliente",
+  "reviewQRCodes": "Códigos QR de revisión",
+  "customerExperienceQRCodes": "Códigos QR de experiencia del cliente",
+  "location": "Ubicación",
+  "scanned": "Escaneado",
+  "clicked": "Clics",
+  "download": "Descargar"
   
   }
 
