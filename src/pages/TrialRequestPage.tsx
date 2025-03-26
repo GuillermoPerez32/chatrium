@@ -19,7 +19,12 @@ import { useState } from "react";
 const trialRequestSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().min(10, "Invalid phone number"),
-  company: z.string().min(1, "Company name is required"),
+  company: z
+    .string()
+    .regex(
+      /^[a-zA-Z0-9\s]+$/,
+      "Company name must only contain letters and numbers"
+    ),
   date: z.string(),
   time: z.string(),
 });
