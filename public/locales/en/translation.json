@@ -31,5 +31,31 @@
   "submitRequest": "Request",
   "trialRequestSuccess": "Your request has been sent successfully",
   "trialRequestError": "An error occurred while sending your request",
-  "trialRequestMessge": "Request a trial"
+  "trialRequestMessge": "Request a trial",
+  "profilePictureAlt": "Profile Picture",
+  "namePlaceholder": "Name",
+  "save": "Save",
+  "accountSettings": "Account Settings",
+  "notifications": "Notifications",
+  "notificationsSubtitle": "Manage your notifications",
+  "emailNotifications": "Email Notifications",
+  "emailNotificationsDesc": "Receive email notifications",
+  "smsNotifications": "SMS Notifications",
+  "smsNotificationsDesc": "Receive SMS notifications",
+  "passwordSubtitle": "Change your password",
+  "currentPassword": "Current Password",
+  "currentPasswordPlaceholder": "Enter your current password",
+  "newPassword": "New Password",
+  "newPasswordPlaceholder": "Enter your new password",
+  "confirmNewPassword": "Confirm New Password",
+  "confirmNewPasswordPlaceholder": "Confirm your new password",
+  "updatePassword": "Update Password",
+  "signature": "Signature",
+  "signatureSubtitle": "Update your signature",
+  "enableSignature": "Enable Signature",
+  "enableSignatureDesc": "Enable signature on your emails",
+  "signaturePlaceholder": "Enter your signature"
+
+
+
 }
