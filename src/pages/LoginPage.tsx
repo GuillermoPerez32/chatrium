@@ -63,7 +63,7 @@ const LoginPage = () => {
             email: form.getValues().email,
             token: response.token,
           });
-          navigate(AppRoutes.DASHBOARD);
+          navigate(AppRoutes.OTP_VERIFICATION);
         } else {
           toast.error("Invalid Credentials");
         }

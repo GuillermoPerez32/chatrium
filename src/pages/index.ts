@@ -14,6 +14,7 @@ import QRCodePage from "./Dashboard/QRCodePage";
 import WebsiteToolkitPage from "./Dashboard/WebsiteToolkitPage";
 import HomePage from "./HomePage";
 import LoginPage from "./LoginPage";
+import OTPVerificationPage from "./OTPVerificationPage";
 import RecoverPage from "./RecoverPage";
 import TrialRequestPage from "./TrialRequestPage";
 
@@ -36,4 +37,5 @@ export {
   AutoAssignPage,
   TeamsPage,
   TrialRequestPage,
+  OTPVerificationPage,
 };

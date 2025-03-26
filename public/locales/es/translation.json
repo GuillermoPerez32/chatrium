@@ -1,4 +1,5 @@
 {
+  "send": "Enviar",
   "phone": "Teléfono",
   "company": "Compañía",
   "date": "Fecha",
@@ -24,6 +25,9 @@
   "trialRequestMessage": "Solicitar una prueba",
   "trialSentTitle": "Solicitud de Prueba Enviada",
   "trialSentMessage": "Su solicitud ha sido enviada con éxito",
+  "otpTitle": "Verfica tu teléfono",
+  "otpMessage": "Le hemos enviado un codigo de verificación a su teléfono",
+  "resendOtp": "Reenviar código",
   "submitRequest": "Solicitar",
   "trialRequestSuccess": "Su solicitud ha sido enviada con éxito",
   "trialRequestError": "Se produjo un error al enviar su solicitud"

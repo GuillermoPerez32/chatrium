@@ -1,4 +1,5 @@
 {
+  "send": "Send",
   "phone": "Phone",
   "company": "Company",
   "date": "Date",
@@ -24,6 +25,9 @@
   "trialRequestMessage": "Request a trial",
   "trialSentTitle": "Trial Request Sent",
   "trialSentMessage": "Your request has been sent successfully",
+  "otpTitle": "Verify your phone",
+  "otpMessage": "We have sent you a verification code",
+  "resendOtp": "Resend code",
   "submitRequest": "Request",
   "trialRequestSuccess": "Your request has been sent successfully",
   "trialRequestError": "An error occurred while sending your request",

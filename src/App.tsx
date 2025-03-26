@@ -13,6 +13,7 @@ import {
   IntegrationPage,
   LoginPage,
   ManageUsersPage,
+  OTPVerificationPage,
   ProfilePage,
   QRCodePage,
   TeamsPage,
@@ -34,6 +35,12 @@ function App() {
         <Toaster />
         <BrowserRouter>
           <Routes>
+            <Route element={<AuthLayout />}>
+              <Route
+                path={AppRoutes.OTP_VERIFICATION}
+                element={<OTPVerificationPage />}
+              />
+            </Route>
             {user ? (
               <>
                 <Route path={AppRoutes.HOME} element={<HomePage />} />
