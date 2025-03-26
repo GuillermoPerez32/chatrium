@@ -7,6 +7,7 @@ import {
   Landmark,
   Mail,
 } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
 
 const invoices = [
   {
@@ -81,14 +82,14 @@ const BillingPage = () => {
         <CardContent>
           <div className="grid grid-cols-4 gap-4 justify-items-center items-center">
             {invoices.map((invoice, index) => (
-              <div key={index} className="grid grid-cols-4 gap-4 w-full">
+              <Fragment key={index}>
                 <span className="text-sm">{invoice.date}</span>
                 <span className="text-sm">{invoice.amount}</span>
-                <div className="text-sm bg-green-200 rounded-full px-2 py-1 font-medium">
+                <div className="text-sm bg-green-200 rounded-full px-2 py-1 font-medium h-min flex items-center justify-center">
                   {invoice.status}
                 </div>
                 <span className="text-sm">{invoice.description}</span>
-              </div>
+              </Fragment>
             ))}
           </div>
         </CardContent>
