@@ -13,7 +13,6 @@ import { Switch } from "@/components/ui/switch";
 import { Mail, Phone, Pencil, X } from "lucide-react";
 import DropDown from "@/components/DropDown";
 
-
 export default function SettingsPage() {
   const user = {
     name: "John Doe",
@@ -41,7 +40,7 @@ export default function SettingsPage() {
 
         {/* Perfil */}
         <Card className="mb-6 bg-white">
-          <CardHeader className="p-4">
+          <CardHeader className="p-4 flex items-center justify-center">
             <div className="flex items-center space-x-3">
               <Avatar className="w-12 h-12">
                 <AvatarImage src={user.avatarUrl} alt="Profile picture" />
@@ -77,7 +76,7 @@ export default function SettingsPage() {
               </div>
             </div>
           </CardHeader>
-          <CardContent className="p-4 space-y-2">
+          <CardContent className="p-4 space-y-2 flex items-center justify-center flex-col">
             <div className="flex items-center space-x-2">
               <Mail className="w-4 h-4 text-gray-600" />
               {isEditing ? (
