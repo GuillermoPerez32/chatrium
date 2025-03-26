@@ -12,7 +12,6 @@ import {
   User,
   Unplug,
   QrCode,
-  PhoneCall,
   KeySquare,
   UserPen,
 } from "lucide-react";
@@ -100,11 +99,6 @@ const items: Item[] = [
         title: "QR Code",
         icon: QrCode,
         url: AppRoutes.QR_CODE,
-      },
-      {
-        title: "Calls",
-        icon: PhoneCall,
-        url: AppRoutes.CALLS,
       },
     ],
   },

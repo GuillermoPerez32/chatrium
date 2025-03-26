@@ -148,29 +148,6 @@ const BusinessProfilePage = () => {
           </div>
         </DropDown>
 
-        <DropDown title="Media" subtitle="Add media files">
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                Upload Business Image
-              </label>
-              <Input
-                type="file"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                Upload Business Video
-              </label>
-              <Input
-                type="file"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-              />
-            </div>
-          </div>
-        </DropDown>
-
         <DropDown
           title="Google My Business Listing"
           subtitle="Add Google My Business description, categories etc."
@@ -179,23 +156,6 @@ const BusinessProfilePage = () => {
             <div>
               <label className="block text-xs font-medium text-gray-700">
                 Google My Business URL
-              </label>
-              <Input
-                type="url"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-              />
-            </div>
-          </div>
-        </DropDown>
-
-        <DropDown
-          title="Facebook"
-          subtitle="Add facebook description and categories"
-        >
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                Facebook Page URL
               </label>
               <Input
                 type="url"
@@ -245,6 +205,24 @@ const BusinessProfilePage = () => {
             <div>
               <label className="block text-xs font-medium text-gray-700">
                 LinkedIn URL
+              </label>
+              <Input
+                type="url"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700">
+                Facebook
+              </label>
+              <Input
+                type="url"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700">
+                Tik tok
               </label>
               <Input
                 type="url"
