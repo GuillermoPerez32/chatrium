@@ -11,8 +11,7 @@ import { Input } from "@/components/ui/input";
 import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
 import { z } from "zod";
-import { toast } from "sonner";
-import { Link, useNavigate } from "react-router";
+import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import { useState } from "react";
@@ -27,7 +26,6 @@ const trialRequestSchema = z.object({
 
 const TrialRequestPage = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
   const form = useForm({
     schema: trialRequestSchema,
     defaultValues: {
