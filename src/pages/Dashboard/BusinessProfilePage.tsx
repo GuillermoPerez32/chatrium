@@ -1,230 +1,260 @@
+import { useTranslation } from "react-i18next";
 import { Input } from "@/components/ui/input";
 import DropDown from "@/components/DropDown";
 
 const BusinessProfilePage = () => {
+  const { t } = useTranslation(); // Hook para traducciones
+
   return (
     <div className="p-8">
       <div className="flex flex-col gap-4">
         <DropDown
-          title="Business Information"
-          subtitle="Set your business name, address, number etc."
+          title={t("businessInformation")}
+          subtitle={t("businessInformationSubtitle")}
         >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Business Name
+                {t("businessName")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("businessNamePlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Address
+                {t("address")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("addressPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Phone Number
+                {t("phoneNumber")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("phoneNumberPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Email
+                {t("email")}
               </label>
               <Input
                 type="email"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("emailPlaceholder")}
               />
             </div>
           </div>
         </DropDown>
 
         <DropDown
-          title="Business Hours"
-          subtitle="Set the days and hours that your business is open"
+          title={t("businessHours")}
+          subtitle={t("businessHoursSubtitle")}
         >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Monday
+                {t("monday")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("mondayPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Tuesday
+                {t("tuesday")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("tuesdayPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Wednesday
+                {t("wednesday")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("wednesdayPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Thursday
+                {t("thursday")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("thursdayPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Friday
+                {t("friday")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("fridayPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Saturday
+                {t("saturday")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("saturdayPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Sunday
+                {t("sunday")}
               </label>
               <Input
                 type="text"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("sundayPlaceholder")}
               />
             </div>
           </div>
         </DropDown>
 
         <DropDown
-          title="Automated Messages"
-          subtitle="Configure your automated messages for After Hours, In Hours, or Custom events."
+          title={t("automatedMessages")}
+          subtitle={t("automatedMessagesSubtitle")}
         >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Open Message
+                {t("openMessage")}
               </label>
-              <textarea className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs" />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                Closed Message
-              </label>
-              <textarea className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs" />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                After Hours Message
-              </label>
-              <textarea className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs" />
-            </div>
-          </div>
-        </DropDown>
-
-        <DropDown
-          title="Google My Business Listing"
-          subtitle="Add Google My Business description, categories etc."
-        >
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                Google My Business URL
-              </label>
-              <Input
-                type="url"
+              <textarea
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("openMessagePlaceholder")}
               />
             </div>
-          </div>
-        </DropDown>
-
-        <DropDown title="Chatrium" subtitle="Add url and description">
-          <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Chatrium Profile URL
+                {t("closedMessage")}
               </label>
-              <Input
-                type="url"
+              <textarea
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("closedMessagePlaceholder")}
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-gray-700">
+                {t("afterHoursMessage")}
+              </label>
+              <textarea
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("afterHoursMessagePlaceholder")}
               />
             </div>
           </div>
         </DropDown>
 
         <DropDown
-          title="Social Profile"
-          subtitle="Add your social media accounts"
+          title={t("googleMyBusinessListing")}
+          subtitle={t("googleMyBusinessListingSubtitle")}
         >
           <div className="grid grid-cols-2 gap-3">
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Instagram URL
+                {t("googleMyBusinessUrl")}
               </label>
               <Input
                 type="url"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("googleMyBusinessUrlPlaceholder")}
+              />
+            </div>
+          </div>
+        </DropDown>
+
+        <DropDown title={t("chatrium")} subtitle={t("chatriumSubtitle")}>
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-xs font-medium text-gray-700">
+                {t("chatriumProfileUrl")}
+              </label>
+              <Input
+                type="url"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("chatriumProfileUrlPlaceholder")}
+              />
+            </div>
+          </div>
+        </DropDown>
+
+        <DropDown
+          title={t("socialProfile")}
+          subtitle={t("socialProfileSubtitle")}
+        >
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="block text-xs font-medium text-gray-700">
+                {t("instagramUrl")}
+              </label>
+              <Input
+                type="url"
+                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("instagramUrlPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Twitter URL
+                {t("twitterUrl")}
               </label>
               <Input
                 type="url"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("twitterUrlPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                LinkedIn URL
+                {t("linkedinUrl")}
               </label>
               <Input
                 type="url"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("linkedinUrlPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Facebook
+                {t("facebookUrl")}
               </label>
               <Input
                 type="url"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("facebookUrlPlaceholder")}
               />
             </div>
             <div>
               <label className="block text-xs font-medium text-gray-700">
-                Tik tok
+                {t("tiktokUrl")}
               </label>
               <Input
                 type="url"
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                placeholder={t("tiktokUrlPlaceholder")}
               />
             </div>
           </div>
