@@ -36,8 +36,6 @@ export default function SettingsPage() {
   return (
     <div className="flex justify-center items-center min-h-screen w-full bg-green-100 p-4">
       <div className="w-full max-w-2xl">
-        <h1 className="text-xl font-bold mb-6 text-black">Settings</h1>
-
         {/* Perfil */}
         <Card className="mb-6 bg-white">
           <CardHeader className="p-4 flex items-center justify-center">
@@ -67,7 +65,11 @@ export default function SettingsPage() {
                     className="w-8 h-8 border-gray-300 text-black hover:bg-gray-100"
                     onClick={() => setIsEditing(!isEditing)}
                   >
-                    {isEditing ? <X className="w-4 h-4" /> : <Pencil className="w-4 h-4" />}
+                    {isEditing ? (
+                      <X className="w-4 h-4" />
+                    ) : (
+                      <Pencil className="w-4 h-4" />
+                    )}
                   </Button>
                 </div>
                 <CardDescription className="text-xs text-gray-600 mt-1">
@@ -192,7 +194,10 @@ export default function SettingsPage() {
             </DropDown>
 
             {/* Firma */}
-            <DropDown title="Signature" subtitle="Add a signature to your messages">
+            <DropDown
+              title="Signature"
+              subtitle="Add a signature to your messages"
+            >
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <div>
