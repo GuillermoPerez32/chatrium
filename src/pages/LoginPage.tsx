@@ -20,7 +20,12 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const loginSchema = z.object({
-  company: z.string(),
+  company: z
+    .string()
+    .regex(
+      /^[a-zA-Z0-9\s]+$/,
+      "Company name must only contain letters and numbers"
+    ),
   email: z.string().email(),
   password: z
     .string()
@@ -64,6 +69,7 @@ const LoginPage = () => {
         }
       })
       .catch((error) => {
+        form.reset();
         toast.error(error.message);
       });
   }

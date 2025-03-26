@@ -1,7 +1,5 @@
 import DataTable from "@/components/DataTable";
 import { columns } from "@/features/all-users";
-import { ArrowLeft } from "lucide-react";
-import { useNavigate } from "react-router";
 
 const data = [
   {
@@ -28,17 +26,9 @@ const data = [
 ];
 
 const AllUsersPage = () => {
-  const navigate = useNavigate();
   return (
     <div className="p-4">
-      <div className="flex items-center gap-4">
-        <ArrowLeft onClick={() => navigate(-1)} />
-        <h1 className="font-semibold text-xl">All Users</h1>
-      </div>
-
-      <div className="mt-10">
-        <DataTable columns={columns} data={data} />
-      </div>
+      <DataTable columns={columns} data={data} />
     </div>
   );
 };
