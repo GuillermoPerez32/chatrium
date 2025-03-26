@@ -164,6 +164,26 @@
   "otherApps": {
     "whatsappDescription": "Send order notifications via WhatsApp.",
     "slackDescription": "Receive order alerts in your Slack channel."
+  },
+
+  "websiteToolkit": "Website Toolkit",
+  "tools": {
+    "webchat": {
+      "name": "Webchat",
+      "description": "Add a live chat to your website to interact with visitors."
+    },
+    "ageConfirmation": {
+      "name": "Age Confirmation",
+      "description": "Verify the age of users before allowing them to access content."
+    },
+    "reviewWidget": {
+      "name": "Review Widget",
+      "description": "Display customer reviews directly on your website."
+    },
+    "signupPopup": {
+      "name": "Signup Pop-up",
+      "description": "Capture signups with a customizable pop-up on your site."
+    }
   }
 
 

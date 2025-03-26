@@ -1,30 +1,33 @@
 import { MessageSquare, Shield, Star, UserPlus } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 const WebsiteToolkitPage = () => {
+  const { t } = useTranslation(); // Hook para traducciones
+
   const tools = [
     {
       id: 1,
-      name: 'Webchat',
+      name: t('tools.webchat.name'),
       icon: <MessageSquare className="w-8 h-8 text-green-600" />,
-      description: 'Añade un chat en vivo a tu sitio web para interactuar con los visitantes.',
+      description: t('tools.webchat.description'),
     },
     {
       id: 2,
-      name: 'Age Confirmation',
+      name: t('tools.ageConfirmation.name'),
       icon: <Shield className="w-8 h-8 text-green-600" />,
-      description: 'Verifica la edad de los usuarios antes de permitirles acceder al contenido.',
+      description: t('tools.ageConfirmation.description'),
     },
     {
       id: 3,
-      name: 'Review Widget',
+      name: t('tools.reviewWidget.name'),
       icon: <Star className="w-8 h-8 text-green-600" />,
-      description: 'Muestra reseñas de clientes directamente en tu página web.',
+      description: t('tools.reviewWidget.description'),
     },
     {
       id: 4,
-      name: 'Signup Pop-up',
+      name: t('tools.signupPopup.name'),
       icon: <UserPlus className="w-8 h-8 text-green-600" />,
-      description: 'Captura registros con un pop-up personalizable en tu sitio.',
+      description: t('tools.signupPopup.description'),
     },
   ];
 
@@ -32,7 +35,7 @@ const WebsiteToolkitPage = () => {
     <div className="min-h-screen bg-[var(--color-primary-50)] p-8">
       <div className="max-w-6xl mx-auto">
         {/* Encabezado */}
-        <h1 className="text-2xl font-bold text-black mb-8">Website Toolkit</h1>
+        <h1 className="text-2xl font-bold text-black mb-8">{t('websiteToolkit')}</h1>
 
         {/* Cuadrícula de tarjetas */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

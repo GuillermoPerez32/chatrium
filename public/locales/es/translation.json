@@ -160,6 +160,26 @@
   "otherApps": {
     "whatsappDescription": "Envía notificaciones de pedidos a través de WhatsApp.",
     "slackDescription": "Recibe alertas de pedidos en tu canal de Slack."
+  },
+
+  "websiteToolkit": "Kit de herramientas para sitios web",
+  "tools": {
+    "webchat": {
+      "name": "Webchat",
+      "description": "Añade un chat en vivo a tu sitio web para interactuar con los visitantes."
+    },
+    "ageConfirmation": {
+      "name": "Confirmación de edad",
+      "description": "Verifica la edad de los usuarios antes de permitirles acceder al contenido."
+    },
+    "reviewWidget": {
+      "name": "Widget de reseñas",
+      "description": "Muestra reseñas de clientes directamente en tu página web."
+    },
+    "signupPopup": {
+      "name": "Pop-up de registro",
+      "description": "Captura registros con un pop-up personalizable en tu sitio."
+    }
   }
   
   }
