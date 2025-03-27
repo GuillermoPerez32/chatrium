@@ -13,7 +13,6 @@ import {
   Unplug,
   QrCode,
   KeySquare,
-  UserPen,
 } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
@@ -59,12 +58,6 @@ const items: Item[] = [
         icon: User,
         url: AppRoutes.PROFILE,
       },
-      {
-        title: "Account",
-        icon: UserPen,
-        url: AppRoutes.ACCOUNT,
-      },
-
       {
         title: "Bussines Profile",
         icon: Building2,

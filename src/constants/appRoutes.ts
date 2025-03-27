@@ -10,7 +10,6 @@ enum AppRoutes {
 
   //Settings
   PROFILE = "/dashboard/profile",
-  ACCOUNT = "/dashboard/account",
   BUSINESS_PROFILE = "/dashboard/business-profile",
   MANAGE_USERS = "/dashboard/manage-users",
   MANAGE_USERS__ALL_USERS = "/dashboard/manage-users/all-users",
