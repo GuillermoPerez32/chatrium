@@ -24,10 +24,7 @@ const loginSchema = z.object({
   company: z
     .string()
     .max(25)
-    .regex(
-      /^[a-zA-Z0-9\s]+$/,
-      "Company name must only contain letters and numbers"
-    ),
+    .regex(/^[a-zA-Z0-9\s]+$/, "Only must contain letters and numbers"),
   email: z.string().email(),
   password: passwordValidator,
 });

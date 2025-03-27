@@ -22,10 +22,7 @@ const trialRequestSchema = z.object({
   company: z
     .string()
     .max(25)
-    .regex(
-      /^[a-zA-Z0-9\s]+$/,
-      "Company name must only contain letters and numbers"
-    ),
+    .regex(/^[a-zA-Z0-9\s]+$/, "Only must contain letters and numbers"),
   date: z.string(),
   time: z.string(),
 });
