@@ -1,3 +1,4 @@
+import AccountPage from "./Dashboard/AccountPage";
 import BillingPage from "./Dashboard/BillingPage";
 import BrandingPage from "./Dashboard/BrandingPage";
 import BusinessProfilePage from "./Dashboard/BusinessProfilePage";
@@ -23,6 +24,7 @@ export {
   RecoverPage,
   DashboardOverviewPage,
   ProfilePage,
+  AccountPage,
   BillingPage,
   BrandingPage,
   BusinessProfilePage,

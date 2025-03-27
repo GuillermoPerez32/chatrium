@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { QueryClientProvider } from "@tanstack/react-query";
 import {
+  AccountPage,
   AllUsersPage,
   AutoAssignPage,
   BillingPage,
@@ -49,6 +50,7 @@ function App() {
                     element={<DashboardOverviewPage />}
                   />
                   <Route path={AppRoutes.PROFILE} element={<ProfilePage />} />
+                  <Route path={AppRoutes.ACCOUNT} element={<AccountPage />} />
                   <Route path={AppRoutes.BILLING} element={<BillingPage />} />
                   <Route path={AppRoutes.BRANDING} element={<BrandingPage />} />
                   <Route
