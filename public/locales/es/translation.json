@@ -204,5 +204,18 @@
   "location": "Ubicación",
   "scanned": "Escaneado",
   "clicked": "Clics",
-  "download": "Descargar"
-}
+  "download": "Descargar",
+  "searchPlaceholder": "Buscar...",
+  "profile": "Perfil",
+  "settings": "Configuraciones",
+  "logout": "Cerrar sesión",
+  "recentMessages": "Mensajes recientes",
+  "recentMessagesDescription": "Mensajes recientes de los clientes",
+  "notificationsDescription": "Ver tus notificaciones",
+  "quickStats": "Estadísticas rápidas",
+  "welcome": "Bienvenido",
+  "quickStatsDescription": "Estadísticas rápidas de tu cuenta"
+  
+  }
+
+

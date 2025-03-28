@@ -207,5 +207,17 @@
   "location": "Location",
   "scanned": "Scanned",
   "clicked": "Clicked",
-  "download": "Download"
+  "download": "Download",
+  "searchPlaceholder": "Search...",
+  "profile": "Profile",
+  "settings": "Settings",
+  "logout": "Logout",
+  "recentMessages": "Recent Messages",
+  "recentMessagesDescription": "View your recent messages",
+  "notificationsDescription": "View your notifications",
+  "quickStats": "Quick Stats",
+  "welcome": "Welcome, {{name}}!",
+  "quickStatsDescription": "View your quick stats"
+
+
 }
