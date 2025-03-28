@@ -1,4 +1,11 @@
-import { ArrowLeft, Bell, LogOut, MessageSquare, Search, User } from "lucide-react";
+import {
+  ArrowLeft,
+  Bell,
+  LogOut,
+  MessageSquare,
+  Search,
+  User,
+} from "lucide-react";
 import { SidebarTrigger } from "./ui/sidebar"; // Assuming this is from your UI library
 import { useAuthStore } from "@/stores";
 import { useLocation, useNavigate } from "react-router";
@@ -30,7 +37,7 @@ const AppTopBar = () => {
   const loggedInUser = { name: "John Doe", email: "john.doe@example.com" };
 
   return (
-    <div className="flex items-center bg-white shadow-md border-b py-2 px-4 sticky top-0 z-10 relative">
+    <div className="flex items-center bg-white shadow-md border-b py-2 px-4 sticky top-0 z-10">
       {/* Left section: Sidebar trigger, back arrow, and title */}
       <div className="flex items-center gap-4">
         <SidebarTrigger />
@@ -74,13 +81,17 @@ const AppTopBar = () => {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2">
               <User className="w-6 h-6 text-gray-600" />
-              <span className="hidden md:inline text-gray-700">{loggedInUser.name}</span>
+              <span className="hidden md:inline text-gray-700">
+                {loggedInUser.name}
+              </span>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuItem className="flex flex-col items-start">
               <span className="font-medium">{loggedInUser.name}</span>
-              <span className="text-sm text-gray-500">{loggedInUser.email}</span>
+              <span className="text-sm text-gray-500">
+                {loggedInUser.email}
+              </span>
             </DropdownMenuItem>
             <DropdownMenuItem>
               <span>{t("profile")}</span>
