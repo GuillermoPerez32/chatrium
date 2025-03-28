@@ -5,16 +5,16 @@ const HomePage = () => {
   const loggedInUser = { name: "John Doe", email: "john.doe@example.com" }; // Mock logged-in user data
 
   return (
-    <div className="min-h-screen bg-[var(--color-primary-50)] flex flex-col">
+    <div className="min-h-screen bg-primary-50 flex flex-col">
       {/* Main content */}
       <main className="flex-1 p-6">
-        <h2 className="text-2xl font-bold text-[var(--primary)] mb-6">
+        <h2 className="text-2xl font-bold text-primary mb-6">
           {t("welcome", { name: loggedInUser.name })}
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Example widgets */}
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold text-[var(--primary)]">
+            <h3 className="text-lg font-semibold text-primary">
               {t("recentMessages")}
             </h3>
             <p className="text-gray-500 mt-2">
@@ -22,7 +22,7 @@ const HomePage = () => {
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold text-[var(--primary)]">
+            <h3 className="text-lg font-semibold text-primary">
               {t("notifications")}
             </h3>
             <p className="text-gray-500 mt-2">
@@ -30,12 +30,10 @@ const HomePage = () => {
             </p>
           </div>
           <div className="bg-white p-6 rounded-lg shadow-md">
-            <h3 className="text-lg font-semibold text-[var(--primary)]">
+            <h3 className="text-lg font-semibold text-primary">
               {t("quickStats")}
             </h3>
-            <p className="text-gray-500 mt-2">
-              {t("quickStatsDescription")}
-            </p>
+            <p className="text-gray-500 mt-2">{t("quickStatsDescription")}</p>
           </div>
         </div>
       </main>
