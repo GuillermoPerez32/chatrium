@@ -30,7 +30,7 @@ const AppTopBar = () => {
   const loggedInUser = { name: "John Doe", email: "john.doe@example.com" };
 
   return (
-    <div className="flex items-center bg-white shadow-md border-b py-2 px-4 sticky top-0 z-10">
+    <div className="flex items-center bg-white shadow-md border-b py-2 px-4 sticky top-0 z-10 relative">
       {/* Left section: Sidebar trigger, back arrow, and title */}
       <div className="flex items-center gap-4">
         <SidebarTrigger />
@@ -44,7 +44,7 @@ const AppTopBar = () => {
       </div>
 
       {/* Center section: Search bar */}
-      <div className="hidden md:flex items-center w-1/3 mx-4">
+      <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex items-center w-1/3">
         <div className="relative w-full">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
           <Input
