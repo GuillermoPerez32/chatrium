@@ -89,6 +89,19 @@
   "closedMessagePlaceholder": "Enter your closed hours message",
   "afterHoursMessage": "After Hours Message",
   "afterHoursMessagePlaceholder": "Enter your after hours message",
+  "selectEndTime": "Select end time",
+  "selectStartTime": "Select start time",
+  "day": {
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday"
+  },
+  "24hours7days": "24 hours 7 days",
+  "selectTimeRange": "Select time range",
 
   "googleMyBusinessListing": "Google My Business Listing",
   "googleMyBusinessListingSubtitle": "Add Google My Business description, categories etc.",

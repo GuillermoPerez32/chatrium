@@ -87,6 +87,19 @@
   "closedMessagePlaceholder": "Ingrese su mensaje de cierre",
   "afterHoursMessage": "Mensaje fuera de horario",
   "afterHoursMessagePlaceholder": "Ingrese su mensaje fuera de horario",
+  "selectEndTime": "Seleccione la hora de finalización",
+  "selectStartTime": "Seleccione la hora de inicio",
+  "day": {
+    "monday": "Lunes",
+    "tuesday": "Martes",
+    "wednesday": "Miércoles",
+    "thursday": "Jueves",
+    "friday": "Viernes",
+    "saturday": "Sábado",
+    "sunday": "Domingo"
+  },
+  "24hours7days": "24 horas, 7 días a la semana",
+  "selectTimeRange": "Seleccione el rango de tiempo",
 
   "googleMyBusinessListing": "Google My Business",
   "googleMyBusinessListingSubtitle": "Agregue descripción, categorías, etc.",

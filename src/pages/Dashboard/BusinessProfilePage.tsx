@@ -1,9 +1,74 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Input } from "@/components/ui/input";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 import DropDown from "@/components/DropDown";
 
+// Generate predefined time range options
+const generateTimeRangeOptions = () => {
+  const ranges = [
+    "06:00 - 10:00",
+    "07:00 - 11:00",
+    "08:00 - 12:00",
+    "09:00 - 13:00",
+    "10:00 - 14:00",
+    "11:00 - 15:00",
+    "12:00 - 16:00",
+    "13:00 - 17:00",
+    "14:00 - 18:00",
+    "15:00 - 19:00",
+    "16:00 - 20:00",
+    "17:00 - 21:00",
+    "18:00 - 22:00",
+  ];
+  return ranges;
+};
+
+type DayOfWeek =
+  | "monday"
+  | "tuesday"
+  | "wednesday"
+  | "thursday"
+  | "friday"
+  | "saturday"
+  | "sunday";
+
+type BusinessHours = {
+  [key in DayOfWeek]: string; // Each day stores a single string representing the time range
+};
+
 const BusinessProfilePage = () => {
-  const { t } = useTranslation(); // Hook para traducciones
+  const { t } = useTranslation(); // Hook for translations
+  const [is24Hours, setIs24Hours] = useState(false); // State for 24hrs/7 toggle
+  const [businessHours, setBusinessHours] = useState<BusinessHours>({
+    monday: "",
+    tuesday: "",
+    wednesday: "",
+    thursday: "",
+    friday: "",
+    saturday: "",
+    sunday: "",
+  });
+  const timeRangeOptions = generateTimeRangeOptions(); // Predefined time range options
+
+  const days: DayOfWeek[] = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
+  ];
+
+  // Handle changes in time range selectors
+  const handleRangeChange = (day: DayOfWeek, value: string) => {
+    setBusinessHours((prev) => ({
+      ...prev,
+      [day]: value,
+    }));
+  };
 
   return (
     <div className="p-8">
@@ -60,78 +125,40 @@ const BusinessProfilePage = () => {
           title={t("businessHours")}
           subtitle={t("businessHoursSubtitle")}
         >
-          <div className="grid grid-cols-2 gap-3">
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                {t("monday")}
-              </label>
-              <Input
-                type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-                placeholder={t("mondayPlaceholder")}
+          <div className="flex justify-between items-center mb-4">
+            <span /> {/* Empty span to push the Switch to the right */}
+            <div className="flex items-center gap-2">
+              <Switch
+                id="24hours-switch"
+                checked={is24Hours}
+                onCheckedChange={setIs24Hours}
               />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                {t("tuesday")}
-              </label>
-              <Input
-                type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-                placeholder={t("tuesdayPlaceholder")}
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                {t("wednesday")}
-              </label>
-              <Input
-                type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-                placeholder={t("wednesdayPlaceholder")}
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                {t("thursday")}
-              </label>
-              <Input
-                type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-                placeholder={t("thursdayPlaceholder")}
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                {t("friday")}
-              </label>
-              <Input
-                type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-                placeholder={t("fridayPlaceholder")}
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                {t("saturday")}
-              </label>
-              <Input
-                type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-                placeholder={t("saturdayPlaceholder")}
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-gray-700">
-                {t("sunday")}
-              </label>
-              <Input
-                type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-                placeholder={t("sundayPlaceholder")}
-              />
+              <Label htmlFor="24hours-switch">{t("24hours7days")}</Label>
             </div>
           </div>
+          {!is24Hours && (
+            <div className="grid grid-cols-2 gap-3">
+              {days.map((day) => (
+                <div key={day}>
+                  <label className="block text-xs font-medium text-gray-700">
+                    {t(day)}
+                  </label>
+                  <select
+                    value={businessHours[day]}
+                    onChange={(e) => handleRangeChange(day, e.target.value)}
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                  >
+                    <option value="">{t("selectTimeRange")}</option>
+                    {timeRangeOptions.map((range) => (
+                      <option key={`${day}-${range}`} value={range}>
+                        {range}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              ))}
+            </div>
+          )}
         </DropDown>
 
         <DropDown
