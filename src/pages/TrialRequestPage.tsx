@@ -18,6 +18,8 @@ import { useState } from "react";
 
 const trialRequestSchema = z.object({
   email: z.string().email("Invalid email address"),
+  firstName: z.string(),
+  lastName: z.string(),
   phone: z.string().min(10, "Invalid phone number"),
   company: z
     .string()
@@ -76,6 +78,36 @@ const TrialRequestPage = () => {
                   <FormLabel>{t("email")}</FormLabel>
                   <FormControl>
                     <Input type="email" placeholder="Email" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="firstName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("firstName")}</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="firstName"
+                      placeholder="Firstname"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="lastName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("lastName")}</FormLabel>
+                  <FormControl>
+                    <Input type="lastName" placeholder="Lastname" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

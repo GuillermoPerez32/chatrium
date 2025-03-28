@@ -10,6 +10,8 @@
   "signIn": "Sign in",
   "phoneNumber": "Phone Number",
   "emailAddress": "Email Address",
+  "firstName": "First Name",
+  "lastName": "Last Name",
   "confirmPassword": "Confirm Password",
   "register": "Register",
   "signInMessage": "Sign in to your account",
@@ -218,6 +220,4 @@
   "quickStats": "Quick Stats",
   "welcome": "Welcome, {{name}}!",
   "quickStatsDescription": "View your quick stats"
-
-
 }

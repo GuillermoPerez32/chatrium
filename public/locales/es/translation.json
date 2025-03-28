@@ -5,6 +5,8 @@
   "date": "Fecha",
   "time": "Hora",
   "email": "Correo electrónico",
+  "firstName": "Nombre",
+  "lastName": "Apellidos",
   "password": "Contraseña",
   "signUp": "Regístrate",
   "signIn": "Iniciar sesión",
@@ -215,7 +217,4 @@
   "quickStats": "Estadísticas rápidas",
   "welcome": "Bienvenido",
   "quickStatsDescription": "Estadísticas rápidas de tu cuenta"
-  
-  }
-
-
+}
