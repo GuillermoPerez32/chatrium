@@ -12,7 +12,6 @@ import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
 import { useLogin } from "@/services/auth";
 import { useAuthStore } from "@/stores";
-import passwordValidator from "@/validators/passwordValidator";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -23,10 +22,13 @@ import { z } from "zod";
 const loginSchema = z.object({
   company: z
     .string()
-    .max(25)
-    .regex(/^[a-zA-Z0-9\s]+$/, "Only must contain letters and numbers"),
+    .max(20)
+    .regex(
+      /^[a-zA-Z0-9\-_]+$/,
+      "Only must contain letters, numbers, hyphens, and underscores"
+    ),
   email: z.string().email(),
-  password: passwordValidator,
+  password: z.string(),
 });
 
 const LoginPage = () => {
@@ -90,8 +92,8 @@ const LoginPage = () => {
                   <FormLabel>{t("companyName")}</FormLabel>
                   <FormControl>
                     <Input
-                      maxLength={25}
-                      max={25}
+                      maxLength={20}
+                      max={20}
                       placeholder={t("companyName")}
                       {...field}
                     />

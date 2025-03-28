@@ -19,6 +19,7 @@ const useForm = <TSchema extends ZodType<any, ZodTypeDef, any>>(
   return useReactHookForm<z.infer<TSchema>>({
     ...formOptions,
     resolver: zodResolver(schema),
+    criteriaMode: "firstError",
   });
 };
 

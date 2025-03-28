@@ -16,7 +16,7 @@
   "signUpMessage": "Crea una nueva cuenta",
   "noAccountMessage": "¿No tienes una cuenta?",
   "notMemberMessage": "¿No eres miembro?",
-  "startTrialMessage": "Comienza una prueba gratuita de 14 días",
+  "startTrialMessage": "Prueba Chatrium",
   "alreadyHaveAccount": "¿Ya tienes una cuenta?",
   "forgotPasswordMessage": "¿Olvidaste tu contraseña?",
   "recoverPass": "Recuperar Contraseña",
@@ -129,7 +129,8 @@
   "invoiceStatus": {
     "done": "Hecho",
     "pending": "Pendiente",
-    "failed": "Fallido"},
+    "failed": "Fallido"
+  },
 
   "subscriptionDetails": "Detalles de la suscripción",
   "preferredDashboardName": "Nombre preferido del tablero",
@@ -191,7 +192,4 @@
   "scanned": "Escaneado",
   "clicked": "Clics",
   "download": "Descargar"
-  
-  }
-
-
+}

@@ -11,7 +11,7 @@ const AuthLayout = () => {
             className="size-10 object-cover"
           />
         </Link>
-        <div className="max-w-md min-w-xs">
+        <div className="max-w-xs min-w-xs">
           <Outlet />
         </div>
       </div>

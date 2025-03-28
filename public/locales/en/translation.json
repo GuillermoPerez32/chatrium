@@ -16,7 +16,7 @@
   "signUpMessage": "Create a new account",
   "noAccountMessage": "Don't have an account?",
   "notMemberMessage": "Not a member?",
-  "startTrialMessage": "Start a 14 day free trial",
+  "startTrialMessage": "Try Chatrium",
   "alreadyHaveAccount": "Already have an account?",
   "forgotPasswordMessage": "Forgot your password?",
   "recoverPass": "Recover Password",
@@ -120,7 +120,7 @@
   "autoAssign": "Auto Assign",
   "autoAssignSubtitle": "Select a group of users to auto assign conversations to them.",
 
- "paymentMethod": "Payment Method",
+  "paymentMethod": "Payment Method",
   "cardNumberExample": "1234 5678 9012 3456",
   "billingInformation": "Billing Information",
   "emailLabel": "Email",
@@ -195,6 +195,4 @@
   "scanned": "Scanned",
   "clicked": "Clicked",
   "download": "Download"
-
-
 }
