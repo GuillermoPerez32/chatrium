@@ -38,6 +38,10 @@ const OTPVerificationPage = () => {
     },
   });
 
+  const {
+    formState: { errors },
+  } = form;
+
   function onSubmit({ otp }: z.infer<typeof loginSchema>) {
     if (otp === "111111") {
       navigate(AppRoutes.DASHBOARD);
@@ -85,7 +89,7 @@ const OTPVerificationPage = () => {
                       </InputOTPGroup>
                     </InputOTP>
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.otp?.message}</FormMessage>
                 </FormItem>
               )}
             />

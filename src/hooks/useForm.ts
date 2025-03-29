@@ -16,11 +16,27 @@ const useForm = <TSchema extends ZodType<any, ZodTypeDef, any>>(
 ): UseFormReturn<z.infer<TSchema>> => {
   const { schema, ...formOptions } = options;
 
-  return useReactHookForm<z.infer<TSchema>>({
+  const {
+    formState: { errors: allErrors, ...formState },
+    ...form
+  } = useReactHookForm<z.infer<TSchema>>({
     ...formOptions,
     resolver: zodResolver(schema),
     criteriaMode: "firstError",
   });
+
+  const firstErrorKey = Object.keys(allErrors)[0];
+  const errors = firstErrorKey
+    ? { [firstErrorKey]: allErrors[firstErrorKey] }
+    : {};
+
+  return {
+    formState: {
+      errors,
+      ...formState,
+    },
+    ...form,
+  };
 };
 
 export default useForm;

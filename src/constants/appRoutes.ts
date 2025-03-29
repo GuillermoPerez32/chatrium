@@ -11,7 +11,7 @@ enum AppRoutes {
   //Inbox
   INBOX = "/dashboard/inbox",
   ALL_CONVERSATIONS = "/dashboard/inbox/all-conversations",
-  ASSIGNED = "/dashboard/inbox/assigned",
+  ASSIGNED = "/dashboard/inbox/assigned-to-me",
   UNASSIGNED = "/dashboard/inbox/unassigned",
 
   //Settings

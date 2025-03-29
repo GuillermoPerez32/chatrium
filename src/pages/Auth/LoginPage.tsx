@@ -1,10 +1,10 @@
+import FormLabel from "@/components/FormLabel";
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -45,6 +45,10 @@ const LoginPage = () => {
       password: "",
     },
   });
+
+  const {
+    formState: { errors },
+  } = form;
 
   function onSubmit({ email, password }: z.infer<typeof loginSchema>) {
     mutateAsync({
@@ -98,7 +102,7 @@ const LoginPage = () => {
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.company?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -112,7 +116,7 @@ const LoginPage = () => {
                   <FormControl>
                     <Input type="email" placeholder="Email" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.email?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -142,7 +146,7 @@ const LoginPage = () => {
                       </button>
                     </div>
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.password?.message}</FormMessage>
                 </FormItem>
               )}
             />

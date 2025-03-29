@@ -4,7 +4,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -15,6 +14,7 @@ import { Link } from "react-router";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 import { useState } from "react";
+import FormLabel from "@/components/FormLabel";
 
 const trialRequestSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -41,6 +41,10 @@ const TrialRequestPage = () => {
       time: "",
     },
   });
+
+  const {
+    formState: { errors },
+  } = form;
 
   const [done, setDone] = useState(false);
 
@@ -79,7 +83,7 @@ const TrialRequestPage = () => {
                   <FormControl>
                     <Input type="email" placeholder="Email" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.email?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -96,7 +100,7 @@ const TrialRequestPage = () => {
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.firstName?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -109,7 +113,7 @@ const TrialRequestPage = () => {
                   <FormControl>
                     <Input type="lastName" placeholder="Lastname" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.lastName?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -122,7 +126,7 @@ const TrialRequestPage = () => {
                   <FormControl>
                     <Input type="tel" placeholder="Phone" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.phone?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -141,7 +145,7 @@ const TrialRequestPage = () => {
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.company?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -155,7 +159,7 @@ const TrialRequestPage = () => {
                     <FormControl>
                       <Input type="date" {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage>{errors.date?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -168,7 +172,7 @@ const TrialRequestPage = () => {
                     <FormControl>
                       <Input type="time" {...field} />
                     </FormControl>
-                    <FormMessage />
+                    <FormMessage>{errors.time?.message}</FormMessage>
                   </FormItem>
                 )}
               />

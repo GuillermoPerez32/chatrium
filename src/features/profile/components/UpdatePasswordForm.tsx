@@ -11,12 +11,12 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
+import FormLabel from "@/components/FormLabel";
 
 const passwordUpateSchema = z
   .object({
@@ -44,6 +44,11 @@ const UpdatePasswordForm = () => {
       confirmPassword: "",
     },
   });
+
+  const {
+    formState: { errors },
+  } = form;
+
   const navigate = useNavigate();
 
   const onSubmit = () => {
@@ -84,7 +89,9 @@ const UpdatePasswordForm = () => {
                       </button>
                     </div>
                   </FormControl>
-                  <FormMessage />
+                  {errors.oldPassword && (
+                    <FormMessage>{errors.oldPassword.message}</FormMessage>
+                  )}
                 </FormItem>
               )}
             />
@@ -113,7 +120,9 @@ const UpdatePasswordForm = () => {
                       </button>
                     </div>
                   </FormControl>
-                  <FormMessage />
+                  {errors.newPassword && (
+                    <FormMessage>{errors.newPassword.message}</FormMessage>
+                  )}
                 </FormItem>
               )}
             />
@@ -142,7 +151,9 @@ const UpdatePasswordForm = () => {
                       </button>
                     </div>
                   </FormControl>
-                  <FormMessage />
+                  {errors.confirmPassword && (
+                    <FormMessage>{errors.confirmPassword.message}</FormMessage>
+                  )}
                 </FormItem>
               )}
             />

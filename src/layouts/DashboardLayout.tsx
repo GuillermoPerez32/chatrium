@@ -7,7 +7,7 @@ const DashboardLayout = () => {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="w-full h-screen overflow-hidden">
+      <main className="w-full h-screen">
         <AppTopBar />
         <div className="bg-primary-50 size-full">
           <Outlet />

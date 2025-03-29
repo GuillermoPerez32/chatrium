@@ -4,7 +4,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -14,6 +13,7 @@ import { z } from "zod";
 import { toast } from "sonner";
 import { useNavigate } from "react-router";
 import { useTranslation } from "react-i18next";
+import FormLabel from "@/components/FormLabel";
 
 const recoverPasswordSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -28,6 +28,10 @@ const RecoverPage = () => {
       email: "",
     },
   });
+
+  const {
+    formState: { errors },
+  } = form;
 
   function onSubmit({ email }: z.infer<typeof recoverPasswordSchema>) {
     // Handle password recovery logic here
@@ -55,7 +59,7 @@ const RecoverPage = () => {
                   <FormControl>
                     <Input type="email" placeholder="Email" {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessage>{errors.email?.message}</FormMessage>
                 </FormItem>
               )}
             />
