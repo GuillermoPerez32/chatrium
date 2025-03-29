@@ -1,5 +1,7 @@
+import { InboxLayout } from "@/features/inbox";
+
 const UnassignedPage = () => {
-  return <div></div>;
+  return <InboxLayout />;
 };
 
 export default UnassignedPage;

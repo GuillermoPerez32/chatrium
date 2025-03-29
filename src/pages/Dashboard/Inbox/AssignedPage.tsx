@@ -1,5 +1,7 @@
+import { InboxLayout } from "@/features/inbox";
+
 const AssignedPage = () => {
-  return <div></div>;
+  return <InboxLayout />;
 };
 
 export default AssignedPage;

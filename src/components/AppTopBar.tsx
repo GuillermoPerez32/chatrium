@@ -37,7 +37,7 @@ const AppTopBar = () => {
   const loggedInUser = { name: "John Doe", email: "john.doe@example.com" };
 
   return (
-    <div className="flex items-center bg-sidebar shadow-md border-b py-2 px-4 sticky top-0 z-10">
+    <div className="flex items-center bg-sidebar shadow-md border-b py-2 px-4 relative top-0 z-10">
       {/* Left section: Sidebar trigger, back arrow, and title */}
       <div className="flex items-center gap-4">
         <SidebarTrigger />

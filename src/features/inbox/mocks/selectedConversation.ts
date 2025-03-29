@@ -1,0 +1,82 @@
+const selectedConversation = {
+  id: "1",
+  name: "Embert Olarte",
+  tag: "ODT",
+  avatar: "/placeholder.svg?height=40&width=40",
+  avatarColor: "bg-blue-700",
+  avatarLetter: "E",
+  messages: [
+    {
+      id: "1",
+      text: "Waiting at the baggage claim area.",
+      sender: "them",
+      time: "7:27 PM",
+      type: "SMS",
+    },
+    {
+      id: "2",
+      text: "Did you contact the passenger?",
+      sender: "me",
+      time: "7:28 PM",
+      type: "SMS",
+    },
+    {
+      id: "3",
+      text: "Yes, I already did.",
+      sender: "them",
+      time: "7:28 PM",
+      type: "SMS",
+    },
+    {
+      id: "4",
+      text: "Did they respond?",
+      sender: "me",
+      time: "7:28 PM",
+      type: "SMS",
+    },
+    {
+      id: "5",
+      text: "Just got a reply now.",
+      sender: "them",
+      time: "7:29 PM",
+      type: "SMS",
+    },
+    {
+      id: "6",
+      text: "Understood.",
+      sender: "me",
+      time: "7:29 PM",
+      type: "SMS",
+    },
+    {
+      id: "7",
+      text: "The passenger is heading to the exit now.",
+      sender: "them",
+      time: "7:30 PM",
+      type: "SMS",
+    },
+    {
+      id: "8",
+      text: "Great, I'll meet them there.",
+      sender: "me",
+      time: "7:31 PM",
+      type: "SMS",
+    },
+    {
+      id: "9",
+      text: "They are wearing a red jacket.",
+      sender: "them",
+      time: "7:32 PM",
+      type: "SMS",
+    },
+    {
+      id: "10",
+      text: "Got it, thanks for the update.",
+      sender: "me",
+      time: "7:33 PM",
+      type: "SMS",
+    },
+  ],
+};
+
+export default selectedConversation;
