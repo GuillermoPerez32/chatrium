@@ -8,9 +8,14 @@ enum AppRoutes {
 
   DASHBOARD = "/dashboard/home",
 
+  //Inbox
+  INBOX = "/dashboard/inbox",
+  ALL_CONVERSATIONS = "/dashboard/inbox/all-conversations",
+  ASSIGNED = "/dashboard/inbox/assigned",
+  UNASSIGNED = "/dashboard/inbox/unassigned",
+
   //Settings
   PROFILE = "/dashboard/profile",
-  ACCOUNT = "/dashboard/account",
   BUSINESS_PROFILE = "/dashboard/business-profile",
   MANAGE_USERS = "/dashboard/manage-users",
   MANAGE_USERS__ALL_USERS = "/dashboard/manage-users/all-users",
@@ -21,7 +26,6 @@ enum AppRoutes {
   INTEGRATION = "/dashboard/integration",
   WEBSITE_TOOLKIT = "/dashboard/website-toolkit",
   QR_CODE = "/dashboard/qr-code",
-  CALLS = "/dashboard/calls",
 }
 
 export default AppRoutes;

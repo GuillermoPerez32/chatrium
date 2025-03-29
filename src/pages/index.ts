@@ -1,21 +1,23 @@
-import BillingPage from "./Dashboard/BillingPage";
-import BrandingPage from "./Dashboard/BrandingPage";
-import BusinessProfilePage from "./Dashboard/BusinessProfilePage";
-import CallsPage from "./Dashboard/CallsPage";
+import BillingPage from "./Dashboard/Settings/BillingPage";
+import BrandingPage from "./Dashboard/Settings/BrandingPage";
+import BusinessProfilePage from "./Dashboard/Settings/BusinessProfilePage";
 import DashboardOverviewPage from "./Dashboard/DashboardOverviewPage";
-import IntegrationPage from "./Dashboard/IntegrationPage";
-import AllUsersPage from "./Dashboard/ManageUsers/AllUsersPage";
-import AutoAssignPage from "./Dashboard/ManageUsers/AutoAssignPage";
-import TeamsPage from "./Dashboard/ManageUsers/TeamsPage";
-import ManageUsersPage from "./Dashboard/ManageUsersPage";
-import ProfilePage from "./Dashboard/ProfilePage";
-import QRCodePage from "./Dashboard/QRCodePage";
-import WebsiteToolkitPage from "./Dashboard/WebsiteToolkitPage";
+import IntegrationPage from "./Dashboard/Settings/IntegrationPage";
+import AllUsersPage from "./Dashboard/Settings/ManageUsers/AllUsersPage";
+import AutoAssignPage from "./Dashboard/Settings/ManageUsers/AutoAssignPage";
+import TeamsPage from "./Dashboard/Settings/ManageUsers/TeamsPage";
+import ManageUsersPage from "./Dashboard/Settings/ManageUsersPage";
+import ProfilePage from "./Dashboard/Settings/ProfilePage";
+import QRCodePage from "./Dashboard/Settings/QRCodePage";
+import WebsiteToolkitPage from "./Dashboard/Settings/WebsiteToolkitPage";
 import HomePage from "./HomePage";
-import LoginPage from "./LoginPage";
-import OTPVerificationPage from "./OTPVerificationPage";
-import RecoverPage from "./RecoverPage";
-import TrialRequestPage from "./TrialRequestPage";
+import LoginPage from "./Auth/LoginPage";
+import OTPVerificationPage from "./Auth/OTPVerificationPage";
+import RecoverPage from "./Auth/RecoverPage";
+import TrialRequestPage from "./Auth/TrialRequestPage";
+import AssignedPage from "./Dashboard/Inbox/AssignedPage";
+import UnassignedPage from "./Dashboard/Inbox/UnassignedPage";
+import AllConversationsPage from "./Dashboard/Inbox/AllConversationsPage";
 
 export {
   HomePage,
@@ -26,7 +28,6 @@ export {
   BillingPage,
   BrandingPage,
   BusinessProfilePage,
-  CallsPage,
   IntegrationPage,
   ManageUsersPage,
   QRCodePage,
@@ -36,4 +37,7 @@ export {
   TeamsPage,
   TrialRequestPage,
   OTPVerificationPage,
+  AssignedPage,
+  UnassignedPage,
+  AllConversationsPage,
 };

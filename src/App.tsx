@@ -1,12 +1,13 @@
 import { BrowserRouter, Route, Routes } from "react-router";
 import { QueryClientProvider } from "@tanstack/react-query";
 import {
+  AllConversationsPage,
   AllUsersPage,
+  AssignedPage,
   AutoAssignPage,
   BillingPage,
   BrandingPage,
   BusinessProfilePage,
-  CallsPage,
   DashboardOverviewPage,
   HomePage,
   IntegrationPage,
@@ -17,13 +18,14 @@ import {
   QRCodePage,
   TeamsPage,
   TrialRequestPage,
+  UnassignedPage,
   WebsiteToolkitPage,
 } from "@/pages";
 import { useAuthStore } from "@/stores";
 import AppRoutes from "@/constants/appRoutes";
 import queryClient from "@/services/queryClient";
 import { Toaster } from "@/components/ui/sonner";
-import RecoverPage from "./pages/RecoverPage";
+import RecoverPage from "./pages/Auth/RecoverPage";
 import { AuthLayout, DashboardLayout } from "@/layouts";
 import { TooltipProvider } from "./components/ui/tooltip";
 
@@ -50,6 +52,18 @@ function App() {
                       path={AppRoutes.DASHBOARD}
                       element={<DashboardOverviewPage />}
                     />
+                    <Route
+                      path={AppRoutes.ALL_CONVERSATIONS}
+                      element={<AllConversationsPage />}
+                    />
+                    <Route
+                      path={AppRoutes.ASSIGNED}
+                      element={<AssignedPage />}
+                    />
+                    <Route
+                      path={AppRoutes.UNASSIGNED}
+                      element={<UnassignedPage />}
+                    />
                     <Route path={AppRoutes.PROFILE} element={<ProfilePage />} />
                     <Route path={AppRoutes.BILLING} element={<BillingPage />} />
                     <Route
@@ -60,7 +74,6 @@ function App() {
                       path={AppRoutes.BUSINESS_PROFILE}
                       element={<BusinessProfilePage />}
                     />
-                    <Route path={AppRoutes.CALLS} element={<CallsPage />} />
                     <Route
                       path={AppRoutes.INTEGRATION}
                       element={<IntegrationPage />}

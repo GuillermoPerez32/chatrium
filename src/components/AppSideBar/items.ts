@@ -13,6 +13,8 @@ import {
   Unplug,
   QrCode,
   KeySquare,
+  AtSign,
+  UserPlus,
 } from "lucide-react";
 import { ForwardRefExoticComponent, RefAttributes } from "react";
 
@@ -42,7 +44,23 @@ const items: Item[] = [
   {
     title: "Inbox",
     icon: MessageCircleMore,
-    items: [],
+    items: [
+      {
+        title: "All Conversations",
+        icon: UserPlus,
+        url: AppRoutes.ALL_CONVERSATIONS,
+      },
+      {
+        title: "Assigned to Me",
+        icon: UserPlus,
+        url: AppRoutes.ASSIGNED,
+      },
+      {
+        title: "Unassigned",
+        icon: AtSign,
+        url: AppRoutes.UNASSIGNED,
+      },
+    ],
   },
   {
     title: "Contacts",
