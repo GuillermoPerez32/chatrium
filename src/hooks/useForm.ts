@@ -32,7 +32,7 @@ const useForm = <TSchema extends ZodType<any, ZodTypeDef, any>>(
 
   return {
     formState: {
-      errors,
+      errors: errors as Partial<typeof allErrors>,
       ...formState,
     },
     ...form,
