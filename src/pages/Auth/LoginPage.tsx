@@ -1,6 +1,7 @@
 import FormLabel from "@/components/FormLabel";
 import FormMessage from "@/components/FormMessage";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AppRoutes } from "@/constants";
@@ -43,6 +44,7 @@ const LoginPage = () => {
 
   const {
     formState: { errors },
+    setError,
   } = form;
 
   function onSubmit({ email, password }: z.infer<typeof loginSchema>) {
@@ -61,9 +63,11 @@ const LoginPage = () => {
           toast.error("Invalid Credentials");
         }
       })
-      .catch((error) => {
+      .catch(() => {
         form.reset();
-        toast.error(error.message);
+        setError("password", {
+          message: t("signInError"),
+        });
       });
   }
 
@@ -101,7 +105,6 @@ const LoginPage = () => {
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
               name="email"
@@ -115,7 +118,6 @@ const LoginPage = () => {
                 </FormItem>
               )}
             />
-
             <FormField
               control={form.control}
               name="password"
@@ -146,13 +148,21 @@ const LoginPage = () => {
                 </FormItem>
               )}
             />
+            <div className="flex items-center gap-2">
+              <Checkbox id="remember" className="flex" />
+              <label
+                htmlFor="remember"
+                className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              >
+                Remember me
+              </label>
+            </div>
             <Link
               to={AppRoutes.RECOVER_PASSWORD}
               className="font-semibold text-primary-600 hover:text-primary-500 text-end"
             >
               {t("forgotPasswordMessage")}
             </Link>
-
             <Button
               type="submit"
               disabled={isPending}
