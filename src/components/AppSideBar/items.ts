@@ -23,6 +23,7 @@ interface Item {
   icon: ForwardRefExoticComponent<
     Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
   >;
+  url?: string;
   items?: SubItem[];
 }
 
@@ -35,6 +36,7 @@ const items: Item[] = [
     title: "Dashboard",
     icon: Home,
     items: [],
+    url: AppRoutes.DASHBOARD,
   },
   {
     title: "LeaderBoard",
@@ -44,6 +46,7 @@ const items: Item[] = [
   {
     title: "Inbox",
     icon: MessageCircleMore,
+    url: AppRoutes.ALL_CONVERSATIONS,
     items: [
       {
         title: "All Conversations",

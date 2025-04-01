@@ -16,12 +16,14 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import items from "./items";
-import { Link, useLocation } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const AppSidebar = () => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader>
@@ -50,6 +52,17 @@ const AppSidebar = () => {
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
                       <SidebarMenuButton
+                        onClick={() => {
+                          const targetUrl = item.url || item.items?.[0]?.url;
+                          if (
+                            targetUrl &&
+                            !item.items?.some((subItem) =>
+                              pathname.includes(subItem.url)
+                            )
+                          ) {
+                            navigate(targetUrl);
+                          }
+                        }}
                         className={cn({
                           "bg-primary-200 text-primary-950 hover:bg-primary-100":
                             item.items?.some((subItem) =>
@@ -59,7 +72,9 @@ const AppSidebar = () => {
                       >
                         <item.icon />
                         <span>{item.title}</span>
-                        <ChevronRight className="ml-auto" />
+                        {!!item.items?.length && (
+                          <ChevronRight className="ml-auto" />
+                        )}
                       </SidebarMenuButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
