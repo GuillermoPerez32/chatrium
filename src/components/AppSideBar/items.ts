@@ -72,7 +72,7 @@ const items: Item[] = [
     icon: Settings,
     items: [
       {
-        title: "Your Profile",
+        title: "Profile",
         icon: User,
         url: AppRoutes.PROFILE,
       },
