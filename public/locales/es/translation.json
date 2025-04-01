@@ -37,6 +37,7 @@
   "trialRequestError": "Se produjo un error al enviar su solicitud",
   "profilePictureAlt": "Foto de Perfil",
   "namePlaceholder": "Nombre",
+  "rolePlaceholder": "Rol",
   "save": "Guardar",
   "accountSettings": "Configuración de la cuenta",
   "notifications": "Notificaciones",

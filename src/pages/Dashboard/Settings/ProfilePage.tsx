@@ -32,6 +32,7 @@ export default function SettingsPage() {
   const [name, setName] = useState(user.name);
   const [email, setEmail] = useState(user.email);
   const [phone, setPhone] = useState(user.phone);
+  const [role, setRole] = useState(user.role);
 
   const handleSave = () => {
     setIsEditing(false);
@@ -80,9 +81,18 @@ export default function SettingsPage() {
                     )}
                   </Button>
                 </div>
-                <CardDescription className="text-xs text-gray-600 mt-1">
-                  {user.role} {/* Podrías traducir roles si es dinámico */}
-                </CardDescription>
+                {isEditing ? (
+                  <Input
+                    value={role}
+                    onChange={(e) => setRole(e.target.value)}
+                    className="text-sm h-8 border-gray-300 focus:ring-black focus:border-black mt-2"
+                    placeholder={t("rolePlaceholder")}
+                  />
+                ) : (
+                  <CardDescription className="text-xs text-gray-600 mt-1">
+                    {role}
+                  </CardDescription>
+                )}
               </div>
             </div>
           </CardHeader>
