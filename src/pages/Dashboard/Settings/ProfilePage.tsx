@@ -16,7 +16,7 @@ import { useTranslation } from "react-i18next";
 import UpdatePasswordForm from "@/features/profile/components/UpdatePasswordForm";
 
 export default function SettingsPage() {
-  const { t } = useTranslation(); // Hook para traducciones
+  const { t } = useTranslation();
 
   const user = {
     name: "John Doe",
@@ -30,12 +30,13 @@ export default function SettingsPage() {
   const [signatureText, setSignatureText] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(user.name);
+  const [role, setRole] = useState(user.role);
   const [email, setEmail] = useState(user.email);
   const [phone, setPhone] = useState(user.phone);
-  const [role, setRole] = useState(user.role);
 
   const handleSave = () => {
     setIsEditing(false);
+    console.log({ name, role, email, phone });
   };
 
   return (
@@ -60,7 +61,7 @@ export default function SettingsPage() {
                     <Input
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="text-sm h-8 border-gray-300 focus:ring-black focus:border-black"
+                      className="text-sm h-8 w-48 border-gray-300 focus:ring-black focus:border-black"
                       placeholder={t("namePlaceholder")}
                     />
                   ) : (
@@ -85,7 +86,7 @@ export default function SettingsPage() {
                   <Input
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
-                    className="text-sm h-8 border-gray-300 focus:ring-black focus:border-black mt-2"
+                    className="text-xs h-8 w-48 border-gray-300 focus:ring-black focus:border-black mt-1"
                     placeholder={t("rolePlaceholder")}
                   />
                 ) : (
@@ -96,41 +97,50 @@ export default function SettingsPage() {
               </div>
             </div>
           </CardHeader>
-          <CardContent className="p-4 space-y-2 flex items-center justify-center flex-col">
-            <div className="flex items-center space-x-2">
-              <Mail className="w-4 h-4 text-gray-600" />
-              {isEditing ? (
-                <Input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="text-sm h-8 border-gray-300 focus:ring-black focus:border-black"
-                  placeholder={t("email")}
-                />
-              ) : (
-                <p className="text-xs text-black truncate">{email}</p>
-              )}
-            </div>
-            <div className="flex items-center space-x-2">
-              <Phone className="w-4 h-4 text-gray-600" />
-              {isEditing ? (
-                <Input
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  className="text-sm h-8 border-gray-300 focus:ring-black focus:border-black"
-                  placeholder={t("phone")}
-                />
-              ) : (
-                <p className="text-xs text-black">{phone}</p>
-              )}
-            </div>
-            {isEditing && (
-              <Button
-                variant="default"
-                className="w-full h-8 text-sm mt-2 bg-black text-white hover:bg-gray-800"
-                onClick={handleSave}
-              >
-                {t("save")}
-              </Button>
+          <CardContent className="p-4 pt-0 space-y-2">
+            {isEditing ? (
+              <div className="flex flex-col items-center space-y-2">
+                <div className="flex items-center space-x-2 w-56">
+                  <Mail className="w-4 h-4 text-gray-600" />
+                  <Input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="text-sm h-8 w-48 border-gray-300 focus:ring-black focus:border-black"
+                    placeholder={t("email")}
+                  />
+                </div>
+                <div className="flex items-center space-x-2 w-56">
+                  <Phone className="w-4 h-4 text-gray-600" />
+                  <Input
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="text-sm h-8 w-48 border-gray-300 focus:ring-black focus:border-black"
+                    placeholder={t("phone")}
+                  />
+                </div>
+                <div className="w-56 border-t border-gray-200 my-2" />
+                <div className="flex items-center space-x-2 w-56">
+                  <div className="w-4 h-4" /> {/* Espacio para alinear con íconos */}
+                  <Button
+                    variant="default"
+                    className="h-8 w-48 text-sm bg-black text-white hover:bg-gray-800"
+                    onClick={handleSave}
+                  >
+                    {t("save")}
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col items-center space-y-2">
+                <div className="flex items-center space-x-2">
+                  <Mail className="w-4 h-4 text-gray-600" />
+                  <p className="text-xs text-black truncate">{email}</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Phone className="w-4 h-4 text-gray-600" />
+                  <p className="text-xs text-black">{phone}</p>
+                </div>
+              </div>
             )}
           </CardContent>
         </Card>
