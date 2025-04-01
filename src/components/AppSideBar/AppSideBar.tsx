@@ -9,6 +9,7 @@ import {
   SidebarMenuItem,
   SidebarMenuSub,
   SidebarMenuSubItem,
+  useSidebar,
 } from "@/components/ui/sidebar";
 import {
   Collapsible,
@@ -23,6 +24,7 @@ import { cn } from "@/lib/utils";
 const AppSidebar = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { toggleSidebar, open } = useSidebar();
 
   return (
     <Sidebar collapsible="icon">
@@ -63,6 +65,9 @@ const AppSidebar = () => {
 
                           if (targetUrl && !isActive) {
                             navigate(targetUrl);
+                            if (!open) {
+                              toggleSidebar();
+                            }
                           } else if (isActive) {
                             e.preventDefault();
                           }
