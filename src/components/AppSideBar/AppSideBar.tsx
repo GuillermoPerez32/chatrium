@@ -71,7 +71,7 @@ const AppSidebar = () => {
                           "bg-primary-200 text-primary-950 hover:bg-primary-100":
                             item.items?.some((subItem) =>
                               pathname.includes(subItem.url)
-                            ),
+                            ) || item.url === pathname,
                         })}
                       >
                         <item.icon />
