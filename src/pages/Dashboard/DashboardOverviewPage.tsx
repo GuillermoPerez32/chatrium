@@ -5,7 +5,7 @@ const HomePage = () => {
   const loggedInUser = { name: "John Doe", email: "john.doe@example.com" }; // Mock logged-in user data
 
   return (
-    <div className="min-h-screen bg-primary-50 flex flex-col">
+    <div className="min-h-screen flex flex-col">
       {/* Main content */}
       <main className="flex-1 p-6">
         <h2 className="text-2xl font-bold text-primary mb-6">

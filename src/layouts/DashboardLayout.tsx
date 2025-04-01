@@ -9,7 +9,7 @@ const DashboardLayout = () => {
       <AppSidebar />
       <main className="w-full h-screen">
         <AppTopBar />
-        <div className="bg-primary-50 size-full">
+        <div className="bg-background size-full">
           <Outlet />
         </div>
       </main>

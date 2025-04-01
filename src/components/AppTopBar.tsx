@@ -20,7 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTranslation } from "react-i18next";
-import { useState } from "react"; // Added for theme toggle state
+import { useTheme } from "@/hooks";
 
 const AppTopBar = () => {
   const { t } = useTranslation();
@@ -28,8 +28,7 @@ const AppTopBar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const [isDarkMode, setIsDarkMode] = useState(false); // State for theme toggle
-
+  const { theme, setTheme } = useTheme();
   const isSubRoute = pathname.split("/").length > 3;
 
   const title = pathname
@@ -42,8 +41,7 @@ const AppTopBar = () => {
 
   // Function to toggle theme
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    // Add logic here to apply the theme (e.g., updating CSS classes or a theme provider)
+    setTheme(theme === "light" ? "dark" : "light");
   };
 
   return (
@@ -105,7 +103,7 @@ const AppTopBar = () => {
             </DropdownMenuItem>
             {/* Theme toggle inside dropdown */}
             <DropdownMenuItem onClick={toggleTheme} className="cursor-pointer">
-              {isDarkMode ? (
+              {theme === "dark" ? (
                 <>
                   <Sun className="w-4 h-4 mr-2" />
                   <span>{t("lightMode")}</span>
