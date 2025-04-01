@@ -221,5 +221,7 @@
   "notificationsDescription": "View your notifications",
   "quickStats": "Quick Stats",
   "welcome": "Welcome, {{name}}!",
-  "quickStatsDescription": "View your quick stats"
+  "quickStatsDescription": "View your quick stats",
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode"
 }

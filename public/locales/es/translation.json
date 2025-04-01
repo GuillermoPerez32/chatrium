@@ -218,5 +218,7 @@
   "notificationsDescription": "Ver tus notificaciones",
   "quickStats": "Estadísticas rápidas",
   "welcome": "Bienvenido",
-  "quickStatsDescription": "Estadísticas rápidas de tu cuenta"
+  "quickStatsDescription": "Estadísticas rápidas de tu cuenta",
+  "lightMode": "Modo claro",
+  "darkMode": "Modo oscuro"
 }

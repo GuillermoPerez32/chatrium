@@ -5,25 +5,30 @@ import {
   MessageSquare,
   Search,
   User,
+  Sun, // Added for light mode
+  Moon, // Added for dark mode
 } from "lucide-react";
-import { SidebarTrigger } from "./ui/sidebar"; // Assuming this is from your UI library
+import { SidebarTrigger } from "./ui/sidebar";
 import { useAuthStore } from "@/stores";
 import { useLocation, useNavigate } from "react-router";
-import { Button } from "@/components/ui/button"; // Assuming you have this from Shadcn UI
-import { Input } from "@/components/ui/input"; // Assuming you have this from Shadcn UI
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"; // Assuming you have these from Shadcn UI
+} from "@/components/ui/dropdown-menu";
 import { useTranslation } from "react-i18next";
+import { useState } from "react"; // Added for theme toggle state
 
 const AppTopBar = () => {
-  const { t } = useTranslation(); // Hook for translations
+  const { t } = useTranslation();
   const { setUser } = useAuthStore();
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
+  const [isDarkMode, setIsDarkMode] = useState(false); // State for theme toggle
 
   const isSubRoute = pathname.split("/").length > 3;
 
@@ -33,8 +38,13 @@ const AppTopBar = () => {
     ?.replace(/-/g, " ")
     ?.replace(/\b\w/g, (c) => c.toUpperCase());
 
-  // Mock logged-in user data (replace with real data from your auth store if available)
   const loggedInUser = { name: "John Doe", email: "john.doe@example.com" };
+
+  // Function to toggle theme
+  const toggleTheme = () => {
+    setIsDarkMode(!isDarkMode);
+    // Add logic here to apply the theme (e.g., updating CSS classes or a theme provider)
+  };
 
   return (
     <div className="flex items-center bg-sidebar shadow-md border-b py-2 px-4 sticky top-0 z-10">
@@ -93,12 +103,21 @@ const AppTopBar = () => {
                 {loggedInUser.email}
               </span>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>{t("profile")}</span>
+            {/* Theme toggle inside dropdown */}
+            <DropdownMenuItem onClick={toggleTheme} className="cursor-pointer">
+              {isDarkMode ? (
+                <>
+                  <Sun className="w-4 h-4 mr-2" />
+                  <span>{t("lightMode")}</span>
+                </>
+              ) : (
+                <>
+                  <Moon className="w-4 h-4 mr-2" />
+                  <span>{t("darkMode")}</span>
+                </>
+              )}
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <span>{t("settings")}</span>
-            </DropdownMenuItem>
+            {/* Logout */}
             <DropdownMenuItem
               className="text-red-600 cursor-pointer"
               onClick={() => {
