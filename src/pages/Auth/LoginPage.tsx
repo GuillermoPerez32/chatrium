@@ -20,9 +20,12 @@ const loginSchema = z.object({
     .string()
     .max(20)
     .regex(
-      /^[a-zA-Z0-9\-_]+$/,
-      "Only must contain letters, numbers, hyphens, and underscores"
-    ),
+      /^[a-zA-Z0-9 _-]+$/,
+      "Only letters, numbers, hyphens, and underscores allowed"
+    )
+    .refine((value) => !/^\s/.test(value), {
+      message: "Company name cannot start with a space",
+    }),
   email: z.string().email(),
   password: z.string(),
 });
@@ -95,10 +98,17 @@ const LoginPage = () => {
                   <FormLabel>{t("companyName")}</FormLabel>
                   <FormControl>
                     <Input
+                      {...field}
                       maxLength={20}
                       max={20}
                       placeholder={t("companyName")}
-                      {...field}
+                      onChange={(event) => {
+                        const value = event.target.value.replace(
+                          /^\s+|[^a-zA-Z0-9 _-]/g,
+                          ""
+                        );
+                        field.onChange(value);
+                      }}
                     />
                   </FormControl>
                   <FormMessage>{errors.company?.message}</FormMessage>
