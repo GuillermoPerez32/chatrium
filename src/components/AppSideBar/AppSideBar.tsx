@@ -47,20 +47,24 @@ const AppSidebar = () => {
                     pathname.includes(subItem.url)
                   )}
                   key={item.title}
+                  open={item.items?.some((subItem) =>
+                    pathname.includes(subItem.url)
+                  )}
                   className={`${item.title}/collapsible`}
                 >
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
                       <SidebarMenuButton
-                        onClick={() => {
+                        onClick={(e) => {
                           const targetUrl = item.url || item.items?.[0]?.url;
-                          if (
-                            targetUrl &&
-                            !item.items?.some((subItem) =>
-                              pathname.includes(subItem.url)
-                            )
-                          ) {
+                          const isActive = item.items?.some((subItem) =>
+                            pathname.includes(subItem.url)
+                          );
+
+                          if (targetUrl && !isActive) {
                             navigate(targetUrl);
+                          } else if (isActive) {
+                            e.preventDefault();
                           }
                         }}
                         className={cn({
