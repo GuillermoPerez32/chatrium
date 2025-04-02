@@ -40,7 +40,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen w-full p-4">
+    <div className="flex justify-center items-center min-h-screen w-full p-4 bg-white">
       <div className="w-full max-w-2xl">
         {/* Perfil */}
         <Card className="mb-6 bg-white">
@@ -100,30 +100,30 @@ export default function SettingsPage() {
           <CardContent className="p-4 pt-0 space-y-2">
             {isEditing ? (
               <div className="flex flex-col items-center space-y-2">
-                <div className="flex items-center space-x-2 w-56">
+                <div className="flex items-center space-x-2 w-full">
                   <Mail className="w-4 h-4 text-gray-600" />
                   <Input
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="text-sm h-8 w-48 border-gray-300 focus:ring-black focus:border-black"
+                    className="text-sm h-8 w-full border-gray-300 focus:ring-black focus:border-black"
                     placeholder={t("email")}
                   />
                 </div>
-                <div className="flex items-center space-x-2 w-56">
+                <div className="flex items-center space-x-2 w-full">
                   <Phone className="w-4 h-4 text-gray-600" />
                   <Input
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="text-sm h-8 w-48 border-gray-300 focus:ring-black focus:border-black"
+                    className="text-sm h-8 w-full border-gray-300 focus:ring-black focus:border-black"
                     placeholder={t("phone")}
                   />
                 </div>
-                <div className="w-56 border-t border-gray-200 my-2" />
-                <div className="flex items-center space-x-2 w-56">
+                <div className="w-full border-t border-gray-200 my-2" />
+                <div className="flex items-center space-x-2 w-full">
                   <div className="w-4 h-4" /> {/* Espacio para alinear con íconos */}
                   <Button
                     variant="default"
-                    className="h-8 w-48 text-sm bg-black text-white hover:bg-gray-800"
+                    className="h-8 w-full text-sm bg-black text-white hover:bg-gray-800"
                     onClick={handleSave}
                   >
                     {t("save")}
@@ -152,7 +152,7 @@ export default function SettingsPage() {
               {t("accountSettings")}
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-4 space-y-2">
+          <CardContent className="p-4 space-y-4">
             {/* Notificaciones */}
             <DropDown
               title={t("notifications")}
