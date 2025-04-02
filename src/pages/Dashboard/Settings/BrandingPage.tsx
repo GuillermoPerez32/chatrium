@@ -19,9 +19,14 @@ const BrandingPage = () => {
       <div className="flex items-center gap-4">
         <div>
           <p className="font-bold">{t("preferredDashboardName")}</p>
-          <p className="text-xs text-gray-600">{t("preferredDashboardNameSubtitle")}</p>
+          <p className="text-xs text-gray-600">
+            {t("preferredDashboardNameSubtitle")}
+          </p>
         </div>
-        <Input className="w-5xs" placeholder={t("preferredDashboardNamePlaceholder")} />
+        <Input
+          className="w-5xs"
+          placeholder={t("preferredDashboardNamePlaceholder")}
+        />
       </div>
 
       <p className="font-bold mt-8">{t("emailAndLandingPageHeaders")}</p>

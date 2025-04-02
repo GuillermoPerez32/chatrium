@@ -25,7 +25,9 @@ const CustomTimePicker: React.FC<{
   const [isOpen, setIsOpen] = useState(false);
 
   // Generar opciones de horas y minutos
-  const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, "0"));
+  const hours = Array.from({ length: 24 }, (_, i) =>
+    String(i).padStart(2, "0")
+  );
   const minutes = ["00", "15", "30", "45"]; // Intervalos de 15 minutos
 
   const handleSelect = (hour: string, minute: string) => {
@@ -34,7 +36,7 @@ const CustomTimePicker: React.FC<{
     setIsOpen(false);
   };
 
-  return ( 
+  return (
     <div className="relative">
       <input
         type="text"
@@ -207,7 +209,9 @@ const BusinessProfilePage = () => {
                       </Label>
                       <CustomTimePicker
                         value={businessHours[day].open}
-                        onChange={(value) => handleTimeChange(day, "open", value)}
+                        onChange={(value) =>
+                          handleTimeChange(day, "open", value)
+                        }
                       />
                     </div>
                     <div className="w-1/2">
@@ -219,7 +223,9 @@ const BusinessProfilePage = () => {
                       </Label>
                       <CustomTimePicker
                         value={businessHours[day].close}
-                        onChange={(value) => handleTimeChange(day, "close", value)}
+                        onChange={(value) =>
+                          handleTimeChange(day, "close", value)
+                        }
                       />
                     </div>
                   </div>

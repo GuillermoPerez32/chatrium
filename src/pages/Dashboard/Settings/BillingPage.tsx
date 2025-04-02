@@ -102,7 +102,10 @@ const BillingPage = () => {
                 <span className="text-sm">{invoice.date}</span>
                 <span className="text-sm">{invoice.amount}</span>
                 <div className="text-sm bg-green-200 rounded-full px-2 py-1 font-medium h-min flex items-center justify-center">
-                  {t(statusTranslations[invoice.status.toLowerCase()] || "invoiceStatus.done")}
+                  {t(
+                    statusTranslations[invoice.status.toLowerCase()] ||
+                      "invoiceStatus.done"
+                  )}
                 </div>
                 <span className="text-sm">{invoice.description}</span>
               </Fragment>
