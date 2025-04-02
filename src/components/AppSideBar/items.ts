@@ -68,7 +68,7 @@ const items: Item[] = [
   {
     title: "Contacts",
     icon: UsersIcon,
-    items: [],
+    url: AppRoutes.CONTACTS,
   },
   {
     title: "Settings",

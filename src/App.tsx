@@ -12,6 +12,7 @@ import {
   HomePage,
   IntegrationPage,
   LoginPage,
+  ContactsPage,
   ManageUsersPage,
   OTPVerificationPage,
   ProfilePage,
@@ -65,6 +66,10 @@ function App() {
                       <Route
                         path={AppRoutes.UNASSIGNED}
                         element={<UnassignedPage />}
+                      />
+                      <Route
+                        path={AppRoutes.CONTACTS}
+                        element={<ContactsPage />}
                       />
                       <Route
                         path={AppRoutes.PROFILE}

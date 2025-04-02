@@ -18,6 +18,7 @@ import TrialRequestPage from "./Auth/TrialRequestPage";
 import AssignedPage from "./Dashboard/Inbox/AssignedPage";
 import UnassignedPage from "./Dashboard/Inbox/UnassignedPage";
 import AllConversationsPage from "./Dashboard/Inbox/AllConversationsPage";
+import ContactsPage from "./Dashboard/Contacts/ContactsPage";
 
 export {
   HomePage,
@@ -40,4 +41,5 @@ export {
   AssignedPage,
   UnassignedPage,
   AllConversationsPage,
+  ContactsPage,
 };

@@ -226,5 +226,22 @@
   "lightMode": "Light Mode",
   "darkMode": "Dark Mode",
   "openTime": "Open Time",
-  "closeTime": "Close Time"
+  "closeTime": "Close Time",
+  "addNewContact": "Add New Contact",
+  "name": "Name",
+  "addContact": "Add Contact",
+  "contactList": "Contact List",
+  "delete": "Delete",
+  "enterName": "Enter your name",
+  "enterEmail": "Enter your email",
+  "enterPhone": "Enter your phone number",
+  "noContacts": "No contacts available",
+  "deleteContact": "Delete Contact",
+  "photo": "Photo",
+  "uploadPhoto": "Upload Photo",
+  "contacts": "Contacts",
+  "searchContacts": "Search Contacts",
+  "importCSV": "Import CSV",
+  "editContact": "Edit Contact",
+  "cancel": "Cancel"
 }

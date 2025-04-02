@@ -14,6 +14,9 @@ enum AppRoutes {
   ASSIGNED = "/dashboard/inbox/assigned-to-me",
   UNASSIGNED = "/dashboard/inbox/unassigned",
 
+  //Contacts
+  CONTACTS = "/dashboard/contacts",
+
   //Settings
   PROFILE = "/dashboard/profile",
   BUSINESS_PROFILE = "/dashboard/business-profile",
