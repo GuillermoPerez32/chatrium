@@ -224,5 +224,7 @@
   "welcome": "Welcome, {{name}}!",
   "quickStatsDescription": "View your quick stats",
   "lightMode": "Light Mode",
-  "darkMode": "Dark Mode"
+  "darkMode": "Dark Mode",
+  "openTime": "Open Time",
+  "closeTime": "Close Time"
 }

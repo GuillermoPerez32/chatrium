@@ -221,5 +221,7 @@
   "welcome": "Bienvenido",
   "quickStatsDescription": "Estadísticas rápidas de tu cuenta",
   "lightMode": "Modo claro",
-  "darkMode": "Modo oscuro"
+  "darkMode": "Modo oscuro",
+  "openTime": "Hora de apertura",
+  "closeTime": "Hora de cierre"
 }

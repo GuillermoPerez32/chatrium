@@ -1,29 +1,8 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import DropDown from "@/components/DropDown";
-
-// Generate predefined time range options
-const generateTimeRangeOptions = () => {
-  const ranges = [
-    "06:00 - 10:00",
-    "07:00 - 11:00",
-    "08:00 - 12:00",
-    "09:00 - 13:00",
-    "10:00 - 14:00",
-    "11:00 - 15:00",
-    "12:00 - 16:00",
-    "13:00 - 17:00",
-    "14:00 - 18:00",
-    "15:00 - 19:00",
-    "16:00 - 20:00",
-    "17:00 - 21:00",
-    "18:00 - 22:00",
-  ];
-  return ranges;
-};
 
 type DayOfWeek =
   | "monday"
@@ -35,22 +14,69 @@ type DayOfWeek =
   | "sunday";
 
 type BusinessHours = {
-  [key in DayOfWeek]: string; // Each day stores a single string representing the time range
+  [key in DayOfWeek]: { open: string; close: string }; // Horarios como HH:MM
+};
+
+// Componente personalizado para seleccionar tiempo
+const CustomTimePicker: React.FC<{
+  value: string;
+  onChange: (value: string) => void;
+}> = ({ value, onChange }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  // Generar opciones de horas y minutos
+  const hours = Array.from({ length: 24 }, (_, i) => String(i).padStart(2, "0"));
+  const minutes = ["00", "15", "30", "45"]; // Intervalos de 15 minutos
+
+  const handleSelect = (hour: string, minute: string) => {
+    const newTime = `${hour}:${minute}`;
+    onChange(newTime);
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="relative">
+      <input
+        type="text"
+        value={value}
+        onClick={() => setIsOpen(!isOpen)}
+        readOnly
+        className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm cursor-pointer"
+        placeholder="HH:MM"
+      />
+      {isOpen && (
+        <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
+          <div className="grid grid-cols-4 gap-1 p-2">
+            {hours.map((hour) =>
+              minutes.map((minute) => (
+                <button
+                  key={`${hour}:${minute}`}
+                  onClick={() => handleSelect(hour, minute)}
+                  className="p-1 text-sm hover:bg-indigo-100 rounded"
+                >
+                  {`${hour}:${minute}`}
+                </button>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 const BusinessProfilePage = () => {
-  const { t } = useTranslation(); // Hook for translations
-  const [is24Hours, setIs24Hours] = useState(false); // State for 24hrs/7 toggle
+  const { t } = useTranslation();
+  const [is24Hours, setIs24Hours] = useState(false);
   const [businessHours, setBusinessHours] = useState<BusinessHours>({
-    monday: "",
-    tuesday: "",
-    wednesday: "",
-    thursday: "",
-    friday: "",
-    saturday: "",
-    sunday: "",
+    monday: { open: "09:00", close: "17:00" },
+    tuesday: { open: "09:00", close: "17:00" },
+    wednesday: { open: "09:00", close: "17:00" },
+    thursday: { open: "09:00", close: "17:00" },
+    friday: { open: "09:00", close: "17:00" },
+    saturday: { open: "", close: "" },
+    sunday: { open: "", close: "" },
   });
-  const timeRangeOptions = generateTimeRangeOptions(); // Predefined time range options
 
   const days: DayOfWeek[] = [
     "monday",
@@ -62,59 +88,82 @@ const BusinessProfilePage = () => {
     "sunday",
   ];
 
-  // Handle changes in time range selectors
-  const handleRangeChange = (day: DayOfWeek, value: string) => {
+  // Manejar cambios en los pickers de tiempo
+  const handleTimeChange = (
+    day: DayOfWeek,
+    type: "open" | "close",
+    value: string
+  ) => {
     setBusinessHours((prev) => ({
       ...prev,
-      [day]: value,
+      [day]: {
+        ...prev[day],
+        [type]: value,
+      },
     }));
   };
 
   return (
-    <div className="p-8">
-      <div className="flex flex-col gap-4">
+    <div className="p-8 max-w-4xl mx-auto bg-white shadow-md rounded-lg">
+      <div className="flex flex-col gap-6">
         <DropDown
           title={t("businessInformation")}
           subtitle={t("businessInformationSubtitle")}
         >
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="business-name"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("businessName")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="business-name"
                 type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("businessNamePlaceholder")}
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="address"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("address")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="address"
                 type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("addressPlaceholder")}
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="phone-number"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("phoneNumber")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="phone-number"
                 type="text"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("phoneNumberPlaceholder")}
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="email"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("email")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="email"
                 type="email"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("emailPlaceholder")}
               />
             </div>
@@ -126,35 +175,54 @@ const BusinessProfilePage = () => {
           subtitle={t("businessHoursSubtitle")}
         >
           <div className="flex justify-between items-center mb-4">
-            <span /> {/* Empty span to push the Switch to the right */}
+            <span />
             <div className="flex items-center gap-2">
               <Switch
                 id="24hours-switch"
                 checked={is24Hours}
                 onCheckedChange={setIs24Hours}
               />
-              <Label htmlFor="24hours-switch">{t("24hours7days")}</Label>
+              <Label
+                htmlFor="24hours-switch"
+                className="text-sm font-medium text-gray-700"
+              >
+                {t("24hours7days")}
+              </Label>
             </div>
           </div>
           {!is24Hours && (
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {days.map((day) => (
-                <div key={day}>
-                  <label className="block text-xs font-medium text-gray-700">
+                <div key={day} className="space-y-2">
+                  <Label className="text-sm font-medium text-gray-700">
                     {t(day)}
-                  </label>
-                  <select
-                    value={businessHours[day]}
-                    onChange={(e) => handleRangeChange(day, e.target.value)}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
-                  >
-                    <option value="">{t("selectTimeRange")}</option>
-                    {timeRangeOptions.map((range) => (
-                      <option key={`${day}-${range}`} value={range}>
-                        {range}
-                      </option>
-                    ))}
-                  </select>
+                  </Label>
+                  <div className="flex gap-2">
+                    <div className="w-1/2">
+                      <Label
+                        htmlFor={`${day}-open`}
+                        className="text-xs font-medium text-gray-600"
+                      >
+                        {t("openTime")}
+                      </Label>
+                      <CustomTimePicker
+                        value={businessHours[day].open}
+                        onChange={(value) => handleTimeChange(day, "open", value)}
+                      />
+                    </div>
+                    <div className="w-1/2">
+                      <Label
+                        htmlFor={`${day}-close`}
+                        className="text-xs font-medium text-gray-600"
+                      >
+                        {t("closeTime")}
+                      </Label>
+                      <CustomTimePicker
+                        value={businessHours[day].close}
+                        onChange={(value) => handleTimeChange(day, "close", value)}
+                      />
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -165,31 +233,43 @@ const BusinessProfilePage = () => {
           title={t("automatedMessages")}
           subtitle={t("automatedMessagesSubtitle")}
         >
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="open-message"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("openMessage")}
-              </label>
+              </Label>
               <textarea
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                id="open-message"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("openMessagePlaceholder")}
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="closed-message"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("closedMessage")}
-              </label>
+              </Label>
               <textarea
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                id="closed-message"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("closedMessagePlaceholder")}
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="after-hours-message"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("afterHoursMessage")}
-              </label>
+              </Label>
               <textarea
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                id="after-hours-message"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("afterHoursMessagePlaceholder")}
               />
             </div>
@@ -200,14 +280,18 @@ const BusinessProfilePage = () => {
           title={t("googleMyBusinessListing")}
           subtitle={t("googleMyBusinessListingSubtitle")}
         >
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="google-my-business-url"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("googleMyBusinessUrl")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="google-my-business-url"
                 type="url"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("googleMyBusinessUrlPlaceholder")}
               />
             </div>
@@ -215,14 +299,18 @@ const BusinessProfilePage = () => {
         </DropDown>
 
         <DropDown title={t("chatrium")} subtitle={t("chatriumSubtitle")}>
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="chatrium-profile-url"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("chatriumProfileUrl")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="chatrium-profile-url"
                 type="url"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("chatriumProfileUrlPlaceholder")}
               />
             </div>
@@ -233,54 +321,74 @@ const BusinessProfilePage = () => {
           title={t("socialProfile")}
           subtitle={t("socialProfileSubtitle")}
         >
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="instagram-url"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("instagramUrl")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="instagram-url"
                 type="url"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("instagramUrlPlaceholder")}
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="twitter-url"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("twitterUrl")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="twitter-url"
                 type="url"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("twitterUrlPlaceholder")}
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="linkedin-url"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("linkedinUrl")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="linkedin-url"
                 type="url"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("linkedinUrlPlaceholder")}
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="facebook-url"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("facebookUrl")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="facebook-url"
                 type="url"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("facebookUrlPlaceholder")}
               />
             </div>
             <div>
-              <label className="block text-xs font-medium text-gray-700">
+              <Label
+                htmlFor="tiktok-url"
+                className="text-sm font-medium text-gray-700"
+              >
                 {t("tiktokUrl")}
-              </label>
-              <Input
+              </Label>
+              <input
+                id="tiktok-url"
                 type="url"
-                className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-xs"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("tiktokUrlPlaceholder")}
               />
             </div>
