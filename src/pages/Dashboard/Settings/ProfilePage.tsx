@@ -1,29 +1,40 @@
-import { useState } from 'react';
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Pencil } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export default function SettingsPage() {
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState('John Doe');
-  const [role, setRole] = useState('Software Engineer');
-  const [email, setEmail] = useState('john.doe@example.com');
-  const [phone, setPhone] = useState('123-456-7890');
+  const [name, setName] = useState("John Doe");
+  const [role, setRole] = useState("Software Engineer");
+  const [email, setEmail] = useState("john.doe@example.com");
+  const [phone, setPhone] = useState("123-456-7890");
   const [signatureEnabled, setSignatureEnabled] = useState(true);
   const [smsEnabled, setSmsEnabled] = useState(false);
-  const [signatureText, setSignatureText] = useState('Best Regards,\nJohn Doe');
+  const [signatureText, setSignatureText] = useState("Best Regards,\nJohn Doe");
 
   const toggleEdit = () => {
     setIsEditing(!isEditing);
   };
 
   const saveChanges = () => {
-    console.log('Updated Profile Information:', { name, role, email, phone });
+    console.log("Updated Profile Information:", { name, role, email, phone });
     setIsEditing(false);
   };
 
@@ -49,7 +60,7 @@ export default function SettingsPage() {
                       <CardDescription>{role}</CardDescription>
                     </div>
                     <Tooltip>
-                      <TooltipTrigger asChild>
+                      <TooltipTrigger>
                         <Button variant="outline" onClick={toggleEdit}>
                           <Pencil className="mr-2" />
                           Edit
@@ -64,9 +75,11 @@ export default function SettingsPage() {
                 {isEditing && (
                   <div className="mt-4 space-y-2 flex flex-col items-center">
                     <div className="flex flex-col space-y-1">
-                      <Label htmlFor="name" className="text-center">Name</Label>
+                      <Label htmlFor="name" className="text-center">
+                        Name
+                      </Label>
                       <Tooltip>
-                        <TooltipTrigger asChild>
+                        <TooltipTrigger>
                           <Input
                             id="name"
                             value={name}
@@ -80,9 +93,11 @@ export default function SettingsPage() {
                       </Tooltip>
                     </div>
                     <div className="flex flex-col space-y-1">
-                      <Label htmlFor="role" className="text-center">Role</Label>
+                      <Label htmlFor="role" className="text-center">
+                        Role
+                      </Label>
                       <Tooltip>
-                        <TooltipTrigger asChild>
+                        <TooltipTrigger>
                           <Input
                             id="role"
                             value={role}
@@ -96,9 +111,11 @@ export default function SettingsPage() {
                       </Tooltip>
                     </div>
                     <div className="flex flex-col space-y-1">
-                      <Label htmlFor="email" className="text-center">Email</Label>
+                      <Label htmlFor="email" className="text-center">
+                        Email
+                      </Label>
                       <Tooltip>
-                        <TooltipTrigger asChild>
+                        <TooltipTrigger>
                           <Input
                             id="email"
                             value={email}
@@ -112,9 +129,11 @@ export default function SettingsPage() {
                       </Tooltip>
                     </div>
                     <div className="flex flex-col space-y-1">
-                      <Label htmlFor="phone" className="text-center">Phone</Label>
+                      <Label htmlFor="phone" className="text-center">
+                        Phone
+                      </Label>
                       <Tooltip>
-                        <TooltipTrigger asChild>
+                        <TooltipTrigger>
                           <Input
                             id="phone"
                             value={phone}
@@ -128,11 +147,8 @@ export default function SettingsPage() {
                       </Tooltip>
                     </div>
                     <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          onClick={saveChanges}
-                          className="w-64"
-                        >
+                      <TooltipTrigger>
+                        <Button onClick={saveChanges} className="w-64">
                           Save
                         </Button>
                       </TooltipTrigger>
@@ -149,14 +165,18 @@ export default function SettingsPage() {
             <Card>
               <CardHeader>
                 <CardTitle>SMS Notifications</CardTitle>
-                <CardDescription>Manage your SMS notification preferences.</CardDescription>
+                <CardDescription>
+                  Manage your SMS notification preferences.
+                </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <Label htmlFor="sms-enabled">Enable SMS Notifications</Label>
+                    <Label htmlFor="sms-enabled">
+                      Enable SMS Notifications
+                    </Label>
                     <Tooltip>
-                      <TooltipTrigger asChild>
+                      <TooltipTrigger>
                         <Switch
                           id="sms-enabled"
                           checked={smsEnabled}
@@ -184,7 +204,7 @@ export default function SettingsPage() {
                   <div className="flex items-center justify-between">
                     <Label htmlFor="signature-enabled">Enable Signature</Label>
                     <Tooltip>
-                      <TooltipTrigger asChild>
+                      <TooltipTrigger>
                         <Switch
                           id="signature-enabled"
                           checked={signatureEnabled}
@@ -201,7 +221,7 @@ export default function SettingsPage() {
                     <div className="flex flex-col space-y-1 mt-2">
                       <Label htmlFor="signature-text">Signature Text</Label>
                       <Tooltip>
-                        <TooltipTrigger asChild>
+                        <TooltipTrigger>
                           <Input
                             id="signature-text"
                             value={signatureText}
