@@ -15,7 +15,7 @@ import {
 function ContactsPage() {
   const { t } = useTranslation();
 
-  const [contacts, setContacts] = useState<
+  const [dataTable, setDataTable] = useState<
     {
       id: number;
       name: string;
@@ -67,6 +67,7 @@ function ContactsPage() {
   });
 
   const [searchTerm, setSearchTerm] = useState("");
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = e.target;
@@ -97,13 +98,14 @@ function ContactsPage() {
   const addContact = () => {
     if (newContact.name && newContact.email && newContact.phone) {
       const newId =
-        contacts.length > 0 ? contacts[contacts.length - 1].id + 1 : 1;
-      setContacts([...contacts, { ...newContact, id: newId }]);
+        dataTable.length > 0 ? dataTable[dataTable.length - 1].id + 1 : 1;
+      setDataTable([...dataTable, { ...newContact, id: newId }]);
       setNewContact({ name: "", email: "", phone: "", photo: null });
+      setIsAddModalOpen(false);
     }
   };
 
-  const startEditContact = (contact: (typeof contacts)[0]) => {
+  const startEditContact = (contact: (typeof dataTable)[0]) => {
     setEditContact({ ...contact });
   };
 
@@ -114,8 +116,8 @@ function ContactsPage() {
       editContact.email &&
       editContact.phone
     ) {
-      setContacts(
-        contacts.map((c) =>
+      setDataTable(
+        dataTable.map((c) =>
           c.id === editContact.id ? { ...editContact, id: c.id } : c
         )
       );
@@ -124,7 +126,7 @@ function ContactsPage() {
   };
 
   const deleteContact = (id: number) => {
-    setContacts(contacts.filter((contact) => contact.id !== id));
+    setDataTable(dataTable.filter((contact) => contact.id !== id));
   };
 
   const handleCSVImport = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -137,20 +139,20 @@ function ContactsPage() {
         const importedContacts = lines
           .slice(1)
           .map((line, index) => ({
-            id: contacts.length + index + 1,
+            id: dataTable.length + index + 1,
             name: line[0]?.trim() || "",
             email: line[1]?.trim() || "",
             phone: line[2]?.trim() || "",
             photo: null,
           }))
           .filter((contact) => contact.name && contact.email && contact.phone);
-        setContacts([...contacts, ...importedContacts]);
+        setDataTable([...dataTable, ...importedContacts]);
       };
       reader.readAsText(file);
     }
   };
 
-  const filteredContacts = contacts.filter(
+  const filteredDataTable = dataTable.filter(
     (contact) =>
       contact.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       contact.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -161,7 +163,7 @@ function ContactsPage() {
     <TooltipProvider>
       <div className="min-h-screen bg-gray-100 p-6">
         <div className="max-w-4xl mx-auto">
-          {/* Header con búsqueda y botón de importar */}
+          {/* Header con búsqueda y botones */}
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-3xl font-bold text-gray-800">
               {t("contacts")}
@@ -191,83 +193,16 @@ function ContactsPage() {
                   />
                 </label>
               </Button>
+              <Button
+                onClick={() => setIsAddModalOpen(true)}
+                className="bg-primary-600 hover:bg-primary-700 text-white"
+              >
+                {t("addContact")}
+              </Button>
             </div>
           </div>
 
-          {/* Formulario para agregar contacto */}
-          <Card className="mb-6 shadow-lg rounded-lg">
-            <CardHeader className="bg-primary-600 text-white rounded-t-lg">
-              <CardTitle className="text-xl font-semibold">
-                {t("addNewContact")}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="p-6 bg-primary-50">
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-4">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-primary-900">
-                    {t("name")}
-                  </Label>
-                  <Input
-                    id="name"
-                    name="name"
-                    value={newContact.name}
-                    onChange={handleInputChange}
-                    placeholder={t("enterName")}
-                    className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-primary-900">
-                    {t("email")}
-                  </Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    value={newContact.email}
-                    onChange={handleInputChange}
-                    placeholder={t("enterEmail")}
-                    className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-primary-900">
-                    {t("phone")}
-                  </Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    value={newContact.phone}
-                    onChange={handleInputChange}
-                    placeholder={t("enterPhone")}
-                    className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="photo" className="text-primary-900">
-                    {t("photo")}
-                  </Label>
-                  <Input
-                    id="photo"
-                    name="photo"
-                    type="file"
-                    accept="image/*"
-                    onChange={handleInputChange}
-                    className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
-                  />
-                </div>
-              </div>
-              <div className="mt-4 flex justify-center">
-                <Button
-                  onClick={addContact}
-                  className="bg-primary-600 hover:bg-primary-700 text-white"
-                >
-                  {t("addContact")}
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Lista de contactos */}
+          {/* Tabla de contactos */}
           <Card className="shadow-lg rounded-lg">
             <CardHeader className="bg-primary-100 border-b border-gray-200">
               <CardTitle className="text-xl font-semibold text-gray-800">
@@ -275,77 +210,174 @@ function ContactsPage() {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-6 bg-white">
-              {filteredContacts.length === 0 ? (
+              {filteredDataTable.length === 0 ? (
                 <p className="text-primary-600 text-center">
-                  {t("noContacts")}
+                  {t("noDataTable")}
                 </p>
               ) : (
-                <div className="space-y-4">
-                  {filteredContacts.map((contact) => (
-                    <div
-                      key={contact.id}
-                      className="flex items-center justify-between p-4 bg-primary-50 border border-gray-200 rounded-lg hover:bg-primary-100 transition-colors"
-                    >
-                      <div className="flex items-center space-x-4">
-                        {contact.photo ? (
-                          <img
-                            src={contact.photo}
-                            alt={contact.name}
-                            className="w-10 h-10 rounded-full object-cover"
-                          />
-                        ) : (
-                          <div className="w-10 h-10 rounded-full bg-primary-200 flex items-center justify-center text-primary-700 font-semibold">
-                            {contact.name.charAt(0)}
-                          </div>
-                        )}
-                        <div>
-                          <p className="text-lg font-semibold text-primary-900">
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left border-collapse">
+                    <thead>
+                      <tr className="bg-primary-200 text-primary-900">
+                        <th className="p-3 font-semibold">{t("photo")}</th>
+                        <th className="p-3 font-semibold">{t("name")}</th>
+                        <th className="p-3 font-semibold">{t("email")}</th>
+                        <th className="p-3 font-semibold">{t("phone")}</th>
+                        <th className="p-3 font-semibold">{t("actions")}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredDataTable.map((contact) => (
+                        <tr
+                          key={contact.id}
+                          className="border-b border-gray-200 hover:bg-primary-50"
+                        >
+                          <td className="p-3">
+                            {contact.photo ? (
+                              <img
+                                src={contact.photo}
+                                alt={contact.name}
+                                className="w-8 h-8 rounded-full object-cover"
+                              />
+                            ) : (
+                              <div className="w-8 h-8 rounded-full bg-primary-200 flex items-center justify-center text-primary-700 font-semibold">
+                                {contact.name.charAt(0)}
+                              </div>
+                            )}
+                          </td>
+                          <td className="p-3 text-primary-900">
                             {contact.name}
-                          </p>
-                          <p className="text-sm text-primary-700">
+                          </td>
+                          <td className="p-3 text-primary-700">
                             {contact.email}
-                          </p>
-                          <p className="text-sm text-primary-700">
+                          </td>
+                          <td className="p-3 text-primary-700">
                             {contact.phone}
-                          </p>
-                        </div>
-                      </div>
-                      <div className="flex space-x-2">
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="border-primary-500 text-primary-700 hover:bg-primary-200"
-                              onClick={() => startEditContact(contact)}
-                            >
-                              <Pencil className="w-4 h-4" />
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>{t("editContact")}</TooltipContent>
-                        </Tooltip>
-                        <Tooltip>
-                          <TooltipTrigger asChild>
-                            <Button
-                              variant="destructive"
-                              size="sm"
-                              className="bg-destructive hover:bg-destructive/90"
-                              onClick={() => deleteContact(contact.id)}
-                            >
-                              <Trash className="w-4 h-4" />
-                            </Button>
-                          </TooltipTrigger>
-                          <TooltipContent>{t("deleteContact")}</TooltipContent>
-                        </Tooltip>
-                      </div>
-                    </div>
-                  ))}
+                          </td>
+                          <td className="p-3 flex space-x-2">
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="border-primary-500 text-primary-700 hover:bg-primary-200"
+                                  onClick={() => startEditContact(contact)}
+                                >
+                                  <Pencil className="w-4 h-4" />
+                                </Button>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                {t("editContact")}
+                              </TooltipContent>
+                            </Tooltip>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Button
+                                  variant="destructive"
+                                  size="sm"
+                                  className="bg-destructive hover:bg-destructive/90"
+                                  onClick={() => deleteContact(contact.id)}
+                                >
+                                  <Trash className="w-4 h-4" />
+                                </Button>
+                              </TooltipTrigger>
+                              <TooltipContent>
+                                {t("deleteContact")}
+                              </TooltipContent>
+                            </Tooltip>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
                 </div>
               )}
             </CardContent>
           </Card>
 
-          {/* Formulario de edición (modal simplificado) */}
+          {/* Modal para agregar contacto (sin fondo oscuro) */}
+          {isAddModalOpen && (
+            <div className="fixed inset-0 flex items-center justify-center">
+              <Card className="w-full max-w-md">
+                <CardHeader className="bg-primary-600 text-white">
+                  <CardTitle>{t("addNewContact")}</CardTitle>
+                </CardHeader>
+                <CardContent className="p-6 bg-primary-50">
+                  <div className="space-y-4">
+                    <div>
+                      <Label htmlFor="name" className="text-primary-900">
+                        {t("name")}
+                      </Label>
+                      <Input
+                        id="name"
+                        name="name"
+                        value={newContact.name}
+                        onChange={handleInputChange}
+                        placeholder={t("enterName")}
+                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="email" className="text-primary-900">
+                        {t("email")}
+                      </Label>
+                      <Input
+                        id="email"
+                        name="email"
+                        value={newContact.email}
+                        onChange={handleInputChange}
+                        placeholder={t("enterEmail")}
+                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="phone" className="text-primary-900">
+                        {t("phone")}
+                      </Label>
+                      <Input
+                        id="phone"
+                        name="phone"
+                        value={newContact.phone}
+                        onChange={handleInputChange}
+                        placeholder={t("enterPhone")}
+                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="photo" className="text-primary-900">
+                        {t("photo")}
+                      </Label>
+                      <Input
+                        id="photo"
+                        name="photo"
+                        type="file"
+                        accept="image/*"
+                        onChange={handleInputChange}
+                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                      />
+                    </div>
+                    <div className="flex justify-end space-x-2">
+                      <Button
+                        variant="outline"
+                        className="border-primary-500 text-primary-700 hover:bg-primary-200"
+                        onClick={() => setIsAddModalOpen(false)}
+                      >
+                        {t("cancel")}
+                      </Button>
+                      <Button
+                        onClick={addContact}
+                        className="bg-primary-600 hover:bg-primary-700 text-white"
+                      >
+                        {t("addContact")}
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
+
+          {/* Modal de edición */}
           {editContact.id && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
               <Card className="w-full max-w-md">

@@ -240,5 +240,10 @@
   "searchContacts": "Buscar contactos",
   "importCSV": "Importar CSV",
   "editContact": "Editar contacto",
-  "cancel": "Cancelar"
+  "cancel": "Cancelar",
+  "noDataTable": "No hay datos disponibles",
+  "actions": "Acciones",
+  "dataTableList": "Lista de tabla de datos",
+  "searchDataTable": "Buscar tabla de datos",
+  "dataTable": "Tabla de datos"
 }
