@@ -21,8 +21,11 @@ type BusinessHours = {
 const CustomTimePicker: React.FC<{
   value: string;
   onChange: (value: string) => void;
-}> = ({ value, onChange }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  pickerId: string; // Identificador único para cada picker
+  openPicker: string | null; // Estado global del picker abierto
+  setOpenPicker: (id: string | null) => void; // Función para actualizar el picker abierto
+}> = ({ value, onChange, pickerId, openPicker, setOpenPicker }) => {
+  const isOpen = openPicker === pickerId;
 
   // Generar opciones de horas y minutos
   const hours = Array.from({ length: 24 }, (_, i) =>
@@ -33,7 +36,17 @@ const CustomTimePicker: React.FC<{
   const handleSelect = (hour: string, minute: string) => {
     const newTime = `${hour}:${minute}`;
     onChange(newTime);
-    setIsOpen(false);
+    setOpenPicker(null); // Cerrar todos los pickers al seleccionar
+  };
+
+  // Manejar entrada manual
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    // Validar formato HH:MM
+    const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    if (timeRegex.test(inputValue) || inputValue === "") {
+      onChange(inputValue);
+    }
   };
 
   return (
@@ -41,8 +54,8 @@ const CustomTimePicker: React.FC<{
       <input
         type="text"
         value={value}
-        onClick={() => setIsOpen(!isOpen)}
-        readOnly
+        onChange={handleInputChange}
+        onClick={() => setOpenPicker(isOpen ? null : pickerId)} // Abrir o cerrar este picker
         className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm cursor-pointer"
         placeholder="HH:MM"
       />
@@ -79,6 +92,7 @@ const BusinessProfilePage = () => {
     saturday: { open: "", close: "" },
     sunday: { open: "", close: "" },
   });
+  const [openPicker, setOpenPicker] = useState<string | null>(null); // Estado para rastrear el picker abierto
 
   const days: DayOfWeek[] = [
     "monday",
@@ -212,6 +226,9 @@ const BusinessProfilePage = () => {
                         onChange={(value) =>
                           handleTimeChange(day, "open", value)
                         }
+                        pickerId={`${day}-open`}
+                        openPicker={openPicker}
+                        setOpenPicker={setOpenPicker}
                       />
                     </div>
                     <div className="w-1/2">
@@ -226,6 +243,9 @@ const BusinessProfilePage = () => {
                         onChange={(value) =>
                           handleTimeChange(day, "close", value)
                         }
+                        pickerId={`${day}-close`}
+                        openPicker={openPicker}
+                        setOpenPicker={setOpenPicker}
                       />
                     </div>
                   </div>
