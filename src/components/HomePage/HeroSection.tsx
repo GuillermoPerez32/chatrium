@@ -10,7 +10,7 @@ const HeroSection = () => {
         ></div>
         <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
           <div className="hidden sm:mb-8 sm:flex sm:justify-center">
-            <div className="bg-muted relative rounded-full px-3 py-1 text-sm/6 text-muted-foreground ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+            <div className="bg-muted relative rounded-full px-3 py-1 text-sm/6 text-muted-foreground ring-1 ring-muted-foreground hover:ring-muted-foreground">
               Announcing our new enterprise chat app features.
               <a href="#" className="font-semibold text-primary-600">
                 <span className="absolute inset-0" aria-hidden="true"></span>
