@@ -94,7 +94,7 @@ const OTPVerificationPage = () => {
               )}
             />
 
-            {error && <p className="text-red-500 text-center">{error}</p>}
+            {error && <p className="text-destructive text-center">{error}</p>}
 
             <Button
               type="submit"

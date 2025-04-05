@@ -175,7 +175,7 @@ function ContactsPage() {
                   placeholder={t("searchContacts")}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10 w-64 border-gray-300 rounded-lg focus:ring-primary-500 focus:border-primary-500"
+                  className="pl-10 w-64 border-border rounded-lg focus:ring-primary-500 focus:border-primary-500"
                 />
               </div>
               <Button
@@ -204,7 +204,7 @@ function ContactsPage() {
 
           {/* Tabla de contactos */}
           <Card className="shadow-lg rounded-lg">
-            <CardHeader className="bg-primary-100 border-b border-gray-200">
+            <CardHeader className="bg-primary-100 border-b border-border">
               <CardTitle className="text-xl font-semibold text-muted-foreground">
                 {t("contactList")}
               </CardTitle>
@@ -230,7 +230,7 @@ function ContactsPage() {
                       {filteredDataTable.map((contact) => (
                         <tr
                           key={contact.id}
-                          className="border-b border-gray-200 hover:bg-primary-50"
+                          className="border-b border-border hover:bg-primary-50"
                         >
                           <td className="p-3">
                             {contact.photo ? (
@@ -314,7 +314,7 @@ function ContactsPage() {
                         value={newContact.name}
                         onChange={handleInputChange}
                         placeholder={t("enterName")}
-                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                        className="border-border focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -327,7 +327,7 @@ function ContactsPage() {
                         value={newContact.email}
                         onChange={handleInputChange}
                         placeholder={t("enterEmail")}
-                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                        className="border-border focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -340,7 +340,7 @@ function ContactsPage() {
                         value={newContact.phone}
                         onChange={handleInputChange}
                         placeholder={t("enterPhone")}
-                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                        className="border-border focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -353,7 +353,7 @@ function ContactsPage() {
                         type="file"
                         accept="image/*"
                         onChange={handleInputChange}
-                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                        className="border-border focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div className="flex justify-end space-x-2">
@@ -395,7 +395,7 @@ function ContactsPage() {
                         name="name"
                         value={editContact.name}
                         onChange={handleEditInputChange}
-                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                        className="border-border focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -407,7 +407,7 @@ function ContactsPage() {
                         name="email"
                         value={editContact.email}
                         onChange={handleEditInputChange}
-                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                        className="border-border focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -419,7 +419,7 @@ function ContactsPage() {
                         name="phone"
                         value={editContact.phone}
                         onChange={handleEditInputChange}
-                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                        className="border-border focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div>
@@ -432,7 +432,7 @@ function ContactsPage() {
                         type="file"
                         accept="image/*"
                         onChange={handleEditInputChange}
-                        className="border-gray-300 focus:ring-primary-500 focus:border-primary-500"
+                        className="border-border focus:ring-primary-500 focus:border-primary-500"
                       />
                     </div>
                     <div className="flex justify-end space-x-2">

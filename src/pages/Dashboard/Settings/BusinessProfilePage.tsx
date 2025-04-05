@@ -56,11 +56,11 @@ const CustomTimePicker: React.FC<{
         value={value}
         onChange={handleInputChange}
         onClick={() => setOpenPicker(isOpen ? null : pickerId)} // Abrir o cerrar este picker
-        className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm cursor-pointer"
+        className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm cursor-pointer"
         placeholder="HH:MM"
       />
       {isOpen && (
-        <div className="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-y-auto">
+        <div className="absolute z-10 mt-1 w-full bg-white border border-border rounded-md shadow-lg max-h-60 overflow-y-auto">
           <div className="grid grid-cols-4 gap-1 p-2">
             {hours.map((hour) =>
               minutes.map((minute) => (
@@ -137,7 +137,7 @@ const BusinessProfilePage = () => {
               <input
                 id="business-name"
                 type="text"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("businessNamePlaceholder")}
               />
             </div>
@@ -151,7 +151,7 @@ const BusinessProfilePage = () => {
               <input
                 id="address"
                 type="text"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("addressPlaceholder")}
               />
             </div>
@@ -165,7 +165,7 @@ const BusinessProfilePage = () => {
               <input
                 id="phone-number"
                 type="text"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("phoneNumberPlaceholder")}
               />
             </div>
@@ -179,7 +179,7 @@ const BusinessProfilePage = () => {
               <input
                 id="email"
                 type="email"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("emailPlaceholder")}
               />
             </div>
@@ -269,7 +269,7 @@ const BusinessProfilePage = () => {
               </Label>
               <textarea
                 id="open-message"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("openMessagePlaceholder")}
               />
             </div>
@@ -282,7 +282,7 @@ const BusinessProfilePage = () => {
               </Label>
               <textarea
                 id="closed-message"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("closedMessagePlaceholder")}
               />
             </div>
@@ -295,7 +295,7 @@ const BusinessProfilePage = () => {
               </Label>
               <textarea
                 id="after-hours-message"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("afterHoursMessagePlaceholder")}
               />
             </div>
@@ -317,7 +317,7 @@ const BusinessProfilePage = () => {
               <input
                 id="google-my-business-url"
                 type="url"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("googleMyBusinessUrlPlaceholder")}
               />
             </div>
@@ -336,7 +336,7 @@ const BusinessProfilePage = () => {
               <input
                 id="chatrium-profile-url"
                 type="url"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("chatriumProfileUrlPlaceholder")}
               />
             </div>
@@ -358,7 +358,7 @@ const BusinessProfilePage = () => {
               <input
                 id="instagram-url"
                 type="url"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("instagramUrlPlaceholder")}
               />
             </div>
@@ -372,7 +372,7 @@ const BusinessProfilePage = () => {
               <input
                 id="twitter-url"
                 type="url"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("twitterUrlPlaceholder")}
               />
             </div>
@@ -386,7 +386,7 @@ const BusinessProfilePage = () => {
               <input
                 id="linkedin-url"
                 type="url"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("linkedinUrlPlaceholder")}
               />
             </div>
@@ -400,7 +400,7 @@ const BusinessProfilePage = () => {
               <input
                 id="facebook-url"
                 type="url"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("facebookUrlPlaceholder")}
               />
             </div>
@@ -414,7 +414,7 @@ const BusinessProfilePage = () => {
               <input
                 id="tiktok-url"
                 type="url"
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
                 placeholder={t("tiktokUrlPlaceholder")}
               />
             </div>

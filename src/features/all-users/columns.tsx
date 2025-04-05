@@ -51,7 +51,7 @@ const columns: ColumnDef<User>[] = [
         <div className="flex gap-6">
           <Edit3Icon className="size-4 text-muted-foreground hover:text-muted-foreground cursor-pointer" />
           <MessageCircleMoreIcon className="size-4 text-muted-foreground hover:text-muted-foreground cursor-pointer" />
-          <UserIcon className="size-4 text-red-500 hover:text-muted-foreground cursor-pointer" />
+          <UserIcon className="size-4 text-destructive hover:text-muted-foreground cursor-pointer" />
         </div>
       );
     },

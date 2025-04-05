@@ -39,7 +39,7 @@ const InboxLayout = () => {
   };
 
   return (
-    <div className="flex h-full bg-white">
+    <div className="flex h-full bg-background">
       {/* Middle panel - Conversation list */}
       <div className="w-96 border-r flex flex-col overflow-auto">
         <div className="p-4 border-b">
@@ -47,7 +47,10 @@ const InboxLayout = () => {
 
           <div className="relative mb-3">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-            <Input placeholder="Search contacts" className="pl-10 bg-white" />
+            <Input
+              placeholder="Search contacts"
+              className="pl-10 bg-background"
+            />
           </div>
 
           <div className="flex space-x-2">
@@ -80,9 +83,9 @@ const InboxLayout = () => {
               {conversations.map((conversation) => (
                 <div
                   key={conversation.id}
-                  className={`p-4 hover:bg-gray-50 cursor-pointer ${
+                  className={`p-4 hover:bg-muted cursor-pointer ${
                     conversation.selected
-                      ? "bg-primary-50 border-l-4 border-primary-500"
+                      ? "bg-muted/60 border-l-4 border-primary-500"
                       : ""
                   }`}
                 >
@@ -106,8 +109,8 @@ const InboxLayout = () => {
                         {conversation.lastMessage}
                       </p>
                       <div className="mt-1">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-muted-foreground">
-                          <span className="h-1.5 w-1.5 rounded-full bg-gray-400 mr-1"></span>
+                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-muted text-muted-foreground">
+                          <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground mr-1"></span>
                           {conversation.tag}
                         </span>
                       </div>
@@ -184,7 +187,7 @@ const InboxLayout = () => {
         </div>
 
         {/* Conversation body */}
-        <div className="flex-1 overflow-y-auto p-4 bg-gray-50">
+        <div className="flex-1 overflow-y-auto p-4 bg-muted">
           <div className="max-w-3xl mx-auto space-y-4">
             {selectedConversation.messages.map((message) => (
               <div
@@ -195,7 +198,9 @@ const InboxLayout = () => {
               >
                 <div
                   className={`max-w-md ${
-                    message.sender === "me" ? "bg-primary-500 " : "bg-white"
+                    message.sender === "me"
+                      ? "bg-primary-500 "
+                      : "bg-background"
                   } rounded-lg shadow-sm p-3`}
                 >
                   <p>{message.text}</p>
@@ -243,59 +248,35 @@ const InboxLayout = () => {
               </Button>
             </div>
 
-            <div className="flex items-end border rounded-md bg-white">
+            <div className="flex items-end border rounded-md bg-background">
               <div className="flex-1 p-3">
                 <Input
                   placeholder="Type your message..."
-                  className="border-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 px-0"
+                  className="border-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 bg-background"
                   value={newMessage}
                   onChange={(e) => setNewMessage(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === "Enter" && !e.shiftKey) {
-                      e.preventDefault();
+                    if (e.key === "Enter" && newMessage.trim()) {
                       handleSendMessage();
                     }
                   }}
                 />
               </div>
-
-              <div className="flex p-2 space-x-1">
+              <div className="flex items-center space-x-2 p-3">
                 <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-8 w-8 text-muted-foreground"
-                    >
-                      <Paperclip className="h-5 w-5" />
-                    </Button>
+                  <TooltipTrigger>
+                    <Paperclip className="text-muted-foreground" />
                   </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Attach file</p>
-                  </TooltipContent>
+                  <TooltipContent>Attach file</TooltipContent>
                 </Tooltip>
-
                 <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-8 w-8 text-muted-foreground"
-                    >
-                      <Smile className="h-5 w-5" />
-                    </Button>
+                  <TooltipTrigger>
+                    <Smile className="text-muted-foreground" />
                   </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Add emoji</p>
-                  </TooltipContent>
+                  <TooltipContent>Emoji</TooltipContent>
                 </Tooltip>
-
-                <Button
-                  className="bg-primary-500 hover:bg-primary-600 h-8 w-8 rounded-md"
-                  onClick={handleSendMessage}
-                  disabled={!newMessage.trim()}
-                >
-                  <Send className="h-4 w-4" />
+                <Button size="sm" onClick={handleSendMessage}>
+                  <Send className="text-white" />
                 </Button>
               </div>
             </div>
