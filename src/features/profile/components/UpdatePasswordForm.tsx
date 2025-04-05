@@ -83,7 +83,7 @@ const UpdatePasswordForm = () => {
                       <button
                         type="button"
                         onClick={togglePasswordVisibility}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground"
                       >
                         {showPassword ? <EyeOff /> : <Eye />}
                       </button>
@@ -114,7 +114,7 @@ const UpdatePasswordForm = () => {
                       <button
                         type="button"
                         onClick={togglePasswordVisibility}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground"
                       >
                         {showPassword ? <EyeOff /> : <Eye />}
                       </button>
@@ -145,7 +145,7 @@ const UpdatePasswordForm = () => {
                       <button
                         type="button"
                         onClick={togglePasswordVisibility}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground"
                       >
                         {showPassword ? <EyeOff /> : <Eye />}
                       </button>

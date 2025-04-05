@@ -48,7 +48,9 @@ const WebsiteToolkitPage = () => {
             >
               <div className="mb-4">{tool.icon}</div>
               <h3 className="text-lg font-medium text-black">{tool.name}</h3>
-              <p className="text-sm text-gray-600 mt-2">{tool.description}</p>
+              <p className="text-sm text-muted-foreground mt-2">
+                {tool.description}
+              </p>
             </div>
           ))}
         </div>

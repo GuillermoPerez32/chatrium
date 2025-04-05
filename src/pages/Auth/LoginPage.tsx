@@ -80,7 +80,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-muted-foreground">
         {t("signInMessage")}
       </h2>
 
@@ -148,7 +148,7 @@ const LoginPage = () => {
                       <button
                         type="button"
                         onClick={togglePasswordVisibility}
-                        className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600"
+                        className="absolute right-2 top-1/2 -translate-y-1/2 text-muted-foreground"
                       >
                         {showPassword ? <EyeOff /> : <Eye />}
                       </button>
@@ -185,7 +185,7 @@ const LoginPage = () => {
 
         <div className="mt-10 border-t border-gray-300"></div>
 
-        <p className="mt-8 text-center text-sm/6 text-gray-500">
+        <p className="mt-8 text-center text-sm/6 text-muted-foreground">
           <span>{t("noAccountMessage")} </span>
           <Link
             to={AppRoutes.TRIAL_REQUEST}

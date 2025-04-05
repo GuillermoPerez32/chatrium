@@ -19,7 +19,7 @@ const BrandingPage = () => {
       <div className="flex items-center gap-4">
         <div>
           <p className="font-bold">{t("preferredDashboardName")}</p>
-          <p className="text-xs text-gray-600">
+          <p className="text-xs text-muted-foreground">
             {t("preferredDashboardNameSubtitle")}
           </p>
         </div>
@@ -35,7 +35,7 @@ const BrandingPage = () => {
         <div className="flex flex-col gap-4 items-center md:flex-row md:gap-20">
           <div>
             <p>{t("logoLabel")}</p>
-            <p className="text-xs text-gray-600">{t("logoSizeHint")}</p>
+            <p className="text-xs text-muted-foreground">{t("logoSizeHint")}</p>
           </div>
           <div className="flex gap-2">
             <Button>{t("upload")}</Button>

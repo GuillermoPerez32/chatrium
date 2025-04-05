@@ -27,7 +27,7 @@ const Header = () => {
             variant="ghost"
             onClick={() => setNavBarOpen(true)}
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-muted-foreground"
           >
             <span className="sr-only">Open main menu</span>
             <Menu />
@@ -36,25 +36,25 @@ const Header = () => {
         <div className="hidden lg:flex lg:gap-x-12">
           <Link
             to={AppRoutes.HOME}
-            className="text-sm/6 font-semibold text-gray-900"
+            className="text-sm/6 font-semibold text-muted-foreground"
           >
             Product
           </Link>
           <Link
             to={AppRoutes.HOME}
-            className="text-sm/6 font-semibold text-gray-900"
+            className="text-sm/6 font-semibold text-muted-foreground"
           >
             Features
           </Link>
           <Link
             to={AppRoutes.HOME}
-            className="text-sm/6 font-semibold text-gray-900"
+            className="text-sm/6 font-semibold text-muted-foreground"
           >
             Marketplace
           </Link>
           <Link
             to={AppRoutes.HOME}
-            className="text-sm/6 font-semibold text-gray-900"
+            className="text-sm/6 font-semibold text-muted-foreground"
           >
             Company
           </Link>
@@ -64,14 +64,14 @@ const Header = () => {
             <Button
               onClick={() => setUser(undefined)}
               variant="ghost"
-              className="text-sm/6 font-semibold text-gray-900"
+              className="text-sm/6 font-semibold text-muted-foreground"
             >
               Log out
             </Button>
           ) : (
             <Link
               to={AppRoutes.LOGIN}
-              className="text-sm/6 font-semibold text-gray-900"
+              className="text-sm/6 font-semibold text-muted-foreground"
             >
               Log in <span aria-hidden="true">&rarr;</span>
             </Link>

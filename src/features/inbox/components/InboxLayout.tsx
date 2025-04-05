@@ -46,7 +46,7 @@ const InboxLayout = () => {
           <h2 className="text-lg font-semibold mb-3">Unassigned (308)</h2>
 
           <div className="relative mb-3">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input placeholder="Search contacts" className="pl-10 bg-white" />
           </div>
 
@@ -98,15 +98,15 @@ const InboxLayout = () => {
                         <h3 className="text-sm font-medium truncate">
                           {conversation.name}
                         </h3>
-                        <span className="text-xs text-gray-500">
+                        <span className="text-xs text-muted-foreground">
                           {conversation.time}
                         </span>
                       </div>
-                      <p className="text-sm text-gray-600 truncate">
+                      <p className="text-sm text-muted-foreground truncate">
                         {conversation.lastMessage}
                       </p>
                       <div className="mt-1">
-                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-muted-foreground">
                           <span className="h-1.5 w-1.5 rounded-full bg-gray-400 mr-1"></span>
                           {conversation.tag}
                         </span>
@@ -119,7 +119,7 @@ const InboxLayout = () => {
           </TabsContent>
 
           <TabsContent value="closed" className="flex-1 overflow-y-auto mt-2">
-            <div className="p-8 text-center text-gray-500">
+            <div className="p-8 text-center text-muted-foreground">
               No closed conversations
             </div>
           </TabsContent>
@@ -137,12 +137,12 @@ const InboxLayout = () => {
             <div>
               <h2 className="text-lg font-medium flex items-center">
                 {selectedConversation.name}
-                <span className="text-sm text-gray-500 ml-2">
+                <span className="text-sm text-muted-foreground ml-2">
                   - {selectedConversation.tag}
                 </span>
-                <ChevronDown className="h-4 w-4 ml-1 text-gray-400" />
+                <ChevronDown className="h-4 w-4 ml-1 text-muted-foreground" />
               </h2>
-              <div className="flex items-center text-sm text-gray-500">
+              <div className="flex items-center text-sm text-muted-foreground">
                 <span className="inline-block h-2 w-2 rounded-full bg-green-400 mr-2"></span>
                 <span>Online</span>
               </div>
@@ -205,7 +205,7 @@ const InboxLayout = () => {
                     className={`text-xs mt-1 flex justify-between items-center ${
                       message.sender === "me"
                         ? "text-primary-100"
-                        : "text-gray-500"
+                        : "text-muted-foreground"
                     }`}
                   >
                     <span>{message.type}</span>
@@ -222,13 +222,25 @@ const InboxLayout = () => {
         <div className="border-t p-4 h-1/4">
           <div className="max-w-3xl mx-auto">
             <div className="flex space-x-2 mb-2">
-              <Button variant="outline" size="sm" className="text-gray-500">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-muted-foreground"
+              >
                 <span>Text</span>
               </Button>
-              <Button variant="ghost" size="sm" className="text-gray-500">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-muted-foreground"
+              >
                 <span>Email</span>
               </Button>
-              <Button variant="ghost" size="sm" className="text-gray-500">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-muted-foreground"
+              >
                 <span>Internal note</span>
               </Button>
             </div>
@@ -255,7 +267,7 @@ const InboxLayout = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-8 w-8 text-gray-500"
+                      className="h-8 w-8 text-muted-foreground"
                     >
                       <Paperclip className="h-5 w-5" />
                     </Button>
@@ -270,7 +282,7 @@ const InboxLayout = () => {
                     <Button
                       variant="ghost"
                       size="icon"
-                      className="h-8 w-8 text-gray-500"
+                      className="h-8 w-8 text-muted-foreground"
                     >
                       <Smile className="h-5 w-5" />
                     </Button>

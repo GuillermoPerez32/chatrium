@@ -9,11 +9,11 @@ const PricingSection = () => {
       ></div>
       <div className="mx-auto max-w-4xl text-center">
         <h2 className="text-base/7 font-semibold text-primary-600">Pricing</h2>
-        <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-6xl">
+        <p className="mt-2 text-5xl font-semibold tracking-tight text-balance text-muted-foreground sm:text-6xl">
           Choose the right plan for your enterprise chat app
         </p>
       </div>
-      <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 sm:text-xl/8">
+      <p className="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-muted-foreground sm:text-xl/8">
         Choose an affordable plan that’s packed with the best features for
         engaging your team, enhancing communication, and driving productivity.
       </p>
@@ -26,17 +26,17 @@ const PricingSection = () => {
             Basic
           </h3>
           <p className="mt-4 flex items-baseline gap-x-2">
-            <span className="text-5xl font-semibold tracking-tight text-gray-900">
+            <span className="text-5xl font-semibold tracking-tight text-muted-foreground">
               $29
             </span>
-            <span className="text-base text-gray-500">/month</span>
+            <span className="text-base text-muted-foreground">/month</span>
           </p>
-          <p className="mt-6 text-base/7 text-gray-600">
+          <p className="mt-6 text-base/7 text-muted-foreground">
             Ideal for small teams getting started with our chat app.
           </p>
           <ul
             role="list"
-            className="mt-8 space-y-3 text-sm/6 text-gray-600 sm:mt-10"
+            className="mt-8 space-y-3 text-sm/6 text-muted-foreground sm:mt-10"
           >
             <li className="flex gap-x-3">
               <Check className="text-primary" />
@@ -74,14 +74,14 @@ const PricingSection = () => {
             <span className="text-5xl font-semibold tracking-tight text-white">
               $99
             </span>
-            <span className="text-base text-gray-400">/month</span>
+            <span className="text-base text-muted-foreground">/month</span>
           </p>
-          <p className="mt-6 text-base/7 text-gray-300">
+          <p className="mt-6 text-base/7 text-muted-foreground">
             Comprehensive features and support for large teams.
           </p>
           <ul
             role="list"
-            className="mt-8 space-y-3 text-sm/6 text-gray-300 sm:mt-10"
+            className="mt-8 space-y-3 text-sm/6 text-muted-foreground sm:mt-10"
           >
             <li className="flex gap-x-3">
               <Check className="text-primary-400" />

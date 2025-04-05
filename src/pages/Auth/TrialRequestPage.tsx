@@ -55,10 +55,10 @@ const TrialRequestPage = () => {
 
   return done ? (
     <div className="text-center">
-      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-muted-foreground">
         {t("trialSentMessage")}
       </h2>
-      <p className="text-gray-500">{t("trialSentMessage")}</p>
+      <p className="text-muted-foreground">{t("trialSentMessage")}</p>
       <Link to={AppRoutes.HOME}>
         <Button className="mt-4" variant="link">
           Go back to home
@@ -67,7 +67,7 @@ const TrialRequestPage = () => {
     </div>
   ) : (
     <>
-      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-muted-foreground">
         {t("trialRequestMessage")}
       </h2>
 

@@ -53,11 +53,11 @@ const OTPVerificationPage = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h2 className="mt-4 text-2xl/9 font-bold tracking-tight text-gray-900">
+      <h2 className="mt-4 text-2xl/9 font-bold tracking-tight text-muted-foreground">
         {t("otpTitle")}
       </h2>
 
-      <p className="text-gray-500">{t("otpMessage")}</p>
+      <p className="text-muted-foreground">{t("otpMessage")}</p>
 
       <div className="mt-4 w-full sm:mx-auto flex flex-col items-center">
         <Form {...form}>

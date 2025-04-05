@@ -32,7 +32,7 @@ const NavBar = ({ open, onClose }: Props) => {
           <Button
             variant="ghost"
             onClick={onClose}
-            className="-m-2.5 rounded-md p-2.5 text-gray-900"
+            className="-m-2.5 rounded-md p-2.5 text-muted-foreground"
           >
             <span className="sr-only">Close menu</span>
             <CircleX className="cursor-pointer" />
@@ -43,31 +43,31 @@ const NavBar = ({ open, onClose }: Props) => {
             <div className="space-y-2 py-6">
               <Link
                 to={AppRoutes.HOME}
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-200"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200"
               >
                 Product
               </Link>
               <Link
                 to={AppRoutes.HOME}
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-200"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200"
               >
                 Features
               </Link>
               <Link
                 to={AppRoutes.HOME}
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-200"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200"
               >
                 Marketplace
               </Link>
               <Link
                 to={AppRoutes.HOME}
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-200"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200"
               >
                 Company
               </Link>
             </div>
             <div className="py-6">
-              <div className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-gray-900 hover:bg-gray-200">
+              <div className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200">
                 <Link
                   onClick={(e) => {
                     if (!user) return;

@@ -20,7 +20,7 @@ const DropDown = ({ title, subtitle, icon, children }: Props) => {
         {icon}
         <div className="flex flex-col">
           <span className="text-sm font-medium">{title}</span>
-          <span className="text-xs text-gray-500">{subtitle}</span>
+          <span className="text-xs text-muted-foreground">{subtitle}</span>
         </div>
         <ChevronDown
           className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}

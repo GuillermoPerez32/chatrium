@@ -165,7 +165,7 @@ function ContactsPage() {
         <div className="max-w-4xl mx-auto">
           {/* Header con búsqueda y botones */}
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-3xl font-bold text-gray-800">
+            <h1 className="text-3xl font-bold text-muted-foreground">
               {t("contacts")}
             </h1>
             <div className="flex items-center space-x-4">
@@ -205,7 +205,7 @@ function ContactsPage() {
           {/* Tabla de contactos */}
           <Card className="shadow-lg rounded-lg">
             <CardHeader className="bg-primary-100 border-b border-gray-200">
-              <CardTitle className="text-xl font-semibold text-gray-800">
+              <CardTitle className="text-xl font-semibold text-muted-foreground">
                 {t("contactList")}
               </CardTitle>
             </CardHeader>

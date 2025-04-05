@@ -23,7 +23,7 @@ const ListTile = ({ title, subtitle, trailing, leading, onClick }: Props) => {
         {leading}
         <div className="flex flex-col ml-4">
           <span className="text-sm font-medium">{title}</span>
-          <span className="text-xs text-gray-500">{subtitle}</span>
+          <span className="text-xs text-muted-foreground">{subtitle}</span>
         </div>
 
         <div className="ml-auto">{trailing}</div>

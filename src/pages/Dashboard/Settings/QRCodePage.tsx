@@ -89,7 +89,7 @@ const QRCodePage = () => {
         <div className="bg-white rounded-lg shadow-sm p-6">
           {activeTab === "review" && (
             <>
-              <h2 className="text-xl font-medium text-gray-600 mb-4">
+              <h2 className="text-xl font-medium text-muted-foreground mb-4">
                 {t("reviewQRCodes")}
               </h2>
               <Table>
@@ -134,7 +134,7 @@ const QRCodePage = () => {
 
           {activeTab === "customer-experience" && (
             <>
-              <h2 className="text-xl font-medium text-gray-600 mb-4">
+              <h2 className="text-xl font-medium text-muted-foreground mb-4">
                 {t("customerExperienceQRCodes")}
               </h2>
               <Table>

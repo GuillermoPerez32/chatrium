@@ -25,7 +25,7 @@ const columns: ColumnDef<User>[] = [
           </Avatar>
           <div className="flex flex-col">
             <span className="font-semibold">{user.name}</span>
-            <span className="text-gray-500">{user.email}</span>
+            <span className="text-muted-foreground">{user.email}</span>
           </div>
         </div>
       );

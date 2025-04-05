@@ -34,8 +34,8 @@ import { ThemeProvider } from "@/theme/ThemeProvider";
 function App() {
   const { user } = useAuthStore();
   return (
-    <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <div className="bg-primary-50">
+    <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+      <div className="bg-background">
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
             <Toaster />

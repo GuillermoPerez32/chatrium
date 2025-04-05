@@ -13,12 +13,12 @@ const AboutSection = () => {
               <p className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
                 Enterprise Chat Solutions
               </p>
-              <p className="mt-6 text-lg/8 text-gray-300">
+              <p className="mt-6 text-lg/8 text-muted-foreground">
                 Our enterprise chat app streamlines communication, boosts
                 productivity, and ensures secure data exchange within your
                 organization.
               </p>
-              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-gray-300 lg:max-w-none">
+              <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-muted-foreground lg:max-w-none">
                 <div>
                   <dt className="flex gap-2 font-semibold text-white">
                     <CloudUpload className="text-primary-400" />

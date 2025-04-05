@@ -130,7 +130,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="business-name"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("businessName")}
               </Label>
@@ -144,7 +144,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="address"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("address")}
               </Label>
@@ -158,7 +158,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="phone-number"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("phoneNumber")}
               </Label>
@@ -172,7 +172,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="email"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("email")}
               </Label>
@@ -200,7 +200,7 @@ const BusinessProfilePage = () => {
               />
               <Label
                 htmlFor="24hours-switch"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("24hours7days")}
               </Label>
@@ -210,14 +210,14 @@ const BusinessProfilePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {days.map((day) => (
                 <div key={day} className="space-y-2">
-                  <Label className="text-sm font-medium text-gray-700">
+                  <Label className="text-sm font-medium text-muted-foreground">
                     {t(day)}
                   </Label>
                   <div className="flex gap-2">
                     <div className="w-1/2">
                       <Label
                         htmlFor={`${day}-open`}
-                        className="text-xs font-medium text-gray-600"
+                        className="text-xs font-medium text-muted-foreground"
                       >
                         {t("openTime")}
                       </Label>
@@ -234,7 +234,7 @@ const BusinessProfilePage = () => {
                     <div className="w-1/2">
                       <Label
                         htmlFor={`${day}-close`}
-                        className="text-xs font-medium text-gray-600"
+                        className="text-xs font-medium text-muted-foreground"
                       >
                         {t("closeTime")}
                       </Label>
@@ -263,7 +263,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="open-message"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("openMessage")}
               </Label>
@@ -276,7 +276,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="closed-message"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("closedMessage")}
               </Label>
@@ -289,7 +289,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="after-hours-message"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("afterHoursMessage")}
               </Label>
@@ -310,7 +310,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="google-my-business-url"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("googleMyBusinessUrl")}
               </Label>
@@ -329,7 +329,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="chatrium-profile-url"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("chatriumProfileUrl")}
               </Label>
@@ -351,7 +351,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="instagram-url"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("instagramUrl")}
               </Label>
@@ -365,7 +365,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="twitter-url"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("twitterUrl")}
               </Label>
@@ -379,7 +379,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="linkedin-url"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("linkedinUrl")}
               </Label>
@@ -393,7 +393,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="facebook-url"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("facebookUrl")}
               </Label>
@@ -407,7 +407,7 @@ const BusinessProfilePage = () => {
             <div>
               <Label
                 htmlFor="tiktok-url"
-                className="text-sm font-medium text-gray-700"
+                className="text-sm font-medium text-muted-foreground"
               >
                 {t("tiktokUrl")}
               </Label>

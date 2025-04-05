@@ -81,7 +81,7 @@ const IntegrationPage = () => {
 
         {/* Sección de Redes Sociales */}
         <div className="mb-10">
-          <h2 className="text-xl font-medium text-gray-600 mb-4">
+          <h2 className="text-xl font-medium text-muted-foreground mb-4">
             {t("socialMediaSection")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -95,7 +95,7 @@ const IntegrationPage = () => {
                   <h3 className="text-lg font-medium text-black">
                     {integration.name}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-muted-foreground">
                     {integration.description}
                   </p>
                   <button
@@ -117,7 +117,7 @@ const IntegrationPage = () => {
 
         {/* Sección de Otras Aplicaciones */}
         <div className="mb-10">
-          <h2 className="text-xl font-medium text-gray-600 mb-4">
+          <h2 className="text-xl font-medium text-muted-foreground mb-4">
             {t("otherAppsSection")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -131,7 +131,7 @@ const IntegrationPage = () => {
                   <h3 className="text-lg font-medium text-black">
                     {integration.name}
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-muted-foreground">
                     {integration.description}
                   </p>
                   <button
@@ -154,7 +154,7 @@ const IntegrationPage = () => {
         {/* Enlace generado */}
         {connectionLink && (
           <div className="p-4 bg-gray-100 rounded-lg">
-            <p className="text-gray-600">
+            <p className="text-muted-foreground">
               {t("generatedLinkLabel")}{" "}
               <a
                 href={connectionLink}

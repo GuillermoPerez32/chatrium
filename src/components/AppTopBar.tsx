@@ -51,17 +51,17 @@ const AppTopBar = () => {
         <SidebarTrigger />
         {isSubRoute && (
           <ArrowLeft
-            className="w-6 h-6 text-gray-600 cursor-pointer"
+            className="w-6 h-6 text-muted-foreground cursor-pointer"
             onClick={() => navigate(-1)}
           />
         )}
-        <h2 className="text-xl font-semibold text-gray-800">{title}</h2>
+        <h2 className="text-xl font-semibold text-muted-foreground">{title}</h2>
       </div>
 
       {/* Center section: Search bar */}
       <div className="absolute left-1/2 transform -translate-x-1/2 hidden md:flex items-center w-1/3">
         <div className="relative w-full">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
           <Input
             type="text"
             placeholder={t("searchPlaceholder")}
@@ -74,13 +74,13 @@ const AppTopBar = () => {
       <div className="flex items-center gap-4 ml-auto">
         {/* Notifications */}
         <Button variant="ghost" className="relative">
-          <Bell className="w-6 h-6 text-gray-600" />
+          <Bell className="w-6 h-6 text-muted-foreground" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
         </Button>
 
         {/* Messages */}
         <Button variant="ghost" className="relative">
-          <MessageSquare className="w-6 h-6 text-gray-600" />
+          <MessageSquare className="w-6 h-6 text-muted-foreground" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-green-500 rounded-full"></span>
         </Button>
 
@@ -88,8 +88,8 @@ const AppTopBar = () => {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="flex items-center gap-2">
-              <User className="w-6 h-6 text-gray-600" />
-              <span className="hidden md:inline text-gray-700">
+              <User className="w-6 h-6 text-muted-foreground" />
+              <span className="hidden md:inline text-muted-foreground">
                 {loggedInUser.name}
               </span>
             </Button>
@@ -97,7 +97,7 @@ const AppTopBar = () => {
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuItem className="flex flex-col items-start">
               <span className="font-medium">{loggedInUser.name}</span>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-muted-foreground">
                 {loggedInUser.email}
               </span>
             </DropdownMenuItem>

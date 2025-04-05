@@ -43,7 +43,7 @@ const RecoverPage = () => {
 
   return (
     <>
-      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-gray-900">
+      <h2 className="mt-4 text-center text-2xl/9 font-bold tracking-tight text-muted-foreground">
         {t("recoverMessage")}
       </h2>
 
