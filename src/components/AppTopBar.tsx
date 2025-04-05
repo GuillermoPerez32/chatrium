@@ -7,6 +7,7 @@ import {
   User,
   Sun, // Added for light mode
   Moon, // Added for dark mode
+  Computer,
 } from "lucide-react";
 import { SidebarTrigger } from "./ui/sidebar";
 import { useAuthStore } from "@/stores";
@@ -76,6 +77,14 @@ const AppTopBar = () => {
         <Button variant="ghost" className="relative">
           <Bell className="w-6 h-6 text-muted-foreground" />
           <span className="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+        </Button>
+
+        <Button variant="ghost" onClick={toggleTheme} className="relative">
+          {theme === "dark" ? (
+            <Sun className="w-6 h-6 text-muted-foreground" />
+          ) : (
+            <Moon className="w-6 h-6 text-muted-foreground" />
+          )}
         </Button>
 
         {/* Messages */}
