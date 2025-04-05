@@ -195,7 +195,7 @@ function ContactsPage() {
               </Button>
               <Button
                 onClick={() => setIsAddModalOpen(true)}
-                className="bg-primary-600 hover:bg-primary-700 text-white"
+                className="bg-primary-600 hover:bg-primary-700 "
               >
                 {t("addContact")}
               </Button>
@@ -299,7 +299,7 @@ function ContactsPage() {
           {isAddModalOpen && (
             <div className="fixed inset-0 flex items-center justify-center">
               <Card className="w-full max-w-md">
-                <CardHeader className="bg-primary-600 text-white">
+                <CardHeader className="bg-primary-600 ">
                   <CardTitle>{t("addNewContact")}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 bg-primary-50">
@@ -366,7 +366,7 @@ function ContactsPage() {
                       </Button>
                       <Button
                         onClick={addContact}
-                        className="bg-primary-600 hover:bg-primary-700 text-white"
+                        className="bg-primary-600 hover:bg-primary-700 "
                       >
                         {t("addContact")}
                       </Button>
@@ -381,7 +381,7 @@ function ContactsPage() {
           {editContact.id && (
             <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
               <Card className="w-full max-w-md">
-                <CardHeader className="bg-primary-600 text-white">
+                <CardHeader className="bg-primary-600 ">
                   <CardTitle>{t("editContact")}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-6 bg-primary-50">
@@ -453,7 +453,7 @@ function ContactsPage() {
                       </Button>
                       <Button
                         onClick={saveEditContact}
-                        className="bg-primary-600 hover:bg-primary-700 text-white"
+                        className="bg-primary-600 hover:bg-primary-700 "
                       >
                         {t("save")}
                       </Button>

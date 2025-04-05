@@ -71,9 +71,7 @@ const PricingSection = () => {
             Enterprise
           </h3>
           <p className="mt-4 flex items-baseline gap-x-2">
-            <span className="text-5xl font-semibold tracking-tight text-white">
-              $99
-            </span>
+            <span className="text-5xl font-semibold tracking-tight ">$99</span>
             <span className="text-base text-muted-foreground">/month</span>
           </p>
           <p className="mt-6 text-base/7 text-muted-foreground">
@@ -110,7 +108,7 @@ const PricingSection = () => {
           <a
             href="#"
             aria-describedby="tier-enterprise"
-            className="mt-8 block rounded-md bg-primary-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-primary-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 sm:mt-10"
+            className="mt-8 block rounded-md bg-primary-500 px-3.5 py-2.5 text-center text-sm font-semibold shadow-xs hover:bg-primary-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 sm:mt-10"
           >
             Get started today
           </a>

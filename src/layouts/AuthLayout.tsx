@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router";
 const AuthLayout = () => {
   return (
     <div className="flex h-screen">
-      <div className="bg-white h-full p-8 w-full flex flex-col justify-center items-center">
+      <div className="h-full p-8 w-full flex flex-col justify-center items-center">
         <Link to="/">
           <img
             alt="Chatrium"

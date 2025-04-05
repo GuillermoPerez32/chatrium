@@ -72,7 +72,7 @@ const IntegrationPage = () => {
           <h1 className="text-2xl font-bold text-black">{t("integrations")}</h1>
           <button
             onClick={generateConnectionLink}
-            className="flex items-center gap-2 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition"
+            className="flex items-center gap-2 bg-primary px-4 py-2 rounded-lg hover:bg-primary/90 transition"
           >
             <LinkIcon className="w-5 h-5" />
             {t("generateLink")}
@@ -101,7 +101,7 @@ const IntegrationPage = () => {
                   <button
                     onClick={() => connectIntegration(integration.name)}
                     disabled={integration.connected}
-                    className={`mt-3 px-4 py-1.5 rounded-lg text-white text-sm ${
+                    className={`mt-3 px-4 py-1.5 rounded-lg  text-sm ${
                       integration.connected
                         ? "bg-gray-400 cursor-not-allowed"
                         : "bg-primary hover:bg-primary/90"
@@ -137,7 +137,7 @@ const IntegrationPage = () => {
                   <button
                     onClick={() => connectIntegration(integration.name)}
                     disabled={integration.connected}
-                    className={`mt-3 px-4 py-1.5 rounded-lg text-white text-sm ${
+                    className={`mt-3 px-4 py-1.5 rounded-lg  text-sm ${
                       integration.connected
                         ? "bg-gray-400 cursor-not-allowed"
                         : "bg-primary hover:bg-primary/90"

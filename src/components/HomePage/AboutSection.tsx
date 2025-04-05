@@ -10,7 +10,7 @@ const AboutSection = () => {
               <h2 className="text-base/7 font-semibold text-primary-400">
                 Enhance Communication
               </h2>
-              <p className="mt-2 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+              <p className="mt-2 text-4xl font-semibold tracking-tight sm:text-5xl">
                 Enterprise Chat Solutions
               </p>
               <p className="mt-6 text-lg/8 text-muted-foreground">
@@ -20,7 +20,7 @@ const AboutSection = () => {
               </p>
               <dl className="mt-10 max-w-xl space-y-8 text-base/7 text-muted-foreground lg:max-w-none">
                 <div>
-                  <dt className="flex gap-2 font-semibold text-white">
+                  <dt className="flex gap-2 font-semibold ">
                     <CloudUpload className="text-primary-400" />
                     Instant Messaging.
                   </dt>
@@ -30,7 +30,7 @@ const AboutSection = () => {
                   </dd>
                 </div>
                 <div>
-                  <dt className="flex gap-2 font-semibold text-white">
+                  <dt className="flex gap-2 font-semibold ">
                     <Lock className="text-primary-400" />
                     Secure Channels.
                   </dt>
@@ -40,7 +40,7 @@ const AboutSection = () => {
                   </dd>
                 </div>
                 <div>
-                  <dt className="flex gap-2 font-semibold text-white">
+                  <dt className="flex gap-2 font-semibold ">
                     <HardDrive className="text-primary-400" />
                     File Sharing.
                   </dt>

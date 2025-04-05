@@ -88,7 +88,7 @@ const InboxLayout = () => {
                 >
                   <div className="flex items-start">
                     <div
-                      className={`flex-shrink-0 h-10 w-10 rounded-full ${conversation.avatarColor} text-white flex items-center justify-center mr-3`}
+                      className={`flex-shrink-0 h-10 w-10 rounded-full ${conversation.avatarColor}  flex items-center justify-center mr-3`}
                     >
                       {conversation.avatarLetter}
                     </div>
@@ -131,7 +131,7 @@ const InboxLayout = () => {
         {/* Conversation header */}
         <div className="flex items-center justify-between p-4 border-b">
           <div className="flex items-center">
-            <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary-700 text-white flex items-center justify-center mr-3">
+            <div className="flex-shrink-0 h-10 w-10 rounded-full bg-primary-700 flex items-center justify-center mr-3">
               E
             </div>
             <div>
@@ -195,9 +195,7 @@ const InboxLayout = () => {
               >
                 <div
                   className={`max-w-md ${
-                    message.sender === "me"
-                      ? "bg-primary-500 text-white"
-                      : "bg-white"
+                    message.sender === "me" ? "bg-primary-500 " : "bg-white"
                   } rounded-lg shadow-sm p-3`}
                 >
                   <p>{message.text}</p>
