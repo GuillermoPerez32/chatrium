@@ -18,13 +18,28 @@ import FormLabel from "@/components/FormLabel";
 
 const trialRequestSchema = z.object({
   email: z.string().email("Invalid email address"),
-  firstName: z.string(),
-  lastName: z.string(),
+  firstName: z
+    .string()
+    .min(2, "First name must be at least 2 characters long")
+    .regex(
+      /^[a-zA-Z']+$/,
+      "First name must only contain letters and apostrophes"
+    ),
+  lastName: z
+    .string()
+    .min(2, "Last name must be at least 2 characters long")
+    .regex(
+      /^[a-zA-Z']+$/,
+      "Last name must only contain letters and apostrophes"
+    ),
   phone: z.string().min(10, "Invalid phone number"),
   company: z
     .string()
     .max(25)
-    .regex(/^[a-zA-Z0-9\s]+$/, "Only must contain letters and numbers"),
+    .regex(
+      /^['a-zA-Z0-9\s]+$/,
+      "Only must contain letters, numbers, and apostrophes"
+    ),
   date: z.string(),
   time: z.string(),
 });
@@ -95,9 +110,16 @@ const TrialRequestPage = () => {
                   <FormLabel>{t("firstName")}</FormLabel>
                   <FormControl>
                     <Input
+                      {...field}
                       type="firstName"
                       placeholder="Firstname"
-                      {...field}
+                      onChange={(event) => {
+                        const value = event.target.value.replace(
+                          /[^a-zA-Z']+/g,
+                          ""
+                        );
+                        field.onChange(value);
+                      }}
                     />
                   </FormControl>
                   <FormMessage>{errors.firstName?.message}</FormMessage>
@@ -111,7 +133,18 @@ const TrialRequestPage = () => {
                 <FormItem>
                   <FormLabel>{t("lastName")}</FormLabel>
                   <FormControl>
-                    <Input type="lastName" placeholder="Lastname" {...field} />
+                    <Input
+                      {...field}
+                      type="lastName"
+                      placeholder="Lastname"
+                      onChange={(event) => {
+                        const value = event.target.value.replace(
+                          /[^a-zA-Z']+/g,
+                          ""
+                        );
+                        field.onChange(value);
+                      }}
+                    />
                   </FormControl>
                   <FormMessage>{errors.lastName?.message}</FormMessage>
                 </FormItem>
@@ -138,11 +171,18 @@ const TrialRequestPage = () => {
                   <FormLabel>{t("company")}</FormLabel>
                   <FormControl>
                     <Input
+                      {...field}
                       maxLength={25}
                       max={25}
                       type="text"
                       placeholder="Company"
-                      {...field}
+                      onChange={(event) => {
+                        const value = event.target.value.replace(
+                          /[^'a-zA-Z0-9\s]/g,
+                          ""
+                        );
+                        field.onChange(value);
+                      }}
                     />
                   </FormControl>
                   <FormMessage>{errors.company?.message}</FormMessage>

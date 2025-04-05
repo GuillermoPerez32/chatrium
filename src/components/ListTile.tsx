@@ -17,7 +17,7 @@ const ListTile = ({ title, subtitle, trailing, leading, onClick }: Props) => {
   return (
     <>
       <div
-        className="flex items-center justify-between cursor-pointer p-3 bg-slate-100 rounded-t-md hover:bg-primary-100"
+        className="flex items-center justify-between cursor-pointer p-3 bg-card rounded-t-md hover:bg-card/90"
         onClick={onClick}
       >
         {leading}

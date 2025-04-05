@@ -12,7 +12,7 @@ const DropDown = ({ title, subtitle, icon, children }: Props) => {
   const [open, setIsOpen] = useState(false);
 
   return (
-    <div className="p-3 border bg-white rounded-md hover:bg-slate-50">
+    <div className="p-3 border bg-card rounded-md hover:bg-card/90">
       <div
         className="flex items-center justify-between cursor-pointer "
         onClick={() => setIsOpen(!open)}

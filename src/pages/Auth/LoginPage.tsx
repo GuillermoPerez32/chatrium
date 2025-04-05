@@ -20,7 +20,7 @@ const loginSchema = z.object({
     .string()
     .max(20)
     .regex(
-      /^[a-zA-Z0-9 _-]+$/,
+      /^['a-zA-Z0-9 _-]+$/,
       "Only letters, numbers, hyphens, and underscores allowed"
     )
     .refine((value) => !/^\s/.test(value), {
@@ -104,7 +104,7 @@ const LoginPage = () => {
                       placeholder={t("companyName")}
                       onChange={(event) => {
                         const value = event.target.value.replace(
-                          /^\s+|[^a-zA-Z0-9 _-]/g,
+                          /^\s+|[^'a-zA-Z0-9 _-]/g,
                           ""
                         );
                         field.onChange(value);
@@ -183,7 +183,7 @@ const LoginPage = () => {
           </form>
         </Form>
 
-        <div className="mt-10 border-t border-gray-300"></div>
+        <div className="mt-10 border-t border-border"></div>
 
         <p className="mt-8 text-center text-sm/6 text-muted-foreground">
           <span>{t("noAccountMessage")} </span>

@@ -5,6 +5,7 @@ import { Menu } from "lucide-react";
 import NavBar from "./NavBar";
 import { Button } from "@/components/ui/button";
 import { useAuthStore } from "@/stores";
+import ThemeToggle from "../ThemeToggle";
 
 const Header = () => {
   const [navBarOpen, setNavBarOpen] = useState(false);
@@ -59,7 +60,8 @@ const Header = () => {
             Company
           </Link>
         </div>
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end items-center gap-4">
+          <ThemeToggle />
           {user ? (
             <Button
               onClick={() => setUser(undefined)}

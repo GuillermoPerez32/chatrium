@@ -5,8 +5,6 @@ import {
   MessageSquare,
   Search,
   User,
-  Sun, // Added for light mode
-  Moon, // Added for dark mode
 } from "lucide-react";
 import { SidebarTrigger } from "./ui/sidebar";
 import { useAuthStore } from "@/stores";
@@ -20,7 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTranslation } from "react-i18next";
-import { useTheme } from "@/hooks";
+import ThemeToggle from "./ThemeToggle";
 
 const AppTopBar = () => {
   const { t } = useTranslation();
@@ -28,7 +26,6 @@ const AppTopBar = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
-  const { theme, setTheme } = useTheme();
   const isSubRoute = pathname.split("/").length > 3;
 
   const title = pathname
@@ -38,11 +35,6 @@ const AppTopBar = () => {
     ?.replace(/\b\w/g, (c) => c.toUpperCase());
 
   const loggedInUser = { name: "John Doe", email: "john.doe@example.com" };
-
-  // Function to toggle theme
-  const toggleTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
 
   return (
     <div className="flex items-center bg-sidebar shadow-md border-b py-2 px-4 sticky top-0 z-10">
@@ -65,7 +57,7 @@ const AppTopBar = () => {
           <Input
             type="text"
             placeholder={t("searchPlaceholder")}
-            className="pl-10 w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
+            className="pl-10 w-full border-border focus:border-indigo-500 focus:ring-indigo-500"
           />
         </div>
       </div>
@@ -84,6 +76,8 @@ const AppTopBar = () => {
           <span className="absolute top-0 right-0 w-2 h-2 bg-green-500 rounded-full"></span>
         </Button>
 
+        <ThemeToggle />
+
         {/* User profile dropdown */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -101,23 +95,10 @@ const AppTopBar = () => {
                 {loggedInUser.email}
               </span>
             </DropdownMenuItem>
-            {/* Theme toggle inside dropdown */}
-            <DropdownMenuItem onClick={toggleTheme} className="cursor-pointer">
-              {theme === "dark" ? (
-                <>
-                  <Sun className="w-4 h-4 mr-2" />
-                  <span>{t("lightMode")}</span>
-                </>
-              ) : (
-                <>
-                  <Moon className="w-4 h-4 mr-2" />
-                  <span>{t("darkMode")}</span>
-                </>
-              )}
-            </DropdownMenuItem>
+
             {/* Logout */}
             <DropdownMenuItem
-              className="text-red-600 cursor-pointer"
+              className="text-destructive cursor-pointer"
               onClick={() => {
                 setUser(undefined);
                 navigate("/");
