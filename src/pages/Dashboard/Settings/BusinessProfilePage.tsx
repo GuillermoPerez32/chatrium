@@ -60,7 +60,7 @@ const CustomTimePicker: React.FC<{
         placeholder="HH:MM"
       />
       {isOpen && (
-        <div className="absolute z-10 mt-1 w-full bg-white border border-border rounded-md shadow-lg max-h-60 overflow-y-auto">
+        <div className="absolute z-10 mt-1 w-full bg-card border border-border rounded-md shadow-lg max-h-60 overflow-y-auto">
           <div className="grid grid-cols-4 gap-1 p-2">
             {hours.map((hour) =>
               minutes.map((minute) => (
@@ -120,7 +120,7 @@ const BusinessProfilePage = () => {
   };
 
   return (
-    <div className="p-8 max-w-4xl mx-auto bg-white shadow-md rounded-lg">
+    <div className="p-8 max-w-4xl mx-auto bg-card shadow-md rounded-lg mt-20">
       <div className="flex flex-col gap-6">
         <DropDown
           title={t("businessInformation")}

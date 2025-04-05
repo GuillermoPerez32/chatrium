@@ -38,7 +38,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
       <Card className="w-full max-w-3xl mb-6">
         <CardContent className="space-y-6">
           {/* Card para User Profile */}
