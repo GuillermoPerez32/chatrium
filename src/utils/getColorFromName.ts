@@ -16,7 +16,7 @@ const colors: Record<string, string> = {
   O: "bg-sky-100",
   P: "bg-violet-100",
   Q: "bg-amber-100",
-  R: "bg-gray-100",
+  R: "bg-muted",
   S: "bg-red-100",
   T: "bg-blue-100",
   U: "bg-green-100",
@@ -29,7 +29,7 @@ const colors: Record<string, string> = {
 
 const getColorFromName = (name: string) => {
   const firstLetter = name.charAt(0).toUpperCase();
-  return colors[firstLetter] || "bg-gray-100";
+  return colors[firstLetter] || "bg-muted";
 };
 
 export default getColorFromName;

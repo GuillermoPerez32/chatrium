@@ -60,12 +60,10 @@ const QRCodePage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-primary-50 p-8">
+    <div className="min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
         {/* Encabezado */}
-        <h1 className="text-2xl font-bold text-black mb-8">
-          {t("qrCodePageTitle")}
-        </h1>
+        <h1 className="text-2xl font-bold  mb-8">{t("qrCodePageTitle")}</h1>
 
         {/* Botones Review y Customer-Experience */}
         <div className="flex gap-4 mb-6">
@@ -86,7 +84,7 @@ const QRCodePage = () => {
         </div>
 
         {/* Contenido dinámico según la pestaña activa */}
-        <div className="bg-white rounded-lg shadow-sm p-6">
+        <div className="bg-card rounded-lg shadow-sm p-6">
           {activeTab === "review" && (
             <>
               <h2 className="text-xl font-medium text-muted-foreground mb-4">

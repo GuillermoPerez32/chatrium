@@ -7,6 +7,7 @@ import {
   Link as LinkIcon,
 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
 
 const IntegrationPage = () => {
   const { t } = useTranslation(); // Hook para traducciones
@@ -26,7 +27,7 @@ const IntegrationPage = () => {
       name: "Facebook",
       icon: <Facebook className="w-8 h-8 text-primary" />,
       description: t("socialMedia.facebookDescription"),
-      connected: false,
+      connected: true,
     },
   ];
 
@@ -44,7 +45,7 @@ const IntegrationPage = () => {
       name: "Slack",
       icon: <Slack className="w-8 h-8 text-primary" />,
       description: t("otherApps.slackDescription"),
-      connected: false,
+      connected: true,
     },
   ];
 
@@ -65,18 +66,14 @@ const IntegrationPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-primary-50 p-8">
+    <div className="min-h-screen p-8">
       <div className="max-w-6xl mx-auto">
         {/* Encabezado */}
         <div className="flex justify-between items-center mb-8">
-          <h1 className="text-2xl font-bold text-black">{t("integrations")}</h1>
-          <button
-            onClick={generateConnectionLink}
-            className="flex items-center gap-2 bg-primary px-4 py-2 rounded-lg hover:bg-primary/90 transition"
-          >
+          <Button onClick={generateConnectionLink} className=" ml-auto">
             <LinkIcon className="w-5 h-5" />
             {t("generateLink")}
-          </button>
+          </Button>
         </div>
 
         {/* Sección de Redes Sociales */}
@@ -88,27 +85,21 @@ const IntegrationPage = () => {
             {socialMedia.map((integration) => (
               <div
                 key={integration.id}
-                className="bg-white rounded-lg shadow-sm p-4 flex items-start gap-4 hover:shadow-md transition"
+                className="bg-card rounded-lg shadow-sm p-4 flex items-start gap-4 hover:shadow-md transition"
               >
                 <div>{integration.icon}</div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-medium text-black">
-                    {integration.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
+                <div className="flex flex-col w-full">
+                  <h3 className="text-lg font-medium">{integration.name}</h3>
+                  <p className="text-xs text-muted-foreground">
                     {integration.description}
                   </p>
-                  <button
+                  <Button
                     onClick={() => connectIntegration(integration.name)}
                     disabled={integration.connected}
-                    className={`mt-3 px-4 py-1.5 rounded-lg  text-sm ${
-                      integration.connected
-                        ? "bg-gray-400 cursor-not-allowed"
-                        : "bg-primary hover:bg-primary/90"
-                    } transition`}
+                    className="self-end mt-8"
                   >
                     {integration.connected ? t("connected") : t("connect")}
-                  </button>
+                  </Button>
                 </div>
               </div>
             ))}
@@ -124,27 +115,21 @@ const IntegrationPage = () => {
             {otherApps.map((integration) => (
               <div
                 key={integration.id}
-                className="bg-white rounded-lg shadow-sm p-4 flex items-start gap-4 hover:shadow-md transition"
+                className="bg-card rounded-lg shadow-sm p-4 flex items-start gap-4 hover:shadow-md transition"
               >
                 <div>{integration.icon}</div>
-                <div className="flex-1">
-                  <h3 className="text-lg font-medium text-black">
-                    {integration.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
+                <div className="flex flex-col w-full">
+                  <h3 className="text-lg font-medium">{integration.name}</h3>
+                  <p className="text-xs text-muted-foreground">
                     {integration.description}
                   </p>
-                  <button
+                  <Button
                     onClick={() => connectIntegration(integration.name)}
                     disabled={integration.connected}
-                    className={`mt-3 px-4 py-1.5 rounded-lg  text-sm ${
-                      integration.connected
-                        ? "bg-gray-400 cursor-not-allowed"
-                        : "bg-primary hover:bg-primary/90"
-                    } transition`}
+                    className="self-end mt-8"
                   >
                     {integration.connected ? t("connected") : t("connect")}
-                  </button>
+                  </Button>
                 </div>
               </div>
             ))}
@@ -153,7 +138,7 @@ const IntegrationPage = () => {
 
         {/* Enlace generado */}
         {connectionLink && (
-          <div className="p-4 bg-gray-100 rounded-lg">
+          <div className="p-4 bg-muted rounded-lg">
             <p className="text-muted-foreground">
               {t("generatedLinkLabel")}{" "}
               <a

@@ -177,7 +177,7 @@ export default function SettingsPage() {
                         id="sms-enabled"
                         checked={smsEnabled}
                         onCheckedChange={setSmsEnabled}
-                        className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-gray-200"
+                        className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-muted"
                       />
                     </TooltipTrigger>
                     <TooltipContent>
@@ -205,7 +205,7 @@ export default function SettingsPage() {
                         id="signature-enabled"
                         checked={signatureEnabled}
                         onCheckedChange={setSignatureEnabled}
-                        className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-gray-200"
+                        className="data-[state=checked]:bg-green-500 data-[state=unchecked]:bg-muted"
                       />
                     </TooltipTrigger>
                     <TooltipContent>

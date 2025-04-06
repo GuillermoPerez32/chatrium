@@ -159,7 +159,7 @@ const UpdatePasswordForm = () => {
             />
             <Button
               type="submit"
-              className="w-full h-8 text-sm mt-2 bg-black hover:bg-gray-800"
+              className="w-full h-8 text-sm mt-2 bg-black hover:bg-muted"
             >
               {t("updatePassword")}
             </Button>

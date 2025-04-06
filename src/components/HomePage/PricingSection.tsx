@@ -63,7 +63,7 @@ const PricingSection = () => {
             Get started today
           </a>
         </div>
-        <div className="relative rounded-3xl bg-gray-900 p-8 ring-1 shadow-2xl ring-muted-foreground sm:p-10">
+        <div className="relative rounded-3xl bg-muted p-8 ring-1 shadow-2xl ring-muted-foreground sm:p-10">
           <h3
             id="tier-enterprise"
             className="text-base/7 font-semibold text-primary-400"

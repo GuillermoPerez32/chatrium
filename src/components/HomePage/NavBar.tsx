@@ -43,31 +43,31 @@ const NavBar = ({ open, onClose }: Props) => {
             <div className="space-y-2 py-6">
               <Link
                 to={AppRoutes.HOME}
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-muted"
               >
                 Product
               </Link>
               <Link
                 to={AppRoutes.HOME}
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-muted"
               >
                 Features
               </Link>
               <Link
                 to={AppRoutes.HOME}
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-muted"
               >
                 Marketplace
               </Link>
               <Link
                 to={AppRoutes.HOME}
-                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200"
+                className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-muted-foreground hover:bg-muted"
               >
                 Company
               </Link>
             </div>
             <div className="py-6">
-              <div className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-muted-foreground hover:bg-gray-200">
+              <div className="-mx-3 block rounded-lg px-3 py-2.5 text-base/7 font-semibold text-muted-foreground hover:bg-muted">
                 <Link
                   onClick={(e) => {
                     if (!user) return;
