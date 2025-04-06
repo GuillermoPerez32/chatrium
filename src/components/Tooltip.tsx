@@ -1,6 +1,9 @@
 import { ReactNode } from "react";
-import { Tooltip as ShadcnTooltip } from "./ui/tooltip";
-import { TooltipContent, TooltipTrigger } from "@radix-ui/react-tooltip";
+import {
+  Tooltip as ShadcnTooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "./ui/tooltip";
 
 type Props = {
   children: ReactNode;
@@ -11,9 +14,7 @@ const Tooltip = ({ children, title }: Props) => {
   return (
     <ShadcnTooltip>
       <TooltipTrigger>{children}</TooltipTrigger>
-      <TooltipContent>
-        <p>{title}</p>
-      </TooltipContent>
+      <TooltipContent>{title}</TooltipContent>
     </ShadcnTooltip>
   );
 };
