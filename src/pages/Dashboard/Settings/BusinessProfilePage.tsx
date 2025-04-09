@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import DropDown from "@/components/DropDown";
+import AdvancedTimeRangePicker from "@/components/ui/timepicker";
 
 type DayOfWeek =
   | "monday"
@@ -13,86 +14,48 @@ type DayOfWeek =
   | "saturday"
   | "sunday";
 
-type BusinessHours = {
-  [key in DayOfWeek]: { open: string; close: string }; // Horarios como HH:MM
+type Time = {
+  hours: number | null;
+  minutes: number | null;
 };
 
-// Componente personalizado para seleccionar tiempo
-const CustomTimePicker: React.FC<{
-  value: string;
-  onChange: (value: string) => void;
-  pickerId: string; // Identificador único para cada picker
-  openPicker: string | null; // Estado global del picker abierto
-  setOpenPicker: (id: string | null) => void; // Función para actualizar el picker abierto
-}> = ({ value, onChange, pickerId, openPicker, setOpenPicker }) => {
-  const isOpen = openPicker === pickerId;
-
-  // Generar opciones de horas y minutos
-  const hours = Array.from({ length: 24 }, (_, i) =>
-    String(i).padStart(2, "0")
-  );
-  const minutes = ["00", "15", "30", "45"]; // Intervalos de 15 minutos
-
-  const handleSelect = (hour: string, minute: string) => {
-    const newTime = `${hour}:${minute}`;
-    onChange(newTime);
-    setOpenPicker(null); // Cerrar todos los pickers al seleccionar
-  };
-
-  // Manejar entrada manual
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    // Validar formato HH:MM
-    const timeRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
-    if (timeRegex.test(inputValue) || inputValue === "") {
-      onChange(inputValue);
-    }
-  };
-
-  return (
-    <div className="relative">
-      <input
-        type="text"
-        value={value}
-        onChange={handleInputChange}
-        onClick={() => setOpenPicker(isOpen ? null : pickerId)} // Abrir o cerrar este picker
-        className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm cursor-pointer"
-        placeholder="HH:MM"
-      />
-      {isOpen && (
-        <div className="absolute z-10 mt-1 w-full bg-card border border-border rounded-md shadow-lg max-h-60 overflow-y-auto">
-          <div className="grid grid-cols-4 gap-1 p-2">
-            {hours.map((hour) =>
-              minutes.map((minute) => (
-                <button
-                  key={`${hour}:${minute}`}
-                  onClick={() => handleSelect(hour, minute)}
-                  className="p-1 text-sm hover:bg-indigo-100 rounded"
-                >
-                  {`${hour}:${minute}`}
-                </button>
-              ))
-            )}
-          </div>
-        </div>
-      )}
-    </div>
-  );
+type BusinessHours = {
+  [key in DayOfWeek]: { open: Time; close: Time };
 };
 
 const BusinessProfilePage = () => {
   const { t } = useTranslation();
   const [is24Hours, setIs24Hours] = useState(false);
   const [businessHours, setBusinessHours] = useState<BusinessHours>({
-    monday: { open: "09:00", close: "17:00" },
-    tuesday: { open: "09:00", close: "17:00" },
-    wednesday: { open: "09:00", close: "17:00" },
-    thursday: { open: "09:00", close: "17:00" },
-    friday: { open: "09:00", close: "17:00" },
-    saturday: { open: "", close: "" },
-    sunday: { open: "", close: "" },
+    monday: {
+      open: { hours: 9, minutes: 0 },
+      close: { hours: 17, minutes: 0 },
+    },
+    tuesday: {
+      open: { hours: 9, minutes: 0 },
+      close: { hours: 17, minutes: 0 },
+    },
+    wednesday: {
+      open: { hours: 9, minutes: 0 },
+      close: { hours: 17, minutes: 0 },
+    },
+    thursday: {
+      open: { hours: 9, minutes: 0 },
+      close: { hours: 17, minutes: 0 },
+    },
+    friday: {
+      open: { hours: 9, minutes: 0 },
+      close: { hours: 17, minutes: 0 },
+    },
+    saturday: {
+      open: { hours: null, minutes: null },
+      close: { hours: null, minutes: null },
+    },
+    sunday: {
+      open: { hours: null, minutes: null },
+      close: { hours: null, minutes: null },
+    },
   });
-  const [openPicker, setOpenPicker] = useState<string | null>(null); // Estado para rastrear el picker abierto
 
   const days: DayOfWeek[] = [
     "monday",
@@ -104,19 +67,33 @@ const BusinessProfilePage = () => {
     "sunday",
   ];
 
-  // Manejar cambios en los pickers de tiempo
-  const handleTimeChange = (
+  const handleTimeRangeChange = (
     day: DayOfWeek,
-    type: "open" | "close",
-    value: string
+    newRange: { start: Time; end: Time }
   ) => {
     setBusinessHours((prev) => ({
       ...prev,
       [day]: {
-        ...prev[day],
-        [type]: value,
+        open: newRange.start,
+        close: newRange.end,
       },
     }));
+  };
+
+  const toggleTimeFormat = () => {
+    setIs24Hours((prev) => !prev);
+    if (!is24Hours) {
+      const adjusted = { ...businessHours };
+      days.forEach((day) => {
+        if (adjusted[day].open.hours && adjusted[day].open.hours > 12) {
+          adjusted[day].open.hours = 12;
+        }
+        if (adjusted[day].close.hours && adjusted[day].close.hours > 12) {
+          adjusted[day].close.hours = 12;
+        }
+      });
+      setBusinessHours(adjusted);
+    }
   };
 
   return (
@@ -196,59 +173,35 @@ const BusinessProfilePage = () => {
               <Switch
                 id="24hours-switch"
                 checked={is24Hours}
-                onCheckedChange={setIs24Hours}
+                onCheckedChange={toggleTimeFormat}
               />
               <Label
                 htmlFor="24hours-switch"
                 className="text-sm font-medium text-muted-foreground"
               >
-                {t("24hours7days")}
+                {t("24-7")}
               </Label>
             </div>
           </div>
           {!is24Hours && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4">
+              {" "}
+              {/* Cambiado de grid-cols-1 a grid-cols-2 */}
               {days.map((day) => (
-                <div key={day} className="space-y-2">
-                  <Label className="text-sm font-medium text-muted-foreground">
+                <div key={day} className="flex items-center gap-2">
+                  <Label className="text-sm font-medium text-muted-foreground w-20">
                     {t(day)}
                   </Label>
-                  <div className="flex gap-2">
-                    <div className="w-1/2">
-                      <Label
-                        htmlFor={`${day}-open`}
-                        className="text-xs font-medium text-muted-foreground"
-                      >
-                        {t("openTime")}
-                      </Label>
-                      <CustomTimePicker
-                        value={businessHours[day].open}
-                        onChange={(value) =>
-                          handleTimeChange(day, "open", value)
-                        }
-                        pickerId={`${day}-open`}
-                        openPicker={openPicker}
-                        setOpenPicker={setOpenPicker}
-                      />
-                    </div>
-                    <div className="w-1/2">
-                      <Label
-                        htmlFor={`${day}-close`}
-                        className="text-xs font-medium text-muted-foreground"
-                      >
-                        {t("closeTime")}
-                      </Label>
-                      <CustomTimePicker
-                        value={businessHours[day].close}
-                        onChange={(value) =>
-                          handleTimeChange(day, "close", value)
-                        }
-                        pickerId={`${day}-close`}
-                        openPicker={openPicker}
-                        setOpenPicker={setOpenPicker}
-                      />
-                    </div>
-                  </div>
+                  <AdvancedTimeRangePicker
+                    timeRange={{
+                      start: businessHours[day].open,
+                      end: businessHours[day].close,
+                    }}
+                    setTimeRange={(newRange) =>
+                      handleTimeRangeChange(day, newRange)
+                    }
+                    is24HourFormat={is24Hours}
+                  />
                 </div>
               ))}
             </div>
