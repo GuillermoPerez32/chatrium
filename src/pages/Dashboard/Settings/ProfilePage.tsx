@@ -188,7 +188,7 @@ export default function SettingsPage() {
             </CardContent>
           </Card>
 
-          {/* Card para Signature */}
+          {/* Card para Signature sin el texto "Signature Text" */}
           <Card>
             <CardHeader>
               <CardTitle>Signature</CardTitle>
@@ -212,8 +212,9 @@ export default function SettingsPage() {
                   </Tooltip>
                 </div>
                 {signatureEnabled && (
-                  <div className="flex flex-col space-y-1 mt-2">
-                    <Label htmlFor="signature-text">Signature Text</Label>
+                  <div className="flex flex-col space-y-4 mt-2">
+                    <Label htmlFor="signature-text"></Label>{" "}
+                    {/* Etiqueta vacía */}
                     <Tooltip>
                       <TooltipTrigger>
                         <Input
