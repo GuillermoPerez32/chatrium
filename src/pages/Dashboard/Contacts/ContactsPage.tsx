@@ -48,7 +48,7 @@ const ContactsPage = () => {
               className="border-primary text-foreground hover:bg-primary/10"
             >
               <label className="cursor-pointer">
-                {t("importCSV")}
+                {t("import")}
                 <input
                   type="file"
                   accept=".csv"
