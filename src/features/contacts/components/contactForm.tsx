@@ -10,14 +10,13 @@ import {
   FormLabel,
 } from "@/components/ui/form";
 import { Contact } from "../types/contacts";
-import { useForm } from "react-hook-form"; // Asegúrate de que esté instalado
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 type ContactFormProps = {
   contact: Contact;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void; // Este prop ya no será necesario
-  onSubmit: (data: Contact) => void; // Cambiamos la firma para recibir los datos del formulario
+  onSubmit: (data: Contact) => void;
   onCancel: () => void;
   isEdit?: boolean;
 };
@@ -27,7 +26,7 @@ const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().optional(),
-  photo: z.any().optional(), // Para el campo de archivo, no validamos específicamente aquí
+  photo: z.any().optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -47,30 +46,31 @@ const ContactForm = ({
       name: contact.name || "",
       email: contact.email || "",
       phone: contact.phone || "",
-      photo: undefined, // No inicializamos el campo de archivo
+      photo: undefined,
     },
   });
 
   // Manejador de envío del formulario
   const handleSubmit = (data: ContactFormValues) => {
-    // Adaptamos los datos al tipo Contact esperado por onSubmit
     const submittedData: Contact = {
-      id: contact.id || null, // Include the id property
+      id: contact.id || null,
       name: data.name,
       email: data.email,
       phone: data.phone || "",
       photo:
         data.photo instanceof File
           ? URL.createObjectURL(data.photo)
-          : contact.photo || "", // Manejo básico del archivo
+          : contact.photo || "",
     };
     onSubmit(submittedData);
   };
 
   return (
     <Card className="w-full max-w-md">
-      <CardHeader className="bg-primary text-foreground">
-        <CardTitle>{t(isEdit ? "editContact" : "addNewContact")}</CardTitle>
+      <CardHeader className="border-b border-muted">
+        <CardTitle className="text-3xl font-semibold text-muted-foreground text-center">
+          {t(isEdit ? "editContact" : "addNewContact")}
+        </CardTitle>
       </CardHeader>
       <CardContent className="p-6 bg-background">
         <Form {...form}>
@@ -149,7 +149,7 @@ const ContactForm = ({
                       className="border-muted focus:ring-primary focus:border-primary"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
-                        if (file) onChange(file); // Pasamos el archivo al controlador
+                        if (file) onChange(file);
                       }}
                       {...field}
                     />
@@ -162,7 +162,7 @@ const ContactForm = ({
                 variant="outline"
                 className="border-primary text-foreground hover:bg-primary/10"
                 onClick={onCancel}
-                type="button" // Evitamos que dispare el submit
+                type="button"
               >
                 {t("cancel")}
               </Button>

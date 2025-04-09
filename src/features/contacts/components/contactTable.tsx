@@ -21,8 +21,8 @@ const ContactTable = ({ data, onEdit, onDelete }: ContactTableProps) => {
 
   return (
     <Card className="shadow-lg rounded-lg">
-      <CardHeader className="bg-primary/10 border-b border-muted">
-        <CardTitle className="text-xl font-semibold text-muted-foreground">
+      <CardHeader className="border-b border-muted">
+        <CardTitle className="text-3xl font-semibold text-muted-foreground text-center">
           {t("contactList")}
         </CardTitle>
       </CardHeader>
