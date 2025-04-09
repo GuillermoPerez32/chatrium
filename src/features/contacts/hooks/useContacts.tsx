@@ -35,28 +35,21 @@ export const useContacts = () => {
     }
   };
 
-  const addContact = () => {
-    if (newContact.name && newContact.email && newContact.phone) {
+  const addContact = (contact: Contact) => {
+    if (contact.name && contact.email && contact.phone) {
       const newId =
         dataTable.length > 0
           ? (dataTable[dataTable.length - 1]?.id ?? 0) + 1
           : 1;
-      setDataTable([...dataTable, { ...newContact, id: newId }]);
+      setDataTable([...dataTable, { ...contact, id: newId }]);
       setNewContact(initialContact);
       setIsAddModalOpen(false);
     }
   };
 
-  const saveEditContact = () => {
-    if (
-      editContact?.id &&
-      editContact.name &&
-      editContact.email &&
-      editContact.phone
-    ) {
-      setDataTable(
-        dataTable.map((c) => (c.id === editContact.id ? editContact : c))
-      );
+  const saveEditContact = (contact: Contact) => {
+    if (contact?.id && contact.name && contact.email && contact.phone) {
+      setDataTable(dataTable.map((c) => (c.id === contact.id ? contact : c)));
       setEditContact(null);
     }
   };
@@ -67,25 +60,31 @@ export const useContacts = () => {
 
   const handleCSVImport = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const text = event.target?.result as string;
-        const lines = text.split("\n").map((line) => line.split(","));
-        const importedContacts = lines
-          .slice(1)
-          .map((line, index) => ({
-            id: dataTable.length + index + 1,
-            name: line[0]?.trim() || "",
-            email: line[1]?.trim() || "",
-            phone: line[2]?.trim() || "",
-            photo: null,
-          }))
-          .filter((contact) => contact.name && contact.email && contact.phone);
-        setDataTable([...dataTable, ...importedContacts]);
-      };
-      reader.readAsText(file);
+    if (!file) return;
+
+    // Aunque la validación ya está en ContactsPage, añadimos una verificación adicional por seguridad
+    if (!file.name.toLowerCase().endsWith(".csv")) {
+      console.warn("Attempted to process a non-CSV file in handleCSVImport");
+      return;
     }
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      const text = event.target?.result as string;
+      const lines = text.split("\n").map((line) => line.split(","));
+      const importedContacts = lines
+        .slice(1) // Saltar la cabecera si existe
+        .map((line, index) => ({
+          id: dataTable.length + index + 1,
+          name: line[0]?.trim() || "",
+          email: line[1]?.trim() || "",
+          phone: line[2]?.trim() || "",
+          photo: "", // No hay photo en CSV, se deja vacío
+        }))
+        .filter((contact) => contact.name && contact.email && contact.phone); // Filtrar contactos incompletos
+      setDataTable([...dataTable, ...importedContacts]);
+    };
+    reader.readAsText(file);
   };
 
   const filteredDataTable = dataTable.filter(

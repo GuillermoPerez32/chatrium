@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { useContacts } from "@/features/contacts/hooks/useContacts";
 import ContactTable from "@/features/contacts/components/contactTable";
 import ContactForm from "@/features/contacts/components/contactForm";
+import { toast } from "sonner"; // Para mostrar mensajes de error
 
 const ContactsPage = () => {
   const { t } = useTranslation();
@@ -24,6 +25,29 @@ const ContactsPage = () => {
     deleteContact,
     handleCSVImport,
   } = useContacts();
+
+  // Función para validar y manejar la importación de CSV
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) {
+      console.log("No file selected");
+      return;
+    }
+
+    console.log("Selected file:", file.name); // Depuración para verificar el archivo seleccionado
+
+    // Verificar si el archivo es .csv
+    if (!file.name.toLowerCase().endsWith(".csv")) {
+      console.log("Invalid file type detected:", file.name); // Depuración
+      toast.error(t("onlyCSVAllowed")); // Mensaje de error
+      e.target.value = ""; // Limpiar el input
+      return;
+    }
+
+    // Si es .csv, llamar a la función original de importación
+    console.log("Processing CSV file:", file.name); // Depuración
+    handleCSVImport(e);
+  };
 
   return (
     <div className="min-h-screen bg-background p-6">
@@ -51,9 +75,9 @@ const ContactsPage = () => {
                 {t("import")}
                 <input
                   type="file"
-                  accept=".csv"
+                  accept=".csv" // Sugerencia inicial para el selector de archivos
                   className="hidden"
-                  onChange={handleCSVImport}
+                  onChange={handleFileChange} // Usamos la nueva función con validación
                 />
               </label>
             </Button>
