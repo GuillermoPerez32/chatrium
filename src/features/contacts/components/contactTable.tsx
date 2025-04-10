@@ -72,7 +72,6 @@ const ContactTable = ({ data, onEdit, onDelete }: ContactTableProps) => {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="border-primary text-foreground hover:bg-primary/10"
                             onClick={() => onEdit(contact)}
                           >
                             <Pencil className="w-4 h-4" />
@@ -85,7 +84,6 @@ const ContactTable = ({ data, onEdit, onDelete }: ContactTableProps) => {
                           <Button
                             variant="destructive"
                             size="sm"
-                            className="bg-destructive hover:bg-destructive/90 text-foreground"
                             onClick={() =>
                               contact.id !== null && onDelete(contact.id)
                             }
@@ -152,7 +150,6 @@ const ContactTable = ({ data, onEdit, onDelete }: ContactTableProps) => {
                             <Button
                               variant="outline"
                               size="sm"
-                              className="border-primary text-foreground hover:bg-primary/10"
                               onClick={() => onEdit(contact)}
                             >
                               <Pencil className="w-4 h-4" />
@@ -165,7 +162,6 @@ const ContactTable = ({ data, onEdit, onDelete }: ContactTableProps) => {
                             <Button
                               variant="destructive"
                               size="sm"
-                              className="bg-destructive hover:bg-destructive/90 text-foreground"
                               onClick={() =>
                                 contact.id !== null && onDelete(contact.id)
                               }

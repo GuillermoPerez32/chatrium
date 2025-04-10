@@ -178,20 +178,10 @@ const ContactForm = ({
               )}
             />
             <div className="flex flex-col sm:flex-row sm:justify-end gap-2 sm:space-x-2">
-              <Button
-                variant="outline"
-                className="w-full sm:w-auto border-primary text-foreground hover:bg-primary/10"
-                onClick={onCancel}
-                type="button"
-              >
+              <Button variant="outline" onClick={onCancel} type="button">
                 {t("cancel")}
               </Button>
-              <Button
-                type="submit"
-                className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-foreground"
-              >
-                {t(isEdit ? "save" : "addContact")}
-              </Button>
+              <Button type="submit">{t(isEdit ? "save" : "addContact")}</Button>
             </div>
           </form>
         </Form>

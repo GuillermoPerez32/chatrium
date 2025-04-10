@@ -57,14 +57,10 @@ const ContactsPage = () => {
                 placeholder={t("searchContacts")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 w-full border-muted rounded-lg focus:ring-primary focus:border-primary"
+                className="pl-10"
               />
             </div>
-            <Button
-              variant="outline"
-              asChild
-              className="w-full sm:w-auto border-primary text-foreground hover:bg-primary/10"
-            >
+            <Button variant="outline" asChild>
               <label className="cursor-pointer">
                 {t("import")}
                 <input
@@ -75,10 +71,7 @@ const ContactsPage = () => {
                 />
               </label>
             </Button>
-            <Button
-              onClick={() => setIsAddModalOpen(true)}
-              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-foreground"
-            >
+            <Button onClick={() => setIsAddModalOpen(true)}>
               {t("addContact")}
             </Button>
           </div>
