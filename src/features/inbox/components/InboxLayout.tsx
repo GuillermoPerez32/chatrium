@@ -21,22 +21,53 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { conversations, selectedConversation } from "../mocks";
+import EmojiPicker, { EmojiClickData, Theme } from "emoji-picker-react"; // Importamos Theme
 
 const InboxLayout = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const emojiPickerRef = useRef<HTMLDivElement>(null);
+  const [newMessage, setNewMessage] = useState("");
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({
       block: "nearest",
     });
   }, []);
-  const [newMessage, setNewMessage] = useState("");
 
+  // Manejar el envío del mensaje
   const handleSendMessage = () => {
     if (newMessage.trim()) {
       setNewMessage("");
+      setShowEmojiPicker(false);
     }
   };
+
+  // Manejar la selección de un emoji con tipo explícito
+  const handleEmojiClick = (emojiObject: EmojiClickData) => {
+    setNewMessage((prev) => prev + emojiObject.emoji);
+    setShowEmojiPicker(false);
+  };
+
+  // Alternar la visibilidad del picker
+  const toggleEmojiPicker = () => {
+    setShowEmojiPicker((prev) => !prev);
+  };
+
+  // Cerrar el picker al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        showEmojiPicker &&
+        emojiPickerRef.current &&
+        !emojiPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowEmojiPicker(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [showEmojiPicker]);
 
   return (
     <div className="flex h-full bg-background">
@@ -248,7 +279,7 @@ const InboxLayout = () => {
               </Button>
             </div>
 
-            <div className="flex items-end border rounded-md bg-background">
+            <div className="flex items-end border rounded-md bg-background relative">
               <div className="flex-1 p-3">
                 <Input
                   placeholder="Type your message..."
@@ -270,11 +301,29 @@ const InboxLayout = () => {
                   <TooltipContent>Attach file</TooltipContent>
                 </Tooltip>
                 <Tooltip>
-                  <TooltipTrigger>
-                    <Smile className="text-muted-foreground" />
+                  <TooltipTrigger asChild>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-6 w-6"
+                      onClick={toggleEmojiPicker}
+                    >
+                      <Smile className="text-muted-foreground" />
+                    </Button>
                   </TooltipTrigger>
                   <TooltipContent>Emoji</TooltipContent>
                 </Tooltip>
+                {showEmojiPicker && (
+                  <div
+                    ref={emojiPickerRef}
+                    className="absolute bottom-16 right-0 z-10"
+                  >
+                    <EmojiPicker
+                      theme={"dark" as Theme} // Usamos "dark" como valor de Theme
+                      onEmojiClick={handleEmojiClick}
+                    />
+                  </div>
+                )}
                 <Button size="sm" onClick={handleSendMessage}>
                   <Send className="text-white" />
                 </Button>

@@ -4,6 +4,7 @@ export type Contact = {
   email: string;
   phone: string;
   photo: string | null;
+  businessName?: string; // Added businessName property
 };
 
 export const initialContact: Contact = {

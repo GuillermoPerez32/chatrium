@@ -5,6 +5,7 @@ import { Search } from "lucide-react";
 import { useContacts } from "@/features/contacts/hooks/useContacts";
 import ContactTable from "@/features/contacts/components/contactTable";
 import ContactForm from "@/features/contacts/components/contactForm";
+import { toast } from "sonner";
 
 const ContactsPage = () => {
   const { t } = useTranslation();
@@ -17,49 +18,66 @@ const ContactsPage = () => {
     setEditContact,
     setSearchTerm,
     setIsAddModalOpen,
-    handleInputChange,
-    handleEditInputChange,
     addContact,
     saveEditContact,
     deleteContact,
     handleCSVImport,
   } = useContacts();
 
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) {
+      console.log("No file selected");
+      return;
+    }
+
+    console.log("Selected file:", file.name);
+    if (!file.name.toLowerCase().endsWith(".csv")) {
+      console.log("Invalid file type detected:", file.name);
+      toast.error(t("onlyCSVAllowed"));
+      e.target.value = "";
+      return;
+    }
+
+    console.log("Processing CSV file:", file.name);
+    handleCSVImport(e);
+  };
+
   return (
-    <div className="min-h-screen bg-background p-6">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold text-foreground">
+    <div className="min-h-screen bg-background p-4 sm:p-6 lg:p-8">
+      <div className="max-w-full sm:max-w-4xl mx-auto">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3 sm:gap-0 mb-4 sm:mb-6">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">
             {t("contacts")}
           </h1>
-          <div className="flex items-center space-x-4">
-            <div className="relative">
+          <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto">
+            <div className="relative w-full sm:w-64">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5" />
               <Input
                 placeholder={t("searchContacts")}
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10 w-64 border-muted rounded-lg focus:ring-primary focus:border-primary"
+                className="pl-10 w-full border-muted rounded-lg focus:ring-primary focus:border-primary"
               />
             </div>
             <Button
               variant="outline"
               asChild
-              className="border-primary text-foreground hover:bg-primary/10"
+              className="w-full sm:w-auto border-primary text-foreground hover:bg-primary/10"
             >
               <label className="cursor-pointer">
-                {t("importCSV")}
+                {t("import")}
                 <input
                   type="file"
                   accept=".csv"
                   className="hidden"
-                  onChange={handleCSVImport}
+                  onChange={handleFileChange}
                 />
               </label>
             </Button>
             <Button
               onClick={() => setIsAddModalOpen(true)}
-              className="bg-primary hover:bg-primary/90 text-foreground"
+              className="w-full sm:w-auto bg-primary hover:bg-primary/90 text-foreground"
             >
               {t("addContact")}
             </Button>
@@ -73,10 +91,9 @@ const ContactsPage = () => {
         />
 
         {isAddModalOpen && (
-          <div className="fixed inset-0 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 sm:p-0">
             <ContactForm
               contact={newContact}
-              onChange={handleInputChange}
               onSubmit={addContact}
               onCancel={() => setIsAddModalOpen(false)}
             />
@@ -84,10 +101,9 @@ const ContactsPage = () => {
         )}
 
         {editContact?.id && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 sm:p-0">
             <ContactForm
               contact={editContact}
-              onChange={handleEditInputChange}
               onSubmit={saveEditContact}
               onCancel={() => setEditContact(null)}
               isEdit
