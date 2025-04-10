@@ -200,11 +200,11 @@ const BusinessProfilePage = () => {
               </div>
             </div>
             {!is24Hours && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 overflow-x-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 overflow-x-auto">
                 {days.map((day) => (
                   <div
                     key={day}
-                    className="flex flex-row items-center gap-2 w-full min-w-[250px]"
+                    className="flex flex-col items-center gap-2 w-full min-w-[250px] sm:flex-row"
                   >
                     <Label className="text-sm font-medium text-muted-foreground min-w-[80px] sm:min-w-[100px] lg:min-w-[120px] shrink-0">
                       {t(day)}
