@@ -105,7 +105,7 @@
     "saturday": "Saturday",
     "sunday": "Sunday"
   },
-  "24-7": "24-7",
+  "24/7": "24/7",
   "selectTimeRange": "Select time range",
 
   "googleMyBusinessListing": "Google My Business Listing",
@@ -248,7 +248,7 @@
   "cancel": "Cancel",
   "noDataTable": "No data available",
   "actions": "Actions",
-  "dataTableList" : "Data Table List",
+  "dataTableList": "Data Table List",
   "searchDataTable": "Search Data Table",
   "dataTable": "Data Table"
 }

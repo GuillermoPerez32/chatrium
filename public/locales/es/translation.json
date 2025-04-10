@@ -103,7 +103,7 @@
     "saturday": "Sábado",
     "sunday": "Domingo"
   },
-  "24-7": "24-7",
+  "24/7": "24/7",
   "selectTimeRange": "Seleccione el rango de tiempo",
 
   "googleMyBusinessListing": "Google My Business",
@@ -230,7 +230,7 @@
   "contactList": "Lista de contactos",
   "delete": "Eliminar",
   "enterName": "Ingresa el nombre",
-  "enterEmail": "Ingresa el correo electrónico", 
+  "enterEmail": "Ingresa el correo electrónico",
   "enterPhone": "Ingresa el número de teléfono",
   "noContacts": "No hay contactos disponibles",
   "deleteContact": "Eliminar contacto",

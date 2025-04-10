@@ -195,16 +195,16 @@ const BusinessProfilePage = () => {
                   htmlFor="24hours-switch"
                   className="text-sm font-medium text-muted-foreground"
                 >
-                  {t("24-7")}
+                  {t("24/7")}
                 </Label>
               </div>
             </div>
             {!is24Hours && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 overflow-x-auto">
                 {days.map((day) => (
                   <div
                     key={day}
-                    className="flex flex-row items-center gap-2 w-full min-w-[250px]" // Añadido min-w para evitar compresión excesiva
+                    className="flex flex-row items-center gap-2 w-full min-w-[250px]"
                   >
                     <Label className="text-sm font-medium text-muted-foreground min-w-[80px] sm:min-w-[100px] lg:min-w-[120px] shrink-0">
                       {t(day)}

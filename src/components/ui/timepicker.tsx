@@ -1,5 +1,6 @@
 import { useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
+import { Input } from "./input";
 
 interface CustomTimePickerProps {
   value: Dayjs | null;
@@ -31,12 +32,5 @@ export default function CustomTimePicker({
     }
   };
 
-  return (
-    <input
-      type="time"
-      value={time}
-      onChange={handleTimeChange}
-      className="w-28 p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm bg-white"
-    />
-  );
+  return <Input type="time" value={time} onChange={handleTimeChange} />;
 }
