@@ -62,9 +62,6 @@ const AppSidebar = () => {
                           const isActive = item.items?.some((subItem) =>
                             pathname.includes(subItem.url)
                           );
-                          if (open) {
-                            toggleSidebar();
-                          }
 
                           if (targetUrl && !isActive) {
                             navigate(targetUrl);
