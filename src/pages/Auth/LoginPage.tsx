@@ -8,6 +8,7 @@ import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
 import { useLogin } from "@/services/auth";
 import { useAuthStore } from "@/stores";
+import companyValidator from "@/validators/companyValidator";
 import { Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -16,16 +17,7 @@ import { toast } from "sonner";
 import { z } from "zod";
 
 const loginSchema = z.object({
-  company: z
-    .string()
-    .max(20)
-    .regex(
-      /^['a-zA-Z0-9 _-]+$/,
-      "Only letters, numbers, hyphens, and underscores allowed"
-    )
-    .refine((value) => !/^\s/.test(value), {
-      message: "Company name cannot start with a space",
-    }),
+  company: companyValidator,
   email: z.string().email(),
   password: z.string(),
 });
@@ -111,7 +103,6 @@ const LoginPage = () => {
                       }}
                     />
                   </FormControl>
-                  <FormMessage>{errors.company?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -122,9 +113,8 @@ const LoginPage = () => {
                 <FormItem>
                   <FormLabel>{t("email")}</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="Email" {...field} />
+                    <Input placeholder="Email" {...field} />
                   </FormControl>
-                  <FormMessage>{errors.email?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -137,7 +127,6 @@ const LoginPage = () => {
                   <FormControl>
                     <div className="relative w-full">
                       <Input
-                        required
                         maxLength={25}
                         max={25}
                         min={6}
@@ -154,7 +143,9 @@ const LoginPage = () => {
                       </button>
                     </div>
                   </FormControl>
-                  <FormMessage>{errors.password?.message}</FormMessage>
+                  {Object.keys(errors).length > 0 && (
+                    <FormMessage>{t("signInError")}</FormMessage>
+                  )}
                 </FormItem>
               )}
             />
@@ -173,6 +164,7 @@ const LoginPage = () => {
             >
               {t("forgotPasswordMessage")}
             </Link>
+
             <Button
               type="submit"
               disabled={isPending}

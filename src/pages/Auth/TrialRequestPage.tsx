@@ -1,11 +1,5 @@
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { AppRoutes } from "@/constants";
 import { useForm } from "@/hooks";
@@ -15,6 +9,8 @@ import { useTranslation } from "react-i18next";
 import moment from "moment";
 import { useState } from "react";
 import FormLabel from "@/components/FormLabel";
+import FormMessage from "@/components/FormMessage";
+import companyValidator from "@/validators/companyValidator";
 
 const trialRequestSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -33,13 +29,7 @@ const trialRequestSchema = z.object({
       "Last name must only contain letters and apostrophes"
     ),
   phone: z.string().min(10, "Invalid phone number"),
-  company: z
-    .string()
-    .max(25)
-    .regex(
-      /^['a-zA-Z0-9\s]+$/,
-      "Only must contain letters, numbers, and apostrophes"
-    ),
+  company: companyValidator,
   date: z.string(),
   time: z.string(),
 });
@@ -52,9 +42,11 @@ const TrialRequestPage = () => {
       email: "",
       phone: "",
       company: "",
-      date: moment().format("LLL"),
-      time: "",
+      date: moment().format("YYYY-MM-DD"),
+      time: moment().format("HH:mm"),
     },
+    shouldFocusError: false,
+    mode: "onChange",
   });
 
   const {
@@ -96,9 +88,12 @@ const TrialRequestPage = () => {
                 <FormItem>
                   <FormLabel>{t("email")}</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="Email" {...field} />
+                    <Input
+                      placeholder="Email"
+                      {...field}
+                      className="focus-visible:ring-muted-foreground"
+                    />
                   </FormControl>
-                  <FormMessage>{errors.email?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -111,8 +106,8 @@ const TrialRequestPage = () => {
                   <FormControl>
                     <Input
                       {...field}
-                      type="firstName"
                       placeholder="Firstname"
+                      className="focus-visible:ring-muted-foreground"
                       onChange={(event) => {
                         const value = event.target.value.replace(
                           /[^a-zA-Z']+/g,
@@ -122,7 +117,6 @@ const TrialRequestPage = () => {
                       }}
                     />
                   </FormControl>
-                  <FormMessage>{errors.firstName?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -135,8 +129,8 @@ const TrialRequestPage = () => {
                   <FormControl>
                     <Input
                       {...field}
-                      type="lastName"
                       placeholder="Lastname"
+                      className="focus-visible:ring-muted-foreground"
                       onChange={(event) => {
                         const value = event.target.value.replace(
                           /[^a-zA-Z']+/g,
@@ -146,7 +140,6 @@ const TrialRequestPage = () => {
                       }}
                     />
                   </FormControl>
-                  <FormMessage>{errors.lastName?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -157,9 +150,12 @@ const TrialRequestPage = () => {
                 <FormItem>
                   <FormLabel>{t("phone")}</FormLabel>
                   <FormControl>
-                    <Input type="tel" placeholder="Phone" {...field} />
+                    <Input
+                      placeholder="Phone"
+                      {...field}
+                      className="focus-visible:ring-muted-foreground"
+                    />
                   </FormControl>
-                  <FormMessage>{errors.phone?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -174,8 +170,8 @@ const TrialRequestPage = () => {
                       {...field}
                       maxLength={25}
                       max={25}
-                      type="text"
                       placeholder="Company"
+                      className="focus-visible:ring-muted-foreground"
                       onChange={(event) => {
                         const value = event.target.value.replace(
                           /[^'a-zA-Z0-9\s]/g,
@@ -185,7 +181,6 @@ const TrialRequestPage = () => {
                       }}
                     />
                   </FormControl>
-                  <FormMessage>{errors.company?.message}</FormMessage>
                 </FormItem>
               )}
             />
@@ -197,9 +192,12 @@ const TrialRequestPage = () => {
                   <FormItem className="flex-1">
                     <FormLabel>{t("date")}</FormLabel>
                     <FormControl>
-                      <Input type="date" {...field} />
+                      <Input
+                        type="date"
+                        {...field}
+                        className="focus-visible:ring-muted-foreground"
+                      />
                     </FormControl>
-                    <FormMessage>{errors.date?.message}</FormMessage>
                   </FormItem>
                 )}
               />
@@ -210,13 +208,19 @@ const TrialRequestPage = () => {
                   <FormItem className="flex-1">
                     <FormLabel>{t("time")}</FormLabel>
                     <FormControl>
-                      <Input type="time" {...field} />
+                      <Input
+                        type="time"
+                        {...field}
+                        className="focus-visible:ring-muted-foreground"
+                      />
                     </FormControl>
-                    <FormMessage>{errors.time?.message}</FormMessage>
                   </FormItem>
                 )}
               />
             </div>
+            {Object.keys(errors).length > 0 && (
+              <FormMessage>{t("signInError")}</FormMessage>
+            )}
             <Button
               type="submit"
               className="flex w-full justify-center rounded-md bg-primary-600 px-3 py-1.5 text-sm/6 font-semibold shadow-xs hover:bg-primary-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600"

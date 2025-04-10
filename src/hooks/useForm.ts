@@ -23,6 +23,11 @@ const useForm = <TSchema extends ZodType<any, ZodTypeDef, any>>(
     ...formOptions,
     resolver: zodResolver(schema),
     criteriaMode: "firstError",
+    shouldUnregister: true,
+    shouldFocusError: false,
+    mode: "onSubmit",
+    shouldUseNativeValidation: false,
+    reValidateMode: "onSubmit",
   });
 
   const firstErrorKey = Object.keys(allErrors)[0];

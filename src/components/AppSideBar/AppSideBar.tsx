@@ -65,9 +65,6 @@ const AppSidebar = () => {
 
                           if (targetUrl && !isActive) {
                             navigate(targetUrl);
-                            if (!open) {
-                              toggleSidebar();
-                            }
                           } else if (isActive) {
                             e.preventDefault();
                           }
@@ -92,6 +89,11 @@ const AppSidebar = () => {
                           <SidebarMenuSubItem key={subItem.title}>
                             <Link to={subItem.url}>
                               <SidebarMenuButton
+                                onClick={() => {
+                                  if (open) {
+                                    toggleSidebar();
+                                  }
+                                }}
                                 className={cn({
                                   "bg-primary-200 text-primary-950 hover:bg-primary-100":
                                     pathname.includes(subItem.url),
