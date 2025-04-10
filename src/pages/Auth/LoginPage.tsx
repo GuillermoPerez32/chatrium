@@ -96,7 +96,7 @@ const LoginPage = () => {
                       placeholder={t("companyName")}
                       onChange={(event) => {
                         const value = event.target.value.replace(
-                          /^\s+|[^'a-zA-Z0-9 _-]/g,
+                          /^\s+|[^'a-zA-Z0-9 _@-]/g,
                           ""
                         );
                         field.onChange(value);

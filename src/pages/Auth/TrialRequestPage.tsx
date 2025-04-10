@@ -174,7 +174,7 @@ const TrialRequestPage = () => {
                       className="focus-visible:ring-muted-foreground"
                       onChange={(event) => {
                         const value = event.target.value.replace(
-                          /[^'a-zA-Z0-9\s]/g,
+                          /^\s+|[^'a-zA-Z0-9 _@-]/g,
                           ""
                         );
                         field.onChange(value);
