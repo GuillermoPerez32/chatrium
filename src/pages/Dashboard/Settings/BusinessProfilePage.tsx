@@ -73,10 +73,7 @@ const BusinessProfilePage = () => {
   ) => {
     setBusinessHours((prev) => ({
       ...prev,
-      [day]: {
-        open: newRange.start,
-        close: newRange.end,
-      },
+      [day]: { open: newRange.start, close: newRange.end },
     }));
   };
 
@@ -97,282 +94,288 @@ const BusinessProfilePage = () => {
   };
 
   return (
-    <div className="p-8 max-w-4xl mx-auto bg-card shadow-md rounded-lg mt-20">
-      <div className="flex flex-col gap-6">
-        <DropDown
-          title={t("businessInformation")}
-          subtitle={t("businessInformationSubtitle")}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label
-                htmlFor="business-name"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("businessName")}
-              </Label>
-              <input
-                id="business-name"
-                type="text"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("businessNamePlaceholder")}
-              />
+    <div className="min-h-screen bg-background p-4 sm:p-6 lg:p-8">
+      <div className="max-w-full sm:max-w-4xl mx-auto bg-card shadow-md rounded-lg mt-10 sm:mt-20">
+        <div className="flex flex-col gap-6 p-4 sm:p-6 lg:p-8">
+          {/* Business Information */}
+          <DropDown
+            title={t("businessInformation")}
+            subtitle={t("businessInformationSubtitle")}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <Label
+                  htmlFor="business-name"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("businessName")}
+                </Label>
+                <input
+                  id="business-name"
+                  type="text"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("businessNamePlaceholder")}
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="address"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("address")}
+                </Label>
+                <input
+                  id="address"
+                  type="text"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("addressPlaceholder")}
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="phone-number"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("phoneNumber")}
+                </Label>
+                <input
+                  id="phone-number"
+                  type="text"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("phoneNumberPlaceholder")}
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="email"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("email")}
+                </Label>
+                <input
+                  id="email"
+                  type="email"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("emailPlaceholder")}
+                />
+              </div>
             </div>
-            <div>
-              <Label
-                htmlFor="address"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("address")}
-              </Label>
-              <input
-                id="address"
-                type="text"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("addressPlaceholder")}
-              />
-            </div>
-            <div>
-              <Label
-                htmlFor="phone-number"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("phoneNumber")}
-              </Label>
-              <input
-                id="phone-number"
-                type="text"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("phoneNumberPlaceholder")}
-              />
-            </div>
-            <div>
-              <Label
-                htmlFor="email"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("email")}
-              </Label>
-              <input
-                id="email"
-                type="email"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("emailPlaceholder")}
-              />
-            </div>
-          </div>
-        </DropDown>
+          </DropDown>
 
-        <DropDown
-          title={t("businessHours")}
-          subtitle={t("businessHoursSubtitle")}
-        >
-          <div className="flex justify-between items-center mb-4">
-            <span />
-            <div className="flex items-center gap-2">
-              <Switch
-                id="24hours-switch"
-                checked={is24Hours}
-                onCheckedChange={toggleTimeFormat}
-              />
-              <Label
-                htmlFor="24hours-switch"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("24-7")}
-              </Label>
+          {/* Business Hours */}
+          <DropDown
+            title={t("businessHours")}
+            subtitle={t("businessHoursSubtitle")}
+          >
+            <div className="flex justify-between items-center mb-4">
+              <span />
+              <div className="flex items-center gap-2">
+                <Switch
+                  id="24hours-switch"
+                  checked={is24Hours}
+                  onCheckedChange={toggleTimeFormat}
+                />
+                <Label
+                  htmlFor="24hours-switch"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("24-7")}
+                </Label>
+              </div>
             </div>
-          </div>
-          {!is24Hours && (
-            <div className="grid grid-cols-2 gap-4">
-              {" "}
-              {/* Cambiado de grid-cols-1 a grid-cols-2 */}
-              {days.map((day) => (
-                <div key={day} className="flex items-center gap-2">
-                  <Label className="text-sm font-medium text-muted-foreground w-20">
-                    {t(day)}
-                  </Label>
-                  <AdvancedTimeRangePicker
-                    timeRange={{
-                      start: businessHours[day].open,
-                      end: businessHours[day].close,
-                    }}
-                    setTimeRange={(newRange) =>
-                      handleTimeRangeChange(day, newRange)
-                    }
-                    is24HourFormat={is24Hours}
-                  />
-                </div>
-              ))}
-            </div>
-          )}
-        </DropDown>
+            {!is24Hours && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {days.map((day) => (
+                  <div key={day} className="flex items-center gap-2">
+                    <Label className="text-sm font-medium text-muted-foreground min-w-[80px] sm:min-w-[100px]">
+                      {t(day)}
+                    </Label>
+                    <AdvancedTimeRangePicker
+                      timeRange={{
+                        start: businessHours[day].open,
+                        end: businessHours[day].close,
+                      }}
+                      setTimeRange={(newRange) =>
+                        handleTimeRangeChange(day, newRange)
+                      }
+                      is24HourFormat={is24Hours}
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
+          </DropDown>
 
-        <DropDown
-          title={t("automatedMessages")}
-          subtitle={t("automatedMessagesSubtitle")}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label
-                htmlFor="open-message"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("openMessage")}
-              </Label>
-              <textarea
-                id="open-message"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("openMessagePlaceholder")}
-              />
+          {/* Automated Messages */}
+          <DropDown
+            title={t("automatedMessages")}
+            subtitle={t("automatedMessagesSubtitle")}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <Label
+                  htmlFor="open-message"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("openMessage")}
+                </Label>
+                <textarea
+                  id="open-message"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("openMessagePlaceholder")}
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="closed-message"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("closedMessage")}
+                </Label>
+                <textarea
+                  id="closed-message"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("closedMessagePlaceholder")}
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="after-hours-message"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("afterHoursMessage")}
+                </Label>
+                <textarea
+                  id="after-hours-message"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("afterHoursMessagePlaceholder")}
+                />
+              </div>
             </div>
-            <div>
-              <Label
-                htmlFor="closed-message"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("closedMessage")}
-              </Label>
-              <textarea
-                id="closed-message"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("closedMessagePlaceholder")}
-              />
-            </div>
-            <div>
-              <Label
-                htmlFor="after-hours-message"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("afterHoursMessage")}
-              </Label>
-              <textarea
-                id="after-hours-message"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("afterHoursMessagePlaceholder")}
-              />
-            </div>
-          </div>
-        </DropDown>
+          </DropDown>
 
-        <DropDown
-          title={t("googleMyBusinessListing")}
-          subtitle={t("googleMyBusinessListingSubtitle")}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label
-                htmlFor="google-my-business-url"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("googleMyBusinessUrl")}
-              </Label>
-              <input
-                id="google-my-business-url"
-                type="url"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("googleMyBusinessUrlPlaceholder")}
-              />
+          {/* Google My Business Listing */}
+          <DropDown
+            title={t("googleMyBusinessListing")}
+            subtitle={t("googleMyBusinessListingSubtitle")}
+          >
+            <div className="grid grid-cols-1 gap-4">
+              <div>
+                <Label
+                  htmlFor="google-my-business-url"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("googleMyBusinessUrl")}
+                </Label>
+                <input
+                  id="google-my-business-url"
+                  type="url"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("googleMyBusinessUrlPlaceholder")}
+                />
+              </div>
             </div>
-          </div>
-        </DropDown>
+          </DropDown>
 
-        <DropDown title={t("chatrium")} subtitle={t("chatriumSubtitle")}>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label
-                htmlFor="chatrium-profile-url"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("chatriumProfileUrl")}
-              </Label>
-              <input
-                id="chatrium-profile-url"
-                type="url"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("chatriumProfileUrlPlaceholder")}
-              />
+          {/* Chatrium */}
+          <DropDown title={t("chatrium")} subtitle={t("chatriumSubtitle")}>
+            <div className="grid grid-cols-1 gap-4">
+              <div>
+                <Label
+                  htmlFor="chatrium-profile-url"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("chatriumProfileUrl")}
+                </Label>
+                <input
+                  id="chatrium-profile-url"
+                  type="url"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("chatriumProfileUrlPlaceholder")}
+                />
+              </div>
             </div>
-          </div>
-        </DropDown>
+          </DropDown>
 
-        <DropDown
-          title={t("socialProfile")}
-          subtitle={t("socialProfileSubtitle")}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <Label
-                htmlFor="instagram-url"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("instagramUrl")}
-              </Label>
-              <input
-                id="instagram-url"
-                type="url"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("instagramUrlPlaceholder")}
-              />
+          {/* Social Profile */}
+          <DropDown
+            title={t("socialProfile")}
+            subtitle={t("socialProfileSubtitle")}
+          >
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <Label
+                  htmlFor="instagram-url"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("instagramUrl")}
+                </Label>
+                <input
+                  id="instagram-url"
+                  type="url"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("instagramUrlPlaceholder")}
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="twitter-url"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("twitterUrl")}
+                </Label>
+                <input
+                  id="twitter-url"
+                  type="url"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("twitterUrlPlaceholder")}
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="linkedin-url"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("linkedinUrl")}
+                </Label>
+                <input
+                  id="linkedin-url"
+                  type="url"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("linkedinUrlPlaceholder")}
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="facebook-url"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("facebookUrl")}
+                </Label>
+                <input
+                  id="facebook-url"
+                  type="url"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("facebookUrlPlaceholder")}
+                />
+              </div>
+              <div>
+                <Label
+                  htmlFor="tiktok-url"
+                  className="text-sm font-medium text-muted-foreground"
+                >
+                  {t("tiktokUrl")}
+                </Label>
+                <input
+                  id="tiktok-url"
+                  type="url"
+                  className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
+                  placeholder={t("tiktokUrlPlaceholder")}
+                />
+              </div>
             </div>
-            <div>
-              <Label
-                htmlFor="twitter-url"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("twitterUrl")}
-              </Label>
-              <input
-                id="twitter-url"
-                type="url"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("twitterUrlPlaceholder")}
-              />
-            </div>
-            <div>
-              <Label
-                htmlFor="linkedin-url"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("linkedinUrl")}
-              </Label>
-              <input
-                id="linkedin-url"
-                type="url"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("linkedinUrlPlaceholder")}
-              />
-            </div>
-            <div>
-              <Label
-                htmlFor="facebook-url"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("facebookUrl")}
-              </Label>
-              <input
-                id="facebook-url"
-                type="url"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("facebookUrlPlaceholder")}
-              />
-            </div>
-            <div>
-              <Label
-                htmlFor="tiktok-url"
-                className="text-sm font-medium text-muted-foreground"
-              >
-                {t("tiktokUrl")}
-              </Label>
-              <input
-                id="tiktok-url"
-                type="url"
-                className="mt-1 block w-full p-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-sm"
-                placeholder={t("tiktokUrlPlaceholder")}
-              />
-            </div>
-          </div>
-        </DropDown>
+          </DropDown>
+        </div>
       </div>
     </div>
   );

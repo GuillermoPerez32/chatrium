@@ -21,14 +21,29 @@ export default function AdvancedTimeRangePicker({
   const [startInputValue, setStartInputValue] = useState("");
   const [endInputValue, setEndInputValue] = useState("");
 
-  // Maneja el cambio de la entrada manual para start o end
-  const handleTimeChange = (field: "start" | "end", value: string) => {
-    console.log("Field:", field, "Value:", value);
+  // Validación de entrada permitiendo solo números, ":", espacio, "AM", "PM"
+  const handleInput = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    field: "start" | "end"
+  ) => {
+    const value = e.target.value.toUpperCase();
+    const allowedPattern = is24HourFormat
+      ? /^[0-9:]*$/ // Solo números y ":" en formato 24h
+      : /^[0-9: APM]*$/; // Números, ":", espacio, "AM", "PM" en formato 12h
+
+    if (!allowedPattern.test(value)) {
+      e.preventDefault();
+      return;
+    }
 
     if (field === "start") setStartInputValue(value);
     else setEndInputValue(value);
 
-    // Separar la entrada en partes: HH:MM y AM/PM (si existe)
+    handleTimeChange(field, value);
+  };
+
+  // Maneja el cambio de la entrada manual para start o end
+  const handleTimeChange = (field: "start" | "end", value: string) => {
     const parts = value.trim().split(" ");
     const timePart = parts[0] || "";
     const period = parts[1]?.toUpperCase() || "";
@@ -40,15 +55,10 @@ export default function AdvancedTimeRangePicker({
         ? null
         : parseInt(minutesStr);
 
-    console.log("Parsed before AM/PM:", { hours, minutes, period });
-
     // Ajustar horas según AM/PM solo si no es formato 24h
     if (!is24HourFormat && hours !== null && period) {
-      if (period === "PM" && hours < 12) {
-        hours += 12; // Convertir a 24h (ejemplo: 1 PM → 13)
-      } else if (period === "AM" && hours === 12) {
-        hours = 0; // Medianoche
-      }
+      if (period === "PM" && hours < 12) hours += 12;
+      else if (period === "AM" && hours === 12) hours = 0;
     }
 
     // Validar horas según el formato
@@ -63,11 +73,6 @@ export default function AdvancedTimeRangePicker({
         : hours;
     const adjustedMinutes =
       minutes === null ? null : minutes > 59 ? 59 : minutes < 0 ? 0 : minutes;
-
-    console.log("Parsed after AM/PM:", {
-      hours: adjustedHours,
-      minutes: adjustedMinutes,
-    });
 
     setTimeRange({
       ...timeRange,
@@ -115,11 +120,8 @@ export default function AdvancedTimeRangePicker({
 
     // Ajustar horas según AM/PM solo si no es formato 24h
     if (!is24HourFormat && hours !== null && period) {
-      if (period === "PM" && hours < 12) {
-        hours += 12; // Convertir a 24h
-      } else if (period === "AM" && hours === 12) {
-        hours = 0; // Medianoche
-      }
+      if (period === "PM" && hours < 12) hours += 12;
+      else if (period === "AM" && hours === 12) hours = 0;
     }
 
     // Validar horas según el formato
@@ -127,7 +129,7 @@ export default function AdvancedTimeRangePicker({
     const adjustedHours =
       hours === null
         ? null
-        : hours > maxHours && !period // Solo limitar si no hay AM/PM explícito
+        : hours > maxHours && !period
         ? maxHours
         : hours < 0
         ? 0
@@ -148,8 +150,8 @@ export default function AdvancedTimeRangePicker({
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <div className="flex flex-col items-center gap-1">
+    <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 w-full">
+      <div className="flex flex-col items-center gap-1 w-full sm:w-auto">
         <label
           htmlFor="start-time-picker"
           className="text-xs font-medium text-gray-700"
@@ -164,14 +166,14 @@ export default function AdvancedTimeRangePicker({
             startInputValue ||
             formatTime(timeRange.start.hours, timeRange.start.minutes)
           }
-          onChange={(e) => handleTimeChange("start", e.target.value)}
+          onChange={(e) => handleInput(e, "start")}
           onBlur={() => handleBlur("start")}
           placeholder={is24HourFormat ? "HH:MM" : "HH:MM AM/PM"}
-          maxLength={is24HourFormat ? 5 : 11} // 11 para "HH:MM AM/PM"
-          className="w-24 p-1 text-xs text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          maxLength={is24HourFormat ? 5 : 8} // 5 para "HH:MM", 8 para "HH:MM PM"
+          className="w-full sm:w-24 p-1 text-xs text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
-      <div className="flex flex-col items-center gap-1">
+      <div className="flex flex-col items-center gap-1 w-full sm:w-auto">
         <label
           htmlFor="end-time-picker"
           className="text-xs font-medium text-gray-700"
@@ -186,11 +188,11 @@ export default function AdvancedTimeRangePicker({
             endInputValue ||
             formatTime(timeRange.end.hours, timeRange.end.minutes)
           }
-          onChange={(e) => handleTimeChange("end", e.target.value)}
+          onChange={(e) => handleInput(e, "end")}
           onBlur={() => handleBlur("end")}
           placeholder={is24HourFormat ? "HH:MM" : "HH:MM AM/PM"}
-          maxLength={is24HourFormat ? 5 : 11} // 11 para "HH:MM AM/PM"
-          className="w-24 p-1 text-xs text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+          maxLength={is24HourFormat ? 5 : 8} // 5 para "HH:MM", 8 para "HH:MM PM"
+          className="w-full sm:w-24 p-1 text-xs text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
         />
       </div>
     </div>
