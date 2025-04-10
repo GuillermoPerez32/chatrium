@@ -57,7 +57,7 @@ const RecoverPage = () => {
                 <FormItem>
                   <FormLabel>{t("email")}</FormLabel>
                   <FormControl>
-                    <Input type="email" placeholder="Email" {...field} />
+                    <Input placeholder="Email" {...field} />
                   </FormControl>
                   <FormMessage>{errors.email?.message}</FormMessage>
                 </FormItem>

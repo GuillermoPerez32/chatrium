@@ -27,7 +27,7 @@ const useForm = <TSchema extends ZodType<any, ZodTypeDef, any>>(
     shouldFocusError: false,
     mode: "onSubmit",
     shouldUseNativeValidation: false,
-    reValidateMode: "onChange",
+    reValidateMode: "onSubmit",
   });
 
   const firstErrorKey = Object.keys(allErrors)[0];

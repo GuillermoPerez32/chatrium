@@ -15,9 +15,9 @@ const companyValidator = z
   .refine((value) => (value.match(/[-_]/g) || []).length <= 4, {
     message: "Company name can contain up to 4 hyphens or underscores",
   })
-  .refine((value) => /^[a-zA-Z0-9 &_-]*$/.test(value), {
+  .refine((value) => /^[a-zA-Z0-9 &_@-]*$/.test(value), {
     message:
-      "Only letters, numbers, spaces, ampersands, hyphens, and underscores are allowed",
+      "Only letters, numbers, spaces, ampersands, hyphens, underscores, and at sign are allowed",
   });
 
 export default companyValidator;
