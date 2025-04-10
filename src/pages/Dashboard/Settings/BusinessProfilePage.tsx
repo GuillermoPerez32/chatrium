@@ -3,7 +3,8 @@ import { useTranslation } from "react-i18next";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import DropDown from "@/components/DropDown";
-import AdvancedTimeRangePicker from "@/components/ui/timepicker";
+import CustomTimePicker from "@/components/ui/timepicker"; // Importa el nuevo componente
+import dayjs, { Dayjs } from "dayjs";
 
 type DayOfWeek =
   | "monday"
@@ -67,13 +68,28 @@ const BusinessProfilePage = () => {
     "sunday",
   ];
 
-  const handleTimeRangeChange = (
+  // Conversión de Time a Dayjs y viceversa
+  const timeToDayjs = (time: Time): Dayjs | null => {
+    if (time.hours === null || time.minutes === null) return null;
+    return dayjs().hour(time.hours).minute(time.minutes).second(0);
+  };
+
+  const dayjsToTime = (dayjsTime: Dayjs | null): Time => {
+    if (!dayjsTime) return { hours: null, minutes: null };
+    return { hours: dayjsTime.hour(), minutes: dayjsTime.minute() };
+  };
+
+  const handleTimeChange = (
     day: DayOfWeek,
-    newRange: { start: Time; end: Time }
+    type: "open" | "close",
+    newTime: Dayjs | null
   ) => {
     setBusinessHours((prev) => ({
       ...prev,
-      [day]: { open: newRange.start, close: newRange.end },
+      [day]: {
+        ...prev[day],
+        [type]: dayjsToTime(newTime),
+      },
     }));
   };
 
@@ -95,7 +111,7 @@ const BusinessProfilePage = () => {
 
   return (
     <div className="min-h-screen bg-background p-4 sm:p-6 lg:p-8">
-      <div className="max-w-full sm:max-w-4xl mx-auto bg-card shadow-md rounded-lg mt-10 sm:mt-20">
+      <div className="max-w-full sm:max-w-5xl mx-auto bg-card shadow-md rounded-lg mt-10 sm:mt-20">
         <div className="flex flex-col gap-6 p-4 sm:p-6 lg:p-8">
           {/* Business Information */}
           <DropDown
@@ -184,22 +200,30 @@ const BusinessProfilePage = () => {
               </div>
             </div>
             {!is24Hours && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto">
                 {days.map((day) => (
-                  <div key={day} className="flex items-center gap-2">
-                    <Label className="text-sm font-medium text-muted-foreground min-w-[80px] sm:min-w-[100px]">
+                  <div
+                    key={day}
+                    className="flex flex-row items-center gap-2 w-full min-w-[250px]" // Añadido min-w para evitar compresión excesiva
+                  >
+                    <Label className="text-sm font-medium text-muted-foreground min-w-[80px] sm:min-w-[100px] lg:min-w-[120px] shrink-0">
                       {t(day)}
                     </Label>
-                    <AdvancedTimeRangePicker
-                      timeRange={{
-                        start: businessHours[day].open,
-                        end: businessHours[day].close,
-                      }}
-                      setTimeRange={(newRange) =>
-                        handleTimeRangeChange(day, newRange)
-                      }
-                      is24HourFormat={is24Hours}
-                    />
+                    <div className="flex items-center space-x-2 flex-1">
+                      <CustomTimePicker
+                        value={timeToDayjs(businessHours[day].open)}
+                        onChange={(newTime) =>
+                          handleTimeChange(day, "open", newTime)
+                        }
+                      />
+                      <span>-</span>
+                      <CustomTimePicker
+                        value={timeToDayjs(businessHours[day].close)}
+                        onChange={(newTime) =>
+                          handleTimeChange(day, "close", newTime)
+                        }
+                      />
+                    </div>
                   </div>
                 ))}
               </div>
