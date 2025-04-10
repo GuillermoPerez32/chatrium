@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
+// Definimos el tipo ContactFormProps sin onChange
 type ContactFormProps = {
   contact: Contact;
   onSubmit: (data: Contact) => void;
@@ -21,11 +22,12 @@ type ContactFormProps = {
   isEdit?: boolean;
 };
 
-// Esquema básico de validación para ContactForm
+// Actualizamos el esquema de validación para incluir businessName
 const contactSchema = z.object({
   name: z.string().min(1, "Name is required"),
   email: z.string().email("Invalid email address"),
   phone: z.string().optional(),
+  businessName: z.string().optional(), // Nuevo campo
   photo: z.any().optional(),
 });
 
@@ -46,6 +48,7 @@ const ContactForm = ({
       name: contact.name || "",
       email: contact.email || "",
       phone: contact.phone || "",
+      businessName: contact.businessName || "", // Valor por defecto para businessName
       photo: undefined,
     },
   });
@@ -57,6 +60,7 @@ const ContactForm = ({
       name: data.name,
       email: data.email,
       phone: data.phone || "",
+      businessName: data.businessName || "", // Incluimos businessName
       photo:
         data.photo instanceof File
           ? URL.createObjectURL(data.photo)
@@ -126,6 +130,26 @@ const ContactForm = ({
                     <Input
                       id="phone"
                       placeholder={t("enterPhone")}
+                      className="border-muted focus:ring-primary focus:border-primary"
+                      {...field}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="businessName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-foreground">
+                    {t("businessName")}{" "}
+                    {/* Asegúrate de añadir esta clave en tus traducciones */}
+                  </FormLabel>
+                  <FormControl>
+                    <Input
+                      id="businessName"
+                      placeholder={t("enterBusinessName")}
                       className="border-muted focus:ring-primary focus:border-primary"
                       {...field}
                     />

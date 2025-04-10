@@ -38,6 +38,10 @@ const ContactTable = ({ data, onEdit, onDelete }: ContactTableProps) => {
                   <th className="p-3 font-semibold">{t("name")}</th>
                   <th className="p-3 font-semibold">{t("email")}</th>
                   <th className="p-3 font-semibold">{t("phone")}</th>
+                  <th className="p-3 font-semibold">
+                    {t("businessName")}
+                  </th>{" "}
+                  {/* Nueva columna */}
                   <th className="p-3 font-semibold">{t("actions")}</th>
                 </tr>
               </thead>
@@ -66,6 +70,10 @@ const ContactTable = ({ data, onEdit, onDelete }: ContactTableProps) => {
                     </td>
                     <td className="p-3 text-muted-foreground">
                       {contact.phone}
+                    </td>
+                    <td className="p-3 text-muted-foreground">
+                      {contact.businessName || "-"}{" "}
+                      {/* Mostrar "-" si no hay valor */}
                     </td>
                     <td className="p-3 flex space-x-2">
                       <TooltipProvider>

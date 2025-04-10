@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { initialDataTable } from "../data/contacts";
 import { Contact, initialContact, initialEditContact } from "../types/contacts";
 
 export const useContacts = () => {
-  const [dataTable, setDataTable] = useState<Contact[]>(initialDataTable);
+  // Cargar los contactos desde localStorage al iniciar, o usar initialDollarTable si no hay datos guardados
+  const [dataTable, setDataTable] = useState<Contact[]>(() => {
+    const savedContacts = localStorage.getItem("contacts");
+    return savedContacts ? JSON.parse(savedContacts) : initialDataTable;
+  });
+
   const [newContact, setNewContact] = useState<Contact>(initialContact);
   const [editContact, setEditContact] = useState<Contact | null>(
     initialEditContact
   );
   const [searchTerm, setSearchTerm] = useState("");
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+
+  // Guardar los contactos en localStorage cada vez que dataTable cambie
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(dataTable));
+  }, [dataTable]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = e.target;
@@ -62,7 +72,6 @@ export const useContacts = () => {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    // Aunque la validación ya está en ContactsPage, añadimos una verificación adicional por seguridad
     if (!file.name.toLowerCase().endsWith(".csv")) {
       console.warn("Attempted to process a non-CSV file in handleCSVImport");
       return;
@@ -80,6 +89,7 @@ export const useContacts = () => {
           email: line[1]?.trim() || "",
           phone: line[2]?.trim() || "",
           photo: "", // No hay photo en CSV, se deja vacío
+          businessName: line[4]?.trim() || "", // Asegúrate de incluir businessName si está en el CSV
         }))
         .filter((contact) => contact.name && contact.email && contact.phone); // Filtrar contactos incompletos
       setDataTable([...dataTable, ...importedContacts]);

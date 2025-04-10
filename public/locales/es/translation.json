@@ -239,6 +239,7 @@
   "contacts": "Contactos",
   "searchContacts": "Buscar contactos",
   "import": "Importar",
+  "enterBusinessName": "Ingresa el nombre de la empresa",
   "onlyCSVAllowed": "Solo se permiten archivos CSV",
   "editContact": "Editar contacto",
   "cancel": "Cancelar",

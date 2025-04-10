@@ -5,7 +5,7 @@ import { Search } from "lucide-react";
 import { useContacts } from "@/features/contacts/hooks/useContacts";
 import ContactTable from "@/features/contacts/components/contactTable";
 import ContactForm from "@/features/contacts/components/contactForm";
-import { toast } from "sonner"; // Para mostrar mensajes de error
+import { toast } from "sonner";
 
 const ContactsPage = () => {
   const { t } = useTranslation();
@@ -18,15 +18,12 @@ const ContactsPage = () => {
     setEditContact,
     setSearchTerm,
     setIsAddModalOpen,
-    handleInputChange,
-    handleEditInputChange,
     addContact,
     saveEditContact,
     deleteContact,
     handleCSVImport,
   } = useContacts();
 
-  // Función para validar y manejar la importación de CSV
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) {
@@ -34,18 +31,15 @@ const ContactsPage = () => {
       return;
     }
 
-    console.log("Selected file:", file.name); // Depuración para verificar el archivo seleccionado
-
-    // Verificar si el archivo es .csv
+    console.log("Selected file:", file.name);
     if (!file.name.toLowerCase().endsWith(".csv")) {
-      console.log("Invalid file type detected:", file.name); // Depuración
-      toast.error(t("onlyCSVAllowed")); // Mensaje de error
-      e.target.value = ""; // Limpiar el input
+      console.log("Invalid file type detected:", file.name);
+      toast.error(t("onlyCSVAllowed"));
+      e.target.value = "";
       return;
     }
 
-    // Si es .csv, llamar a la función original de importación
-    console.log("Processing CSV file:", file.name); // Depuración
+    console.log("Processing CSV file:", file.name);
     handleCSVImport(e);
   };
 
@@ -75,9 +69,9 @@ const ContactsPage = () => {
                 {t("import")}
                 <input
                   type="file"
-                  accept=".csv" // Sugerencia inicial para el selector de archivos
+                  accept=".csv"
                   className="hidden"
-                  onChange={handleFileChange} // Usamos la nueva función con validación
+                  onChange={handleFileChange}
                 />
               </label>
             </Button>
@@ -100,7 +94,6 @@ const ContactsPage = () => {
           <div className="fixed inset-0 flex items-center justify-center">
             <ContactForm
               contact={newContact}
-              onChange={handleInputChange}
               onSubmit={addContact}
               onCancel={() => setIsAddModalOpen(false)}
             />
@@ -111,7 +104,6 @@ const ContactsPage = () => {
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
             <ContactForm
               contact={editContact}
-              onChange={handleEditInputChange}
               onSubmit={saveEditContact}
               onCancel={() => setEditContact(null)}
               isEdit
