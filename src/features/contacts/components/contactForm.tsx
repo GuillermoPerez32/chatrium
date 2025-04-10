@@ -85,12 +85,7 @@ const ContactForm = ({
                 <FormItem>
                   <FormLabel className="text-foreground">{t("name")}</FormLabel>
                   <FormControl>
-                    <Input
-                      id="name"
-                      placeholder={t("enterName")}
-                      className="border-muted focus:ring-primary focus:border-primary"
-                      {...field}
-                    />
+                    <Input id="name" placeholder={t("enterName")} {...field} />
                   </FormControl>
                 </FormItem>
               )}
@@ -107,7 +102,6 @@ const ContactForm = ({
                     <Input
                       id="email"
                       placeholder={t("enterEmail")}
-                      className="border-muted focus:ring-primary focus:border-primary"
                       {...field}
                     />
                   </FormControl>
@@ -126,7 +120,6 @@ const ContactForm = ({
                     <Input
                       id="phone"
                       placeholder={t("enterPhone")}
-                      className="border-muted focus:ring-primary focus:border-primary"
                       {...field}
                     />
                   </FormControl>
@@ -145,7 +138,6 @@ const ContactForm = ({
                     <Input
                       id="businessName"
                       placeholder={t("enterBusinessName")}
-                      className="border-muted focus:ring-primary focus:border-primary"
                       {...field}
                     />
                   </FormControl>
@@ -165,13 +157,12 @@ const ContactForm = ({
                       id="photo"
                       type="file"
                       accept="image/*"
-                      className="border-muted focus:ring-primary focus:border-primary"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
                         if (file) onChange(file);
                       }}
                       {...field}
-                      value={undefined} // Necesario para evitar el error de valor controlado
+                      value={undefined}
                     />
                   </FormControl>
                 </FormItem>
