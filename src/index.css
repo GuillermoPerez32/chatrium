@@ -16,6 +16,7 @@
   --color-primary-800: #085d44;
   --color-primary-900: #084c39;
   --color-primary-950: #032b21;
+  --color-primary-contrast:#086d4d
 }
 
 :root {
@@ -27,6 +28,7 @@
   --popover: #f5fefb;
   --popover-foreground: #1a3b33;
   --primary: #099669;
+  --primary-contrast: #086d4d;
   --primary-foreground: #fbfbfb;
   --secondary: #e6f4ef;
   --secondary-foreground: #075b46;
@@ -61,6 +63,7 @@
   --popover: #1b2d27;
   --popover-foreground: #d6f7ef;
   --primary: #099669;
+  --primary-contrast: #086d4d;
   --primary-foreground: #353535;
   --secondary: #284f42;
   --secondary-foreground: #d6f7ef;

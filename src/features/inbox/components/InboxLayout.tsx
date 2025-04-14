@@ -230,7 +230,7 @@ const InboxLayout = () => {
                 <div
                   className={`max-w-md ${
                     message.sender === "me"
-                      ? "bg-primary-500 "
+                      ? "bg-primary-contrast "
                       : "bg-background"
                   } rounded-lg shadow-sm p-3`}
                 >

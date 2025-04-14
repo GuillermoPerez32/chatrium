@@ -26,7 +26,7 @@ const contactSchema = z.object({
   email: z.string().email("Invalid email address"),
   phone: z.string().optional(),
   businessName: z.string().optional(),
-  photo: z.any().optional(), // Podrías refinar esto si necesitas tipado más estricto
+  photo: z.any().optional(),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -66,17 +66,17 @@ const ContactForm = ({
   };
 
   return (
-    <Card className="w-full max-w-[90%] sm:max-w-md mx-auto">
+    <Card className="w-full max-w-[90%] sm:max-w-md mx-auto my-4 sm:my-8">
       <CardHeader className="border-b border-muted">
-        <CardTitle className="text-xl sm:text-2xl md:text-3xl font-semibold text-muted-foreground text-center">
+        <CardTitle className="text-xl sm:text-2xl font-semibold text-muted-foreground text-center">
           {t(isEdit ? "editContact" : "addNewContact")}
         </CardTitle>
       </CardHeader>
-      <CardContent className="p-4 sm:p-6 bg-background">
+      <CardContent className="p-4 bg-background">
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(handleSubmit)}
-            className="flex flex-col gap-3 sm:gap-4"
+            className="flex flex-col gap-3"
           >
             <FormField
               control={form.control}
